@@ -6,5 +6,5 @@ use Illuminate\Database\Eloquent\Model;
 
 class Lists extends Model
 {
-    protected $fillable = ['title', 'description', 'icon'];
+    protected $fillable = ['name', 'users', 'icon'];
 }

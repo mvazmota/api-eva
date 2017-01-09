@@ -12,27 +12,27 @@ class ListsTableSeeder extends Seeder
     public function run()
     {
         DB::table('lists')->insert([
-            'title' => 'Casa',
-            'description' => str_random(10),
-            'icon' => 'imagem1.png',
+            'name' => 'Casa',
+            'users' => 'Carlos',
+            'icon' => 'casa',
         ]);
 
         DB::table('lists')->insert([
-            'title' => 'Aniversário Ana',
-            'description' => str_random(10),
-            'icon' => 'imagem1.png',
+            'name' => 'Casa',
+            'users' => 'Carlos',
+            'icon' => 'casa',
         ]);
 
         DB::table('lists')->insert([
-            'title' => 'Festa Natal',
-            'description' => str_random(10),
-            'icon' => 'imagem1.png',
+            'name' => 'Casa',
+            'users' => 'Carlos',
+            'icon' => 'casa',
         ]);
 
         DB::table('lists')->insert([
-            'title' => 'Roupa Carlos',
-            'description' => str_random(10),
-            'icon' => 'imagem1.png',
+            'name' => 'Casa',
+            'users' => 'Carlos',
+            'icon' => 'casa',
         ]);
     }
 }
