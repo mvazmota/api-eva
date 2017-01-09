@@ -21,12 +21,13 @@ class ApiController extends Controller
 
 
     /**
-     * List All Produtos
+     * List All Products
      *
      * Listagem de todas os produtos existentes em base de dados
      *
      * @return array
      */
+
     public function index()
     {
         header('Access-Control-Allow-Origin: *');
