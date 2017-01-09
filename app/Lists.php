@@ -4,7 +4,7 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class News extends Model
+class Lists extends Model
 {
-    protected $fillable = ['name', 'users', 'icon'];
+    protected $fillable = ['title', 'description', 'icon'];
 }

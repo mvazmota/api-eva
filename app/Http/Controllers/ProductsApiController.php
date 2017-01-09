@@ -9,7 +9,7 @@ use App\Tools;
 use Illuminate\Http\Request;
 use Validator;
 
-class ApiController extends Controller
+class ProductsApiController extends Controller
 {
 
     //
