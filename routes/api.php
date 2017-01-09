@@ -13,6 +13,6 @@ use Illuminate\Http\Request;
 |
 */
 
-Route::resource('news', 'ApiController');
+Route::resource('products', 'ApiController');
 
-Route::post('news/upload', 'ApiController@upload');
+Route::post('products/upload', 'ApiController@upload');

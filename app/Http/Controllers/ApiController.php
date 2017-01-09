@@ -1,21 +1,10 @@
 <?php
-/**
- * API-EXAMPLE NEWS TDI 2016
- *
- * Api de testes para a aulas de TDI ano letivo 2016/2017
- *
- * @author Nuno Ribeiro
- *
- * @copyright ©nrgribeiro 2016
- *
- * @api API-EXAMPLE TDI 2016
- */
 
 
 namespace App\Http\Controllers;
 
 use App\Http\Requests;
-use App\News;
+use App\Products;
 use App\Tools;
 use Illuminate\Http\Request;
 use Validator;
@@ -32,9 +21,9 @@ class ApiController extends Controller
 
 
     /**
-     * List All News
+     * List All Produtos
      *
-     * Listagem de todas as notícias existentes em base de dados
+     * Listagem de todas os produtos existentes em base de dados
      *
      * @return array
      */
@@ -42,9 +31,9 @@ class ApiController extends Controller
     {
         header('Access-Control-Allow-Origin: *');
 
-        $news = News::get();
+        $products = Products::get();
 
-        return $news;
+        return $products;
     }
 
     /**
