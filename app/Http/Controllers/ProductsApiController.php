@@ -48,9 +48,9 @@ class ProductsApiController extends Controller
      */
     public function show($id)
     {
-        $news = News::whereId($id)->first();
+        $products = Products::whereId($id)->first();
 
-        return $news;
+        return $products;
     }
 
      /**
@@ -159,13 +159,13 @@ class ProductsApiController extends Controller
     {
         $data = $request->all();
 
-        $news = News::whereId($id)->first();
+        $products = Products::whereId($id)->first();
 
-        $news->title = $data['title'];
-        $news->description = $data['description'];
-        $news->save();
+        $products->title = $data['title'];
+        $products->description = $data['description'];
+        $products->save();
 
-        return $news;
+        return $products;
     }
 
     /**

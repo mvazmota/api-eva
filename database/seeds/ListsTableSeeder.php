@@ -13,26 +13,18 @@ class ListsTableSeeder extends Seeder
     {
         DB::table('lists')->insert([
             'name' => 'Casa',
-            'users' => 'Carlos',
             'icon' => 'casa',
         ]);
 
         DB::table('lists')->insert([
-            'name' => 'Casa',
-            'users' => 'Carlos',
+            'name' => 'Festa Joana',
             'icon' => 'casa',
         ]);
 
         DB::table('lists')->insert([
-            'name' => 'Casa',
-            'users' => 'Carlos',
+            'name' => 'Passagem de Ano',
             'icon' => 'casa',
         ]);
 
-        DB::table('lists')->insert([
-            'name' => 'Casa',
-            'users' => 'Carlos',
-            'icon' => 'casa',
-        ]);
     }
 }
