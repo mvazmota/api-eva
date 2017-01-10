@@ -34,3 +34,13 @@ Route::get('lists/{list}/users', function ($listId) {
 
     return $users;
 });
+
+//Get produtos de uma lista
+Route::get('lists/{list}/products', function ($listId) {
+
+    header('Access-Control-Allow-Origin: *');
+
+    $products = Lists::find($listId)->products()->get();
+
+    return $products;
+});
