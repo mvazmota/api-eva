@@ -18,12 +18,12 @@ class ListsTableSeeder extends Seeder
 
         DB::table('lists')->insert([
             'name' => 'Festa Joana',
-            'icon' => 'casa',
+            'icon' => 'prenda',
         ]);
 
         DB::table('lists')->insert([
             'name' => 'Passagem de Ano',
-            'icon' => 'casa',
+            'icon' => 'trabalho',
         ]);
 
     }

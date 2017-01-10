@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests;
 use App\Lists;
+use App\User;
 use App\Tools;
 use Illuminate\Http\Request;
 use Validator;
@@ -31,6 +32,7 @@ class ListsApiController extends Controller
 
         return $lists;
     }
+
 
     /**
      * Show the form for creating a new resource.
@@ -61,7 +63,19 @@ class ListsApiController extends Controller
      */
     public function show($id)
     {
-        //
+//        $lists = Lists::whereId($id)->first();
+//
+//        foreach ($lists->users as $user) {
+//
+//            $users = Lists::find(1)->users()->orderBy('name')->get();
+//
+//        }
+
+        $users = Lists::find(1)->users()->orderBy('name')->get();
+
+        return $users;
+
+
     }
 
     /**
