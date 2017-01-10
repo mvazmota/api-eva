@@ -28,6 +28,8 @@ Route::post('lists/upload', 'ListApiController@upload');
 //Get produtos de uma lista
 Route::get('lists/{list}/users', function ($listId) {
 
+    header('Access-Control-Allow-Origin: *');
+
     $users = Lists::find($listId)->users()->orderBy('name')->get();
 
     return $users;
