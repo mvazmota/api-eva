@@ -13,8 +13,8 @@ class DatabaseSeeder extends Seeder
     {
         $this->call(ListsTableSeeder::class);
         $this->call(ProductsTableSeeder::class);
-        $this->call(ListPivotUsersTableSeeder::class);
         $this->call(UserTableSeeder::class);
+        $this->call(ListPivotUsersTableSeeder::class);
 
     }
 }
