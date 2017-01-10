@@ -15,18 +15,21 @@ class ProductsTableSeeder extends Seeder
             'title' => str_random(10),
             'description' => str_random(10),
             'image' => str_random(10).'.png',
+            'list_id' => '1',
         ]);
 
         DB::table('products')->insert([
             'title' => str_random(10),
             'description' => str_random(10),
             'image' => str_random(10).'.png',
+            'list_id' => '2',
         ]);
 
         DB::table('products')->insert([
             'title' => str_random(10),
             'description' => str_random(10),
             'image' => str_random(10).'.png',
+            'list_id' => '2',
         ]);
     }
 }

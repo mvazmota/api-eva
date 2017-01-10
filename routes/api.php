@@ -1,6 +1,8 @@
 <?php
 
 use Illuminate\Http\Request;
+use App\Lists;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -24,5 +26,9 @@ Route::resource('lists', 'ListsApiController');
 Route::post('lists/upload', 'ListApiController@upload');
 
 //Get produtos de uma lista
-//
-//Route::get('productslist', "ProductsApiController");
+Route::get('lists/{list}/users', function ($listId) {
+
+    $users = Lists::find($listId)->users()->orderBy('name')->get();
+
+    return $users;
+});

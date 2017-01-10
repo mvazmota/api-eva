@@ -63,19 +63,9 @@ class ListsApiController extends Controller
      */
     public function show($id)
     {
-//        $lists = Lists::whereId($id)->first();
-//
-//        foreach ($lists->users as $user) {
-//
-//            $users = Lists::find(1)->users()->orderBy('name')->get();
-//
-//        }
+        $lists = Lists::whereId($id)->first();
 
-        $users = Lists::find(1)->users()->orderBy('name')->get();
-
-        return $users;
-
-
+        return $lists;
     }
 
     /**
