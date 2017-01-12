@@ -17,6 +17,7 @@ class CreateProductsTable extends Migration
             $table->increments('id');
             $table->string('title');
             $table->text('description');
+            $table->string('quant');
             $table->string('image');
             $table->integer('list_id')->unsigned()->nullable();
             $table->foreign('list_id')->references('id')->on('lists')->onDelete('set null');

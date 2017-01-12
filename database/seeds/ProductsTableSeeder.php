@@ -14,6 +14,7 @@ class ProductsTableSeeder extends Seeder
         DB::table('products')->insert([
             'title' => str_random(10),
             'description' => str_random(10),
+            'quant' => '1 unidades',
             'image' => str_random(10).'.png',
             'list_id' => '1',
         ]);
@@ -21,6 +22,7 @@ class ProductsTableSeeder extends Seeder
         DB::table('products')->insert([
             'title' => str_random(10),
             'description' => str_random(10),
+            'quant' => '4 peças',
             'image' => str_random(10).'.png',
             'list_id' => '2',
         ]);
@@ -28,6 +30,7 @@ class ProductsTableSeeder extends Seeder
         DB::table('products')->insert([
             'title' => str_random(10),
             'description' => str_random(10),
+            'quant' => '2 caixas',
             'image' => str_random(10).'.png',
             'list_id' => '2',
         ]);

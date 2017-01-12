@@ -30,7 +30,6 @@ class ProductsApiController extends Controller
 
     public function index()
     {
-        header('Access-Control-Allow-Origin: *');
 
         $products = Products::get();
 
@@ -68,6 +67,8 @@ class ProductsApiController extends Controller
         header('Access-Control-Allow-Origin: *');
 
         $data = $request->all();
+
+        //limitar titulo a 20 carateres !!!!!!!
 
         $validator = Validator::make($data, [
                 'title' => 'required',

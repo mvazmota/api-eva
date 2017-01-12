@@ -16,7 +16,7 @@ class ListsApiController extends Controller
     public function __construct()
     {
         header('Access-Control-Allow-Origin: *');
-        $this->middleware('auth:api', ['except' => ['index','show']]);
+//        $this->middleware('auth:api', ['except' => ['index','show', 'getusers', 'getproducts']]);
     }
 
     /**
@@ -26,7 +26,6 @@ class ListsApiController extends Controller
      */
     public function index()
     {
-        header('Access-Control-Allow-Origin: *');
 
         $lists = Lists::get();
 
@@ -101,4 +100,47 @@ class ListsApiController extends Controller
     {
         //
     }
+
+    public function getproducts($listId)
+    {
+        $products = Lists::find($listId)->products()->get();
+
+        return $products;
+    }
+
+    //Methods related to users of a list
+    public function getusers($id)
+    {
+        $users = Lists::find($id)->users()->orderBy('name')->get();
+
+        return $users;
+    }
+
+    public function addusers($id)
+    {
+
+        $validator = Validator::make($data, [
+            'list_id' => 'required',
+            'user_id' => 'required'
+        ],
+            [
+                'list_id' => 'O id da lista é obrigatório',
+                'user_id' => 'O id do utilizador é obrigatório',
+            ]);
+        if($validator->fails())
+        {
+            $errors = $validator->errors()->all();
+
+            return $this->_result($errors, 1, 'NOK');
+        }
+
+
+        $newusers = News::create([
+            'title' => $data['title'],
+            'description' => $data['description'],
+            'image' => $path,
+        ]);
+    }
+
+
 }

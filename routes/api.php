@@ -25,22 +25,8 @@ Route::resource('lists', 'ListsApiController');
 
 Route::post('lists/upload', 'ListApiController@upload');
 
-//Get produtos de uma lista
-Route::get('lists/{list}/users', function ($listId) {
+Route::get('lists/{list}/users', 'ListsApiController@getusers');
+Route::post('lists/{list}/users', 'ListsApiController@addusers');
 
-    header('Access-Control-Allow-Origin: *');
+Route::get('lists/{list}/products', 'ListsApiController@getproducts');
 
-    $users = Lists::find($listId)->users()->orderBy('name')->get();
-
-    return $users;
-});
-
-//Get produtos de uma lista
-Route::get('lists/{list}/products', function ($listId) {
-
-    header('Access-Control-Allow-Origin: *');
-
-    $products = Lists::find($listId)->products()->get();
-
-    return $products;
-});
