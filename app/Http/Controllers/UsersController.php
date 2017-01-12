@@ -79,4 +79,15 @@ class UsersController extends Controller
     {
         //
     }
+
+    public function create()
+    {
+//
+    }
+
+    public function edit()
+    {
+//
+    }
+
 }

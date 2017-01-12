@@ -87,4 +87,14 @@ class FamilyController extends Controller
 
         return $users;
     }
+
+    public function create()
+    {
+//
+    }
+
+    public function edit()
+    {
+//
+    }
 }

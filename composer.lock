@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "246ee8fec395d47cbbf7d56420fb9195",
-    "content-hash": "87a50bae245b0f4d970943cdcd67bce8",
+    "hash": "fc822294decea0a493d096c2fcbebfbf",
+    "content-hash": "1045933408efdef66183dcb0e45d4a88",
     "packages": [
         {
             "name": "classpreloader/classpreloader",
@@ -1299,16 +1299,16 @@
         },
         {
             "name": "mpociot/laravel-apidoc-generator",
-            "version": "1.6.6",
+            "version": "1.7.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/mpociot/laravel-apidoc-generator.git",
-                "reference": "c1a50b523f2558cc9f58c5cfbbbf74ea1fe65f47"
+                "reference": "fa9e2e8d94b3f346a0bb45375cf7e29a439de72f"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/mpociot/laravel-apidoc-generator/zipball/c1a50b523f2558cc9f58c5cfbbbf74ea1fe65f47",
-                "reference": "c1a50b523f2558cc9f58c5cfbbbf74ea1fe65f47",
+                "url": "https://api.github.com/repos/mpociot/laravel-apidoc-generator/zipball/fa9e2e8d94b3f346a0bb45375cf7e29a439de72f",
+                "reference": "fa9e2e8d94b3f346a0bb45375cf7e29a439de72f",
                 "shasum": ""
             },
             "require": {
@@ -1348,7 +1348,7 @@
                 "documentation",
                 "laravel"
             ],
-            "time": "2016-10-19 18:45:04"
+            "time": "2016-12-07 14:57:23"
         },
         {
             "name": "mpociot/reflection-docblock",

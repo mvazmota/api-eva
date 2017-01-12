@@ -9,10 +9,15 @@ use App\Tools;
 use Illuminate\Http\Request;
 use Validator;
 
+/**
+ * @resource Produtos
+ *
+ * Método geral para controla produtos
+ */
+
 class ProductsApiController extends Controller
 {
 
-    //
     public function __construct()
     {
         header('Access-Control-Allow-Origin: *');
@@ -35,6 +40,8 @@ class ProductsApiController extends Controller
 
         return $products;
     }
+
+
 
     /**
      * News Detail
@@ -69,7 +76,7 @@ class ProductsApiController extends Controller
                 'title' => 'required|max:20',
                 'description' => 'required|max:100',
                 'quant' => 'required',
-                'image' => 'required|image',
+                'image' => 'image',
                 'list_id' => 'required',
             ],
             [
@@ -159,19 +166,16 @@ class ProductsApiController extends Controller
     {
         $data = $request->all();
 
-
         $products = Products::whereId($id)->first();
 
-        print_r($products);
+//        print_r($products);
+        $products->title = $data['title'];
+        $products->description = $data['description'];
+        $products->quant = $data['quant'];
+        $products->list_id = $data['list_id'];
+        $products->save();
 
-//
-//        $products->title = $data['title'];
-//        $products->description = $data['description'];
-//        $products->quant = $data['quant'];
-//        $products->list_id = $data['list_id'];
-//        $products->save();
-//
-//        return $products;
+        return $products;
     }
 
     /**
@@ -187,4 +191,13 @@ class ProductsApiController extends Controller
         ));
     }
 
+    public function create()
+    {
+//
+    }
+
+    public function edit()
+    {
+//
+    }
 }

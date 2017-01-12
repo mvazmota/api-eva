@@ -23,7 +23,7 @@ Route::post('products/upload', 'ProductsApiController@upload');
 // Listas
 Route::resource('lists', 'ListsApiController');
 
-Route::post('lists/upload', 'ListsApiController@upload');
+//Route::post('lists/upload', 'ListsApiController@upload');
 
 Route::get('lists/{list}/users', 'ListsApiController@getusers');
 Route::post('lists/{list}/users', 'ListsApiController@addusers');
