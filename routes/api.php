@@ -23,7 +23,7 @@ Route::post('products/upload', 'ProductsApiController@upload');
 // Listas
 Route::resource('lists', 'ListsApiController');
 
-Route::post('lists/upload', 'ListApiController@upload');
+Route::post('lists/upload', 'ListsApiController@upload');
 
 Route::get('lists/{list}/users', 'ListsApiController@getusers');
 Route::post('lists/{list}/users', 'ListsApiController@addusers');
@@ -40,7 +40,7 @@ Route::resource('family', 'FamilyController');
 Route::get('family/{family}/users', 'FamilyController@getusers');
 
 //Users
-Route::resource('user', 'UsersController');
+Route::resource('users', 'UsersController');
 
 //Route::get('family/{family}/users', 'FamilyController@getusers');
 

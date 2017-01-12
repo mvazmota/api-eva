@@ -26,51 +26,34 @@ class FamilyController extends Controller
 
     public function store(Request $request)
     {
-//        $data = $request->all();
-//
-//        print_r($data);
-//
-//        $validator = Validator::make($data, [
-//            'name' => 'required|max:20',
-//            'icon' => 'required',
-//
-//        ],
-//            [
-//                'name' => 'O campo de título é obrigatório',
-//                'icon' => 'O campo de imagem é obrigatório',
-//            ]);
-//        if($validator->fails())
-//        {
-//            $errors = $validator->errors()->all();
-//
-//            return $this->_result($errors, 1, 'NOK');
-//        }
-//
-//        // adds to database
-//        $list = Lists::create([
-//            'name' => $data['name'],
-//            'icon' => $data['icon'],
-//        ]);
-//
-//        return $list;
+        $data = $request->all();
+
+        $validator = Validator::make($data, [
+            'name' => 'required|max:20',
+        ],
+            [
+                'name' => 'O campo de nome é obrigatório',
+            ]);
+        if($validator->fails())
+        {
+            $errors = $validator->errors()->all();
+
+            return $this->_result($errors, 1, 'NOK');
+        }
+
+        // adds to database
+        $family = Family::create([
+            'name' => $data['name'],
+        ]);
+
+        return $family;
     }
 
     public function show($id)
     {
-        $families = Family::whereId($id)->first();
+        $family = Family::whereId($id)->first();
 
-        return $families;
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        //
+        return $family;
     }
 
 
@@ -82,8 +65,21 @@ class FamilyController extends Controller
 
     public function destroy($id)
     {
-        //
+        $family = Family::whereId($id)->first();
+        $family->delete();
+
+        return $this->_result('Familia removida com sucesso');
     }
+
+    private function _result($data, $status = 0, $msg = 'OK')
+    {
+        return json_encode(array(
+            'status' => $status,
+            'msg' => $msg,
+            'data' => $data
+        ));
+    }
+
 
     public function getusers($familyId)
     {

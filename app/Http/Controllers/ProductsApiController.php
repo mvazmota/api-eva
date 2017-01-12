@@ -16,7 +16,7 @@ class ProductsApiController extends Controller
     public function __construct()
     {
         header('Access-Control-Allow-Origin: *');
-        $this->middleware('auth:api', ['except' => ['index','show']]);
+//        $this->middleware('auth:api', ['except' => ['index','show']]);
     }
 
 
@@ -63,15 +63,14 @@ class ProductsApiController extends Controller
      */
     public function store(Request $request)
     {
-
         $data = $request->all();
 
-        //limitar titulo a 20 carateres !!!!!!!
-
         $validator = Validator::make($data, [
-                'title' => 'required',
-                'description' => 'required',
-                'image' => 'required|image'
+                'title' => 'required|max:20',
+                'description' => 'required|max:100',
+                'quant' => 'required',
+                'image' => 'required|image',
+                'list_id' => 'required',
             ],
             [
                 'title' => 'O campo de título é obrigatório',
@@ -91,13 +90,15 @@ class ProductsApiController extends Controller
         $request->file('image')->move(public_path('images'), $path);
 
         // adds to database
-        $news = News::create([
+        $product = Products::create([
             'title' => $data['title'],
             'description' => $data['description'],
+            'quant' => $data['quant'],
+            'list_id' => $data['list_id'],
             'image' => $path,
         ]);
 
-        return $news;
+        return $product;
     }
 
     public function upload(Request $request)
@@ -138,10 +139,10 @@ class ProductsApiController extends Controller
     public function destroy($id)
     {
 
-        $news = News::whereId($id)->first();
-        $news->destroy();
+        $product = Products::whereId($id)->first();
+        $product->delete();
 
-        return $this->_result('Notícia removida com sucesso');
+        return $this->_result('Produto removida com sucesso');
 
     }
 
@@ -158,32 +159,24 @@ class ProductsApiController extends Controller
     {
         $data = $request->all();
 
+
         $products = Products::whereId($id)->first();
 
-        $products->title = $data['title'];
-        $products->description = $data['description'];
-        $products->save();
+        print_r($products);
 
-        return $products;
+//
+//        $products->title = $data['title'];
+//        $products->description = $data['description'];
+//        $products->quant = $data['quant'];
+//        $products->list_id = $data['list_id'];
+//        $products->save();
+//
+//        return $products;
     }
 
     /**
      * @hideFromAPIDocumentation
      */
-    public function create()
-    {
-
-    }
-
-    /**
-     * @hideFromAPIDocumentation
-     */
-    public function edit($id)
-    {
-
-    }
-
-
 
     private function _result($data, $status = 0, $msg = 'OK')
     {

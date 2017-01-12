@@ -26,5 +26,15 @@ class ListsTableSeeder extends Seeder
             'icon' => 'trabalho',
         ]);
 
+        DB::table('lists')->insert([
+            'name' => 'Passagem de Ano',
+            'icon' => 'trabalho',
+        ]);
+
+        DB::table('lists')->insert([
+            'name' => 'Passagem de Ano',
+            'icon' => 'trabalho',
+        ]);
+
     }
 }

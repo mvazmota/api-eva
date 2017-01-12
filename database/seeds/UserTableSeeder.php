@@ -37,5 +37,14 @@ class UserTableSeeder extends Seeder
 
         ]);
 
+        DB::table('users')->insert([
+            'name' => 'Martinho',
+            'email' => 'martinho@ua.pt',
+            'color' => 'red',
+            'password' => 'eva123',
+            'family_id' => '2',
+
+        ]);
+
     }
 }

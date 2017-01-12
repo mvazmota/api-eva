@@ -19,11 +19,6 @@ class ListsApiController extends Controller
 //        $this->middleware('auth:api', ['except' => ['index','show', 'getusers', 'getproducts']]);
     }
 
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function index()
     {
 
@@ -33,22 +28,12 @@ class ListsApiController extends Controller
     }
 
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function create()
     {
         //
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
+
     public function store(Request $request)
     {
         $data = $request->all();
@@ -80,12 +65,7 @@ class ListsApiController extends Controller
 //        return $list;
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
+
     public function show($id)
     {
         $lists = Lists::whereId($id)->first();
@@ -93,38 +73,27 @@ class ListsApiController extends Controller
         return $lists;
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        //
-    }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function update(Request $request, $id)
     {
         //
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function destroy($id)
     {
-        //
+        $list = Lists::whereId($id)->first();
+        $list->delete();
+
+        return $this->_result('Lista removida com sucesso');
+    }
+
+    private function _result($data, $status = 0, $msg = 'OK')
+    {
+        return json_encode(array(
+            'status' => $status,
+            'msg' => $msg,
+            'data' => $data
+        ));
     }
 
     public function getproducts($listId)

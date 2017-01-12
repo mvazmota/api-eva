@@ -5,14 +5,18 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\User;
 use App\Http\Requests;
+use Validator;
+
 
 class UsersController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+
+    public function __construct()
+    {
+        header('Access-Control-Allow-Origin: *');
+//        $this->middleware('auth:api', ['except' => ['index','show']]);
+    }
+
     public function index()
     {
         $users = User::get();
@@ -20,33 +24,43 @@ class UsersController extends Controller
         return $users;
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
     public function store(Request $request)
     {
-        //
+        $data = $request->all();
+
+        $validator = Validator::make($data, [
+            'name' => 'required',
+            'email' => 'required',
+            'color' => 'required',
+            'family_id' => 'required',
+            'password' => 'required'
+        ],
+            [
+                'name' => 'O campo de título é obrigatório',
+                'email' => 'O campo de descrição é obrigatório',
+                'color' => 'O campo de imagem é obrigatório',
+            ]);
+        if($validator->fails())
+        {
+            $errors = $validator->errors()->all();
+
+            return $this->_result($errors, 1, 'NOK');
+        }
+
+        // adds to database
+        $user = User::create([
+            'name' => $data['name'],
+            'email' => $data['email'],
+            'color' => $data['color'],
+            'password' => $data['password'],
+            'family_id' => $data['family_id'],
+        ]);
+
+        return $user;
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
+
     public function show($id)
     {
         $users = User::whereId($id)->first();
@@ -54,35 +68,13 @@ class UsersController extends Controller
         return $users;
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        //
-    }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function update(Request $request, $id)
     {
         //
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
+
     public function destroy($id)
     {
         //
