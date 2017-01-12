@@ -31,5 +31,10 @@ class ListPivotUsersTableSeeder extends Seeder
             'user_id' => '2',
         ]);
 
+        DB::table('list_user')->insert([
+            'list_id' => '2',
+            'user_id' => '3',
+        ]);
+
     }
 }
