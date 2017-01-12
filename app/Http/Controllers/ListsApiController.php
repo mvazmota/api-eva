@@ -55,29 +55,29 @@ class ListsApiController extends Controller
 
         print_r($data);
 
-        $validator = Validator::make($data, [
-            'name' => 'required|max:20',
-            'icon' => 'required',
-
-        ],
-            [
-                'name' => 'O campo de título é obrigatório',
-                'icon' => 'O campo de imagem é obrigatório',
-            ]);
-        if($validator->fails())
-        {
-            $errors = $validator->errors()->all();
-
-            return $this->_result($errors, 1, 'NOK');
-        }
-
-        // adds to database
-        $list = Lists::create([
-            'name' => $data['name'],
-            'icon' => $data['icon'],
-        ]);
-
-        return $list;
+//        $validator = Validator::make($data, [
+//            'name' => 'required|max:20',
+//            'icon' => 'required',
+//
+//        ],
+//            [
+//                'name' => 'O campo de título é obrigatório',
+//                'icon' => 'O campo de imagem é obrigatório',
+//            ]);
+//        if($validator->fails())
+//        {
+//            $errors = $validator->errors()->all();
+//
+//            return $this->_result($errors, 1, 'NOK');
+//        }
+//
+//        // adds to database
+//        $list = Lists::create([
+//            'name' => $data['name'],
+//            'icon' => $data['icon'],
+//        ]);
+//
+//        return $list;
     }
 
     /**

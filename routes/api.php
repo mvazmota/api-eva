@@ -39,3 +39,8 @@ Route::resource('family', 'FamilyController');
 
 Route::get('family/{family}/users', 'FamilyController@getusers');
 
+//Users
+Route::resource('user', 'UsersController');
+
+//Route::get('family/{family}/users', 'FamilyController@getusers');
+
