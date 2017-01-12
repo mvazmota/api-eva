@@ -70,13 +70,15 @@ class ProductsApiController extends Controller
      */
     public function store(Request $request)
     {
+        header('Access-Control-Allow-Origin: *');
+
         $data = $request->all();
 
         $validator = Validator::make($data, [
                 'title' => 'required|max:20',
                 'description' => 'required|max:100',
                 'quant' => 'required',
-                'image' => 'image',
+                'image' => 'required',
                 'list_id' => 'required',
             ],
             [
