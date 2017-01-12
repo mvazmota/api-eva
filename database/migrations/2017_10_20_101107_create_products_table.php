@@ -23,8 +23,6 @@ class CreateProductsTable extends Migration
             $table->foreign('list_id')->references('id')->on('lists')->onDelete('set null');
             $table->timestamps();
         });
-
-
     }
 
     /**

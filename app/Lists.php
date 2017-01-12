@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Lists extends Model
 {
-    protected $fillable = ['name', 'users', 'icon'];
+    protected $fillable = ['name', 'icon'];
 
     /**
      * The products that belong to the list.

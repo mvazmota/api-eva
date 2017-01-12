@@ -30,3 +30,12 @@ Route::post('lists/{list}/users', 'ListsApiController@addusers');
 
 Route::get('lists/{list}/products', 'ListsApiController@getproducts');
 
+// Produtos
+Route::resource('products', 'ProductsApiController');
+
+
+//Families
+Route::resource('family', 'FamilyController');
+
+Route::get('family/{family}/users', 'FamilyController@getusers');
+

@@ -64,8 +64,6 @@ class ProductsApiController extends Controller
     public function store(Request $request)
     {
 
-        header('Access-Control-Allow-Origin: *');
-
         $data = $request->all();
 
         //limitar titulo a 20 carateres !!!!!!!

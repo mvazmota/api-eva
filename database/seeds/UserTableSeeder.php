@@ -16,6 +16,7 @@ class UserTableSeeder extends Seeder
             'email' => 'carlos@ua.pt',
             'color' => 'red',
             'password' => 'eva123',
+            'family_id' => '1',
         ]);
 
         DB::table('users')->insert([
@@ -23,6 +24,8 @@ class UserTableSeeder extends Seeder
             'email' => 'alex@ua.pt',
             'color' => 'blue',
             'password' => 'eva123',
+            'family_id' => '2',
+
         ]);
 
         DB::table('users')->insert([
@@ -30,6 +33,8 @@ class UserTableSeeder extends Seeder
             'email' => 'ana@ua.pt',
             'color' => 'pink',
             'password' => 'eva123',
+            'family_id' => '2',
+
         ]);
 
     }

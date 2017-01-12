@@ -51,7 +51,33 @@ class ListsApiController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $data = $request->all();
+
+        print_r($data);
+
+        $validator = Validator::make($data, [
+            'name' => 'required|max:20',
+            'icon' => 'required',
+
+        ],
+            [
+                'name' => 'O campo de título é obrigatório',
+                'icon' => 'O campo de imagem é obrigatório',
+            ]);
+        if($validator->fails())
+        {
+            $errors = $validator->errors()->all();
+
+            return $this->_result($errors, 1, 'NOK');
+        }
+
+        // adds to database
+        $list = Lists::create([
+            'name' => $data['name'],
+            'icon' => $data['icon'],
+        ]);
+
+        return $list;
     }
 
     /**
@@ -116,30 +142,11 @@ class ListsApiController extends Controller
         return $users;
     }
 
-    public function addusers($id)
+    public function addusers(Request $request)
     {
-
-        $validator = Validator::make($data, [
-            'list_id' => 'required',
-            'user_id' => 'required'
-        ],
-            [
-                'list_id' => 'O id da lista é obrigatório',
-                'user_id' => 'O id do utilizador é obrigatório',
-            ]);
-        if($validator->fails())
-        {
-            $errors = $validator->errors()->all();
-
-            return $this->_result($errors, 1, 'NOK');
-        }
-
-
-        $newusers = News::create([
-            'title' => $data['title'],
-            'description' => $data['description'],
-            'image' => $path,
-        ]);
+        $data = $request->all();
+        $users = Lists::find($data['list_id']);
+        $users->users()->attach($data['user_id']);
     }
 
 
