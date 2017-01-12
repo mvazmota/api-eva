@@ -53,7 +53,7 @@ class ListsApiController extends Controller
     {
         $data = $request->all();
 
-        print_r($data);
+        print_r($data['users']);
 
 //        $validator = Validator::make($data, [
 //            'name' => 'required|max:20',
