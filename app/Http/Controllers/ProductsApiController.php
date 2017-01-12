@@ -74,9 +74,9 @@ class ProductsApiController extends Controller
 
         $validator = Validator::make($data, [
                 'title' => 'required|max:20',
-                'description' => 'required|max:100',
+                'description' => 'max:100',
                 'quant' => 'required',
-                'image' => 'required',
+                'image' => 'image',
                 'list_id' => 'required',
             ],
             [
@@ -84,6 +84,7 @@ class ProductsApiController extends Controller
                 'description' => 'O campo de descrição é obrigatório',
                 'image' => 'O campo de imagem é obrigatório',
             ]);
+
         if($validator->fails())
         {
             $errors = $validator->errors()->all();
@@ -91,21 +92,36 @@ class ProductsApiController extends Controller
             return $this->_result($errors, 1, 'NOK');
         }
 
-        // generate filename from random string
-        $path = $request->file('image')->hashName();
-        // upload process
-        $request->file('image')->move(public_path('images'), $path);
+        if ( !empty($data['image']))
+        {
+            // generate filename from random string
+            $path = $request->file('image')->hashName();
+            // upload process
 
-        // adds to database
-        $product = Products::create([
-            'title' => $data['title'],
-            'description' => $data['description'],
-            'quant' => $data['quant'],
-            'list_id' => $data['list_id'],
-            'image' => $path,
-        ]);
+            $request->file('image')->move(public_path('images'), $path);
+            // adds to database
+            $product = Products::create([
+                'title' => $data['title'],
+                'description' => $data['description'],
+                'quant' => $data['quant'],
+                'list_id' => $data['list_id'],
+                'image' => $path,
+            ]);
 
-        return $product;
+            return $product;
+
+        } else {
+            // adds to database
+            $product = Products::create([
+                'title' => $data['title'],
+                'description' => $data['description'],
+                'quant' => $data['quant'],
+                'list_id' => $data['list_id'],
+            ]);
+
+            return $product;
+        }
+
     }
 
     public function upload(Request $request)
