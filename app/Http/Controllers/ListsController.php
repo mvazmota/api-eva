@@ -2,44 +2,46 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
-use App\Family;
-use Validator;
 use App\Http\Requests;
+use App\Lists;
+use App\User;
+use App\Tools;
+use Illuminate\Http\Request;
+use Validator;
 
 /**
- * @resource Family
+ * @resource Lists
  *
- * Controller for family related operations
+ * Controller for shopping lists related operations
  */
 
-class FamilyController extends Controller
+class ListsController extends Controller
 {
 
     public function __construct()
     {
         header('Access-Control-Allow-Origin: *');
-//        $this->middleware('auth:api', ['except' => ['index','show']]);
+//        $this->middleware('auth:api', ['except' => ['index','show', 'getusers', 'getproducts']]);
     }
 
     /**
-     * List all Families
+     * List all Lists
      *
-     * Lists all families in the database
+     * Lists all lists in the database
      *
      * @return array
      */
 
     public function index()
     {
-        $family = Family::get();
-        return $family;
+        $lists = Lists::get();
+        return $lists;
     }
 
     /**
-     * Family Insert
+     * List Insert
      *
-     * Inserts a family in the database
+     * Inserts a list in the database
      *
      * @param \Illuminate\Http\Request $request Post data
      *
@@ -49,11 +51,17 @@ class FamilyController extends Controller
     public function store(Request $request)
     {
         $data = $request->all();
+        print_r($data);
         $validator = Validator::make($data, [
             'name' => 'required|max:20',
+            'icon' => 'required',
+            'users' => 'required',
         ],
             [
-                'name' => 'O campo de nome é obrigatório',
+                'name' => 'O campo de título é obrigatório',
+                'icon' => 'O campo de imagem é obrigatório',
+                'users' => 'O campo de users é obrigatório',
+
             ]);
         if($validator->fails())
         {
@@ -61,27 +69,34 @@ class FamilyController extends Controller
             return $this->_result($errors, 1, 'NOK');
         }
 
-        $family = Family::create([
+        // adds to database
+        $list = Lists::create([
             'name' => $data['name'],
+            'icon' => $data['icon'],
         ]);
 
-        return $family;
+        return $list;
+
+        $users = Lists::find($data['list_id']);
+        $users->users()->attach($data['users']);
+
     }
 
     /**
-     * Family Detail
+     * List Detail
      *
-     * Gives the details of a family
+     * Gives the details of a list
      *
-     * @param int $id Id of the family
+     * @param int $id Id of the list
      *
      * @return array
      */
 
     public function show($id)
     {
-        $family = Family::whereId($id)->first();
-        return $family;
+        $lists = Lists::whereId($id)->first();
+
+        return $lists;
     }
 
     /**
@@ -97,17 +112,6 @@ class FamilyController extends Controller
     public function update(Request $request, $id)
     {
         $data = $request->all();
-        $validator = Validator::make($data, [
-            'name' => 'required|max:20',
-        ],
-            [
-                'name' => 'O campo de nome é obrigatório',
-            ]);
-        if($validator->fails())
-        {
-            $errors = $validator->errors()->all();
-            return $this->_result($errors, 1, 'NOK');
-        }
         $family = Family::whereId($id)->first();
         $family->name = $data['name'];
         $family->save();
@@ -115,9 +119,9 @@ class FamilyController extends Controller
     }
 
     /**
-     * Delete Family
+     * Delete List
      *
-     * Deletes a family in the database
+     * Deletes a list in the database
      *
      * @param int $id Post data
      *
@@ -126,25 +130,32 @@ class FamilyController extends Controller
 
     public function destroy($id)
     {
-        $family = Family::whereId($id)->first();
-        $family->delete();
-        return $this->_result('Familia removida com sucesso');
+        $list = Lists::whereId($id)->first();
+        $list->delete();
+        return $this->_result('Lista removida com sucesso');
     }
 
-    /**
-     * Get Family Users
-     *
-     * Lists the users of a Family
-     *
-     * @param int $id Id of the family
-     *
-     * @return array
-     */
 
+    public function getproducts($listId)
+    {
+        $products = Lists::find($listId)->products()->get();
+
+        return $products;
+    }
+
+    //Methods related to users of a list
     public function getusers($id)
     {
-        $users = Family::find($id)->users()->get();
+        $users = Lists::find($id)->users()->orderBy('name')->get();
+
         return $users;
+    }
+
+    public function addusers(Request $request)
+    {
+        $data = $request->all();
+        $users = Lists::find($data['list_id']);
+        $users->users()->attach($data['user_id']);
     }
 
     /**
@@ -162,11 +173,11 @@ class FamilyController extends Controller
 
     public function create()
     {
-//
+        //
     }
 
     public function edit()
     {
-//
+        //
     }
 }

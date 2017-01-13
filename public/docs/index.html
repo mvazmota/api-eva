@@ -49,6 +49,243 @@
 <a href="http://localhost/docs/collection.json">Get Postman Collection</a></p>
 <p>API EXEMPLO MCMM-MI TDI 2016 - NEWS API</p>
 <!-- END_INFO -->
+<h1>Family</h1>
+<p>Controller for family related operations</p>
+<!-- START_1a24898fc594d249385c079d5cbf7353 -->
+<h2>List all Families</h2>
+<p>Lists all families in the database</p>
+<blockquote>
+<p>Example request:</p>
+</blockquote>
+<pre><code class="language-bash">curl "http://localhost/api/family" \
+-H "Accept: application/json"</code></pre>
+<pre><code class="language-javascript">var settings = {
+    "async": true,
+    "crossDomain": true,
+    "url": "http://localhost/api/family",
+    "method": "GET",
+    "headers": {
+        "accept": "application/json"
+    }
+}
+
+$.ajax(settings).done(function (response) {
+    console.log(response);
+});</code></pre>
+<blockquote>
+<p>Example response:</p>
+</blockquote>
+<pre><code class="language-json">[
+    {
+        "id": 2,
+        "name": "Mota",
+        "created_at": null,
+        "updated_at": null
+    },
+    {
+        "id": 3,
+        "name": "Silva",
+        "created_at": null,
+        "updated_at": null
+    },
+    {
+        "id": 4,
+        "name": "Mota",
+        "created_at": null,
+        "updated_at": null
+    }
+]</code></pre>
+<h3>HTTP Request</h3>
+<p><code>GET api/family</code></p>
+<p><code>HEAD api/family</code></p>
+<!-- END_1a24898fc594d249385c079d5cbf7353 -->
+<!-- START_abce2a9725475b1e0e7c2527ae541fe2 -->
+<h2>api/family/create</h2>
+<blockquote>
+<p>Example request:</p>
+</blockquote>
+<pre><code class="language-bash">curl "http://localhost/api/family/create" \
+-H "Accept: application/json"</code></pre>
+<pre><code class="language-javascript">var settings = {
+    "async": true,
+    "crossDomain": true,
+    "url": "http://localhost/api/family/create",
+    "method": "GET",
+    "headers": {
+        "accept": "application/json"
+    }
+}
+
+$.ajax(settings).done(function (response) {
+    console.log(response);
+});</code></pre>
+<blockquote>
+<p>Example response:</p>
+</blockquote>
+<pre><code class="language-json">null</code></pre>
+<h3>HTTP Request</h3>
+<p><code>GET api/family/create</code></p>
+<p><code>HEAD api/family/create</code></p>
+<!-- END_abce2a9725475b1e0e7c2527ae541fe2 -->
+<!-- START_d60496443e529c37287fd3855181d81d -->
+<h2>Family Insert</h2>
+<p>Inserts a family in the database</p>
+<blockquote>
+<p>Example request:</p>
+</blockquote>
+<pre><code class="language-bash">curl "http://localhost/api/family" \
+-H "Accept: application/json"</code></pre>
+<pre><code class="language-javascript">var settings = {
+    "async": true,
+    "crossDomain": true,
+    "url": "http://localhost/api/family",
+    "method": "POST",
+    "headers": {
+        "accept": "application/json"
+    }
+}
+
+$.ajax(settings).done(function (response) {
+    console.log(response);
+});</code></pre>
+<h3>HTTP Request</h3>
+<p><code>POST api/family</code></p>
+<!-- END_d60496443e529c37287fd3855181d81d -->
+<!-- START_290c637213107aab0776fa671513a0a6 -->
+<h2>Family Detail</h2>
+<p>Gives the details of a family</p>
+<blockquote>
+<p>Example request:</p>
+</blockquote>
+<pre><code class="language-bash">curl "http://localhost/api/family/{family}" \
+-H "Accept: application/json"</code></pre>
+<pre><code class="language-javascript">var settings = {
+    "async": true,
+    "crossDomain": true,
+    "url": "http://localhost/api/family/{family}",
+    "method": "GET",
+    "headers": {
+        "accept": "application/json"
+    }
+}
+
+$.ajax(settings).done(function (response) {
+    console.log(response);
+});</code></pre>
+<blockquote>
+<p>Example response:</p>
+</blockquote>
+<pre><code class="language-json">null</code></pre>
+<h3>HTTP Request</h3>
+<p><code>GET api/family/{family}</code></p>
+<p><code>HEAD api/family/{family}</code></p>
+<!-- END_290c637213107aab0776fa671513a0a6 -->
+<!-- START_dea4720a86babe83b263054410b8f13a -->
+<h2>api/family/{family}/edit</h2>
+<blockquote>
+<p>Example request:</p>
+</blockquote>
+<pre><code class="language-bash">curl "http://localhost/api/family/{family}/edit" \
+-H "Accept: application/json"</code></pre>
+<pre><code class="language-javascript">var settings = {
+    "async": true,
+    "crossDomain": true,
+    "url": "http://localhost/api/family/{family}/edit",
+    "method": "GET",
+    "headers": {
+        "accept": "application/json"
+    }
+}
+
+$.ajax(settings).done(function (response) {
+    console.log(response);
+});</code></pre>
+<blockquote>
+<p>Example response:</p>
+</blockquote>
+<pre><code class="language-json">null</code></pre>
+<h3>HTTP Request</h3>
+<p><code>GET api/family/{family}/edit</code></p>
+<p><code>HEAD api/family/{family}/edit</code></p>
+<!-- END_dea4720a86babe83b263054410b8f13a -->
+<!-- START_f8b8a12aad7af333bffbc3d4eddb22cd -->
+<h2>Family Update</h2>
+<p>Update a family in the database</p>
+<blockquote>
+<p>Example request:</p>
+</blockquote>
+<pre><code class="language-bash">curl "http://localhost/api/family/{family}" \
+-H "Accept: application/json"</code></pre>
+<pre><code class="language-javascript">var settings = {
+    "async": true,
+    "crossDomain": true,
+    "url": "http://localhost/api/family/{family}",
+    "method": "PUT",
+    "headers": {
+        "accept": "application/json"
+    }
+}
+
+$.ajax(settings).done(function (response) {
+    console.log(response);
+});</code></pre>
+<h3>HTTP Request</h3>
+<p><code>PUT api/family/{family}</code></p>
+<p><code>PATCH api/family/{family}</code></p>
+<!-- END_f8b8a12aad7af333bffbc3d4eddb22cd -->
+<!-- START_2ba79a5b9929988114a3b1a89261799c -->
+<h2>Delete Family</h2>
+<p>Deletes a family in the database</p>
+<blockquote>
+<p>Example request:</p>
+</blockquote>
+<pre><code class="language-bash">curl "http://localhost/api/family/{family}" \
+-H "Accept: application/json"</code></pre>
+<pre><code class="language-javascript">var settings = {
+    "async": true,
+    "crossDomain": true,
+    "url": "http://localhost/api/family/{family}",
+    "method": "DELETE",
+    "headers": {
+        "accept": "application/json"
+    }
+}
+
+$.ajax(settings).done(function (response) {
+    console.log(response);
+});</code></pre>
+<h3>HTTP Request</h3>
+<p><code>DELETE api/family/{family}</code></p>
+<!-- END_2ba79a5b9929988114a3b1a89261799c -->
+<!-- START_8bb774a868ec24b998841380193620e1 -->
+<h2>Get Family Users</h2>
+<p>Lists the users of a Family</p>
+<blockquote>
+<p>Example request:</p>
+</blockquote>
+<pre><code class="language-bash">curl "http://localhost/api/family/{family}/users" \
+-H "Accept: application/json"</code></pre>
+<pre><code class="language-javascript">var settings = {
+    "async": true,
+    "crossDomain": true,
+    "url": "http://localhost/api/family/{family}/users",
+    "method": "GET",
+    "headers": {
+        "accept": "application/json"
+    }
+}
+
+$.ajax(settings).done(function (response) {
+    console.log(response);
+});</code></pre>
+<blockquote>
+<p>Example response:</p>
+</blockquote>
+<pre><code class="language-json">null</code></pre>
+<h3>HTTP Request</h3>
+<p><code>GET api/family/{family}/users</code></p>
+<p><code>HEAD api/family/{family}/users</code></p>
+<!-- END_8bb774a868ec24b998841380193620e1 -->
 <h1>Produtos</h1>
 <p>Método geral para controla produtos</p>
 <!-- START_d6315c0f80fdc5b8b5cafcb7768d054e -->
@@ -78,33 +315,63 @@ $.ajax(settings).done(function (response) {
 <pre><code class="language-json">[
     {
         "id": 2,
-        "title": "25mUBRRLiE",
-        "description": "cHMxqXIFlz",
+        "title": "afrGtSXkEs",
+        "description": "XReAfFvTrg",
         "quant": "4 peças",
-        "image": "eWeD3PvOdo.png",
+        "image": "bfimhDOOcw.png",
         "list_id": 2,
         "created_at": null,
         "updated_at": null
     },
     {
         "id": 3,
-        "title": "1Pig5mjlt0",
-        "description": "VN1EjARG3U",
+        "title": "aqBVplmHcs",
+        "description": "zZoVFOlFRT",
         "quant": "2 caixas",
-        "image": "vFocBTGKXf.png",
+        "image": "AsMf3TDe0O.png",
         "list_id": 2,
         "created_at": null,
         "updated_at": null
     },
     {
+        "id": 4,
+        "title": "SuperTeste123",
+        "description": "natal",
+        "quant": "Carlos 1231421",
+        "image": null,
+        "list_id": 2,
+        "created_at": "2017-01-12 16:48:47",
+        "updated_at": "2017-01-12 16:48:47"
+    },
+    {
         "id": 5,
-        "title": "1234",
-        "description": "214",
-        "quant": "1",
+        "title": "SuperTeste123",
+        "description": "natal",
+        "quant": "Carlos 1231421",
         "image": "bc3e0e6100a7119660cefc3226f6ddb0.png",
-        "list_id": null,
-        "created_at": "2017-01-12 15:31:47",
-        "updated_at": "2017-01-12 15:32:53"
+        "list_id": 2,
+        "created_at": "2017-01-12 16:48:54",
+        "updated_at": "2017-01-12 16:48:54"
+    },
+    {
+        "id": 6,
+        "title": "SuperTeste123",
+        "description": "natal",
+        "quant": "Carlos 1231421",
+        "image": "bc3e0e6100a7119660cefc3226f6ddb0.png",
+        "list_id": 2,
+        "created_at": "2017-01-12 16:51:53",
+        "updated_at": "2017-01-12 16:51:53"
+    },
+    {
+        "id": 7,
+        "title": "SuperTeste123",
+        "description": "natal",
+        "quant": "Carlos 1231421",
+        "image": "bc3e0e6100a7119660cefc3226f6ddb0.png",
+        "list_id": 2,
+        "created_at": "2017-01-12 16:51:55",
+        "updated_at": "2017-01-12 16:51:55"
     }
 ]</code></pre>
 <h3>HTTP Request</h3>
@@ -326,6 +593,20 @@ $.ajax(settings).done(function (response) {
     },
     {
         "id": 3,
+        "name": "Passagem de Ano",
+        "icon": "trabalho",
+        "created_at": null,
+        "updated_at": null
+    },
+    {
+        "id": 4,
+        "name": "Passagem de Ano",
+        "icon": "trabalho",
+        "created_at": null,
+        "updated_at": null
+    },
+    {
+        "id": 5,
         "name": "Passagem de Ano",
         "icon": "trabalho",
         "created_at": null,
@@ -569,223 +850,6 @@ $.ajax(settings).done(function (response) {
 <p><code>GET api/lists/{list}/products</code></p>
 <p><code>HEAD api/lists/{list}/products</code></p>
 <!-- END_1ddf7af8bf64c4c731a227b1fb9ebb76 -->
-<!-- START_1a24898fc594d249385c079d5cbf7353 -->
-<h2>api/family</h2>
-<blockquote>
-<p>Example request:</p>
-</blockquote>
-<pre><code class="language-bash">curl "http://localhost/api/family" \
--H "Accept: application/json"</code></pre>
-<pre><code class="language-javascript">var settings = {
-    "async": true,
-    "crossDomain": true,
-    "url": "http://localhost/api/family",
-    "method": "GET",
-    "headers": {
-        "accept": "application/json"
-    }
-}
-
-$.ajax(settings).done(function (response) {
-    console.log(response);
-});</code></pre>
-<blockquote>
-<p>Example response:</p>
-</blockquote>
-<pre><code class="language-json">[
-    {
-        "id": 2,
-        "name": "Mota",
-        "created_at": null,
-        "updated_at": null
-    }
-]</code></pre>
-<h3>HTTP Request</h3>
-<p><code>GET api/family</code></p>
-<p><code>HEAD api/family</code></p>
-<!-- END_1a24898fc594d249385c079d5cbf7353 -->
-<!-- START_abce2a9725475b1e0e7c2527ae541fe2 -->
-<h2>api/family/create</h2>
-<blockquote>
-<p>Example request:</p>
-</blockquote>
-<pre><code class="language-bash">curl "http://localhost/api/family/create" \
--H "Accept: application/json"</code></pre>
-<pre><code class="language-javascript">var settings = {
-    "async": true,
-    "crossDomain": true,
-    "url": "http://localhost/api/family/create",
-    "method": "GET",
-    "headers": {
-        "accept": "application/json"
-    }
-}
-
-$.ajax(settings).done(function (response) {
-    console.log(response);
-});</code></pre>
-<blockquote>
-<p>Example response:</p>
-</blockquote>
-<pre><code class="language-json">null</code></pre>
-<h3>HTTP Request</h3>
-<p><code>GET api/family/create</code></p>
-<p><code>HEAD api/family/create</code></p>
-<!-- END_abce2a9725475b1e0e7c2527ae541fe2 -->
-<!-- START_d60496443e529c37287fd3855181d81d -->
-<h2>api/family</h2>
-<blockquote>
-<p>Example request:</p>
-</blockquote>
-<pre><code class="language-bash">curl "http://localhost/api/family" \
--H "Accept: application/json"</code></pre>
-<pre><code class="language-javascript">var settings = {
-    "async": true,
-    "crossDomain": true,
-    "url": "http://localhost/api/family",
-    "method": "POST",
-    "headers": {
-        "accept": "application/json"
-    }
-}
-
-$.ajax(settings).done(function (response) {
-    console.log(response);
-});</code></pre>
-<h3>HTTP Request</h3>
-<p><code>POST api/family</code></p>
-<!-- END_d60496443e529c37287fd3855181d81d -->
-<!-- START_290c637213107aab0776fa671513a0a6 -->
-<h2>api/family/{family}</h2>
-<blockquote>
-<p>Example request:</p>
-</blockquote>
-<pre><code class="language-bash">curl "http://localhost/api/family/{family}" \
--H "Accept: application/json"</code></pre>
-<pre><code class="language-javascript">var settings = {
-    "async": true,
-    "crossDomain": true,
-    "url": "http://localhost/api/family/{family}",
-    "method": "GET",
-    "headers": {
-        "accept": "application/json"
-    }
-}
-
-$.ajax(settings).done(function (response) {
-    console.log(response);
-});</code></pre>
-<blockquote>
-<p>Example response:</p>
-</blockquote>
-<pre><code class="language-json">null</code></pre>
-<h3>HTTP Request</h3>
-<p><code>GET api/family/{family}</code></p>
-<p><code>HEAD api/family/{family}</code></p>
-<!-- END_290c637213107aab0776fa671513a0a6 -->
-<!-- START_dea4720a86babe83b263054410b8f13a -->
-<h2>api/family/{family}/edit</h2>
-<blockquote>
-<p>Example request:</p>
-</blockquote>
-<pre><code class="language-bash">curl "http://localhost/api/family/{family}/edit" \
--H "Accept: application/json"</code></pre>
-<pre><code class="language-javascript">var settings = {
-    "async": true,
-    "crossDomain": true,
-    "url": "http://localhost/api/family/{family}/edit",
-    "method": "GET",
-    "headers": {
-        "accept": "application/json"
-    }
-}
-
-$.ajax(settings).done(function (response) {
-    console.log(response);
-});</code></pre>
-<blockquote>
-<p>Example response:</p>
-</blockquote>
-<pre><code class="language-json">null</code></pre>
-<h3>HTTP Request</h3>
-<p><code>GET api/family/{family}/edit</code></p>
-<p><code>HEAD api/family/{family}/edit</code></p>
-<!-- END_dea4720a86babe83b263054410b8f13a -->
-<!-- START_f8b8a12aad7af333bffbc3d4eddb22cd -->
-<h2>api/family/{family}</h2>
-<blockquote>
-<p>Example request:</p>
-</blockquote>
-<pre><code class="language-bash">curl "http://localhost/api/family/{family}" \
--H "Accept: application/json"</code></pre>
-<pre><code class="language-javascript">var settings = {
-    "async": true,
-    "crossDomain": true,
-    "url": "http://localhost/api/family/{family}",
-    "method": "PUT",
-    "headers": {
-        "accept": "application/json"
-    }
-}
-
-$.ajax(settings).done(function (response) {
-    console.log(response);
-});</code></pre>
-<h3>HTTP Request</h3>
-<p><code>PUT api/family/{family}</code></p>
-<p><code>PATCH api/family/{family}</code></p>
-<!-- END_f8b8a12aad7af333bffbc3d4eddb22cd -->
-<!-- START_2ba79a5b9929988114a3b1a89261799c -->
-<h2>api/family/{family}</h2>
-<blockquote>
-<p>Example request:</p>
-</blockquote>
-<pre><code class="language-bash">curl "http://localhost/api/family/{family}" \
--H "Accept: application/json"</code></pre>
-<pre><code class="language-javascript">var settings = {
-    "async": true,
-    "crossDomain": true,
-    "url": "http://localhost/api/family/{family}",
-    "method": "DELETE",
-    "headers": {
-        "accept": "application/json"
-    }
-}
-
-$.ajax(settings).done(function (response) {
-    console.log(response);
-});</code></pre>
-<h3>HTTP Request</h3>
-<p><code>DELETE api/family/{family}</code></p>
-<!-- END_2ba79a5b9929988114a3b1a89261799c -->
-<!-- START_8bb774a868ec24b998841380193620e1 -->
-<h2>api/family/{family}/users</h2>
-<blockquote>
-<p>Example request:</p>
-</blockquote>
-<pre><code class="language-bash">curl "http://localhost/api/family/{family}/users" \
--H "Accept: application/json"</code></pre>
-<pre><code class="language-javascript">var settings = {
-    "async": true,
-    "crossDomain": true,
-    "url": "http://localhost/api/family/{family}/users",
-    "method": "GET",
-    "headers": {
-        "accept": "application/json"
-    }
-}
-
-$.ajax(settings).done(function (response) {
-    console.log(response);
-});</code></pre>
-<blockquote>
-<p>Example response:</p>
-</blockquote>
-<pre><code class="language-json">null</code></pre>
-<h3>HTTP Request</h3>
-<p><code>GET api/family/{family}/users</code></p>
-<p><code>HEAD api/family/{family}/users</code></p>
-<!-- END_8bb774a868ec24b998841380193620e1 -->
 <!-- START_da5727be600e4865c1b632f7745c8e91 -->
 <h2>api/users</h2>
 <blockquote>
@@ -839,12 +903,12 @@ $.ajax(settings).done(function (response) {
     },
     {
         "id": 4,
-        "name": "COmpras",
-        "color": "blue",
-        "email": "natal",
+        "name": "Martinho",
+        "color": "red",
+        "email": "martinho@ua.pt",
         "family_id": 2,
-        "created_at": "2017-01-12 14:15:37",
-        "updated_at": "2017-01-12 14:15:37"
+        "created_at": null,
+        "updated_at": null
     }
 ]</code></pre>
 <h3>HTTP Request</h3>

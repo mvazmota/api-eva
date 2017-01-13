@@ -15,7 +15,7 @@ use Validator;
  * Método geral para controla produtos
  */
 
-class ProductsApiController extends Controller
+class ProductsController extends Controller
 {
 
     public function __construct()
@@ -184,7 +184,6 @@ class ProductsApiController extends Controller
 
         $products = Products::whereId($id)->first();
 
-//        print_r($products);
         $products->title = $data['title'];
         $products->description = $data['description'];
         $products->quant = $data['quant'];

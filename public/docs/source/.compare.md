@@ -21,6 +21,333 @@ Welcome to the generated API reference.
 API EXEMPLO MCMM-MI TDI 2016 - NEWS API
 <!-- END_INFO -->
 
+#Family
+
+Controller for family related operations
+<!-- START_1a24898fc594d249385c079d5cbf7353 -->
+## List all Families
+
+Lists all families in the database
+
+> Example request:
+
+```bash
+curl "http://localhost/api/family" \
+-H "Accept: application/json"
+```
+
+```javascript
+var settings = {
+    "async": true,
+    "crossDomain": true,
+    "url": "http://localhost/api/family",
+    "method": "GET",
+    "headers": {
+        "accept": "application/json"
+    }
+}
+
+$.ajax(settings).done(function (response) {
+    console.log(response);
+});
+```
+
+> Example response:
+
+```json
+[
+    {
+        "id": 2,
+        "name": "Mota",
+        "created_at": null,
+        "updated_at": null
+    },
+    {
+        "id": 3,
+        "name": "Silva",
+        "created_at": null,
+        "updated_at": null
+    },
+    {
+        "id": 4,
+        "name": "Mota",
+        "created_at": null,
+        "updated_at": null
+    }
+]
+```
+
+### HTTP Request
+`GET api/family`
+
+`HEAD api/family`
+
+
+<!-- END_1a24898fc594d249385c079d5cbf7353 -->
+<!-- START_abce2a9725475b1e0e7c2527ae541fe2 -->
+## api/family/create
+
+> Example request:
+
+```bash
+curl "http://localhost/api/family/create" \
+-H "Accept: application/json"
+```
+
+```javascript
+var settings = {
+    "async": true,
+    "crossDomain": true,
+    "url": "http://localhost/api/family/create",
+    "method": "GET",
+    "headers": {
+        "accept": "application/json"
+    }
+}
+
+$.ajax(settings).done(function (response) {
+    console.log(response);
+});
+```
+
+> Example response:
+
+```json
+null
+```
+
+### HTTP Request
+`GET api/family/create`
+
+`HEAD api/family/create`
+
+
+<!-- END_abce2a9725475b1e0e7c2527ae541fe2 -->
+<!-- START_d60496443e529c37287fd3855181d81d -->
+## Family Insert
+
+Inserts a family in the database
+
+> Example request:
+
+```bash
+curl "http://localhost/api/family" \
+-H "Accept: application/json"
+```
+
+```javascript
+var settings = {
+    "async": true,
+    "crossDomain": true,
+    "url": "http://localhost/api/family",
+    "method": "POST",
+    "headers": {
+        "accept": "application/json"
+    }
+}
+
+$.ajax(settings).done(function (response) {
+    console.log(response);
+});
+```
+
+
+### HTTP Request
+`POST api/family`
+
+
+<!-- END_d60496443e529c37287fd3855181d81d -->
+<!-- START_290c637213107aab0776fa671513a0a6 -->
+## Family Detail
+
+Gives the details of a family
+
+> Example request:
+
+```bash
+curl "http://localhost/api/family/{family}" \
+-H "Accept: application/json"
+```
+
+```javascript
+var settings = {
+    "async": true,
+    "crossDomain": true,
+    "url": "http://localhost/api/family/{family}",
+    "method": "GET",
+    "headers": {
+        "accept": "application/json"
+    }
+}
+
+$.ajax(settings).done(function (response) {
+    console.log(response);
+});
+```
+
+> Example response:
+
+```json
+null
+```
+
+### HTTP Request
+`GET api/family/{family}`
+
+`HEAD api/family/{family}`
+
+
+<!-- END_290c637213107aab0776fa671513a0a6 -->
+<!-- START_dea4720a86babe83b263054410b8f13a -->
+## api/family/{family}/edit
+
+> Example request:
+
+```bash
+curl "http://localhost/api/family/{family}/edit" \
+-H "Accept: application/json"
+```
+
+```javascript
+var settings = {
+    "async": true,
+    "crossDomain": true,
+    "url": "http://localhost/api/family/{family}/edit",
+    "method": "GET",
+    "headers": {
+        "accept": "application/json"
+    }
+}
+
+$.ajax(settings).done(function (response) {
+    console.log(response);
+});
+```
+
+> Example response:
+
+```json
+null
+```
+
+### HTTP Request
+`GET api/family/{family}/edit`
+
+`HEAD api/family/{family}/edit`
+
+
+<!-- END_dea4720a86babe83b263054410b8f13a -->
+<!-- START_f8b8a12aad7af333bffbc3d4eddb22cd -->
+## Family Update
+
+Update a family in the database
+
+> Example request:
+
+```bash
+curl "http://localhost/api/family/{family}" \
+-H "Accept: application/json"
+```
+
+```javascript
+var settings = {
+    "async": true,
+    "crossDomain": true,
+    "url": "http://localhost/api/family/{family}",
+    "method": "PUT",
+    "headers": {
+        "accept": "application/json"
+    }
+}
+
+$.ajax(settings).done(function (response) {
+    console.log(response);
+});
+```
+
+
+### HTTP Request
+`PUT api/family/{family}`
+
+`PATCH api/family/{family}`
+
+
+<!-- END_f8b8a12aad7af333bffbc3d4eddb22cd -->
+<!-- START_2ba79a5b9929988114a3b1a89261799c -->
+## Delete Family
+
+Deletes a family in the database
+
+> Example request:
+
+```bash
+curl "http://localhost/api/family/{family}" \
+-H "Accept: application/json"
+```
+
+```javascript
+var settings = {
+    "async": true,
+    "crossDomain": true,
+    "url": "http://localhost/api/family/{family}",
+    "method": "DELETE",
+    "headers": {
+        "accept": "application/json"
+    }
+}
+
+$.ajax(settings).done(function (response) {
+    console.log(response);
+});
+```
+
+
+### HTTP Request
+`DELETE api/family/{family}`
+
+
+<!-- END_2ba79a5b9929988114a3b1a89261799c -->
+<!-- START_8bb774a868ec24b998841380193620e1 -->
+## Get Family Users
+
+Lists the users of a Family
+
+> Example request:
+
+```bash
+curl "http://localhost/api/family/{family}/users" \
+-H "Accept: application/json"
+```
+
+```javascript
+var settings = {
+    "async": true,
+    "crossDomain": true,
+    "url": "http://localhost/api/family/{family}/users",
+    "method": "GET",
+    "headers": {
+        "accept": "application/json"
+    }
+}
+
+$.ajax(settings).done(function (response) {
+    console.log(response);
+});
+```
+
+> Example response:
+
+```json
+null
+```
+
+### HTTP Request
+`GET api/family/{family}/users`
+
+`HEAD api/family/{family}/users`
+
+
+<!-- END_8bb774a868ec24b998841380193620e1 -->
 #Produtos
 
 Método geral para controla produtos
@@ -58,33 +385,63 @@ $.ajax(settings).done(function (response) {
 [
     {
         "id": 2,
-        "title": "25mUBRRLiE",
-        "description": "cHMxqXIFlz",
+        "title": "afrGtSXkEs",
+        "description": "XReAfFvTrg",
         "quant": "4 peças",
-        "image": "eWeD3PvOdo.png",
+        "image": "bfimhDOOcw.png",
         "list_id": 2,
         "created_at": null,
         "updated_at": null
     },
     {
         "id": 3,
-        "title": "1Pig5mjlt0",
-        "description": "VN1EjARG3U",
+        "title": "aqBVplmHcs",
+        "description": "zZoVFOlFRT",
         "quant": "2 caixas",
-        "image": "vFocBTGKXf.png",
+        "image": "AsMf3TDe0O.png",
         "list_id": 2,
         "created_at": null,
         "updated_at": null
     },
     {
+        "id": 4,
+        "title": "SuperTeste123",
+        "description": "natal",
+        "quant": "Carlos 1231421",
+        "image": null,
+        "list_id": 2,
+        "created_at": "2017-01-12 16:48:47",
+        "updated_at": "2017-01-12 16:48:47"
+    },
+    {
         "id": 5,
-        "title": "1234",
-        "description": "214",
-        "quant": "1",
+        "title": "SuperTeste123",
+        "description": "natal",
+        "quant": "Carlos 1231421",
         "image": "bc3e0e6100a7119660cefc3226f6ddb0.png",
-        "list_id": null,
-        "created_at": "2017-01-12 15:31:47",
-        "updated_at": "2017-01-12 15:32:53"
+        "list_id": 2,
+        "created_at": "2017-01-12 16:48:54",
+        "updated_at": "2017-01-12 16:48:54"
+    },
+    {
+        "id": 6,
+        "title": "SuperTeste123",
+        "description": "natal",
+        "quant": "Carlos 1231421",
+        "image": "bc3e0e6100a7119660cefc3226f6ddb0.png",
+        "list_id": 2,
+        "created_at": "2017-01-12 16:51:53",
+        "updated_at": "2017-01-12 16:51:53"
+    },
+    {
+        "id": 7,
+        "title": "SuperTeste123",
+        "description": "natal",
+        "quant": "Carlos 1231421",
+        "image": "bc3e0e6100a7119660cefc3226f6ddb0.png",
+        "list_id": 2,
+        "created_at": "2017-01-12 16:51:55",
+        "updated_at": "2017-01-12 16:51:55"
     }
 ]
 ```
@@ -391,6 +748,20 @@ $.ajax(settings).done(function (response) {
     },
     {
         "id": 3,
+        "name": "Passagem de Ano",
+        "icon": "trabalho",
+        "created_at": null,
+        "updated_at": null
+    },
+    {
+        "id": 4,
+        "name": "Passagem de Ano",
+        "icon": "trabalho",
+        "created_at": null,
+        "updated_at": null
+    },
+    {
+        "id": 5,
         "name": "Passagem de Ano",
         "icon": "trabalho",
         "created_at": null,
@@ -731,306 +1102,6 @@ null
 
 
 <!-- END_1ddf7af8bf64c4c731a227b1fb9ebb76 -->
-<!-- START_1a24898fc594d249385c079d5cbf7353 -->
-## api/family
-
-> Example request:
-
-```bash
-curl "http://localhost/api/family" \
--H "Accept: application/json"
-```
-
-```javascript
-var settings = {
-    "async": true,
-    "crossDomain": true,
-    "url": "http://localhost/api/family",
-    "method": "GET",
-    "headers": {
-        "accept": "application/json"
-    }
-}
-
-$.ajax(settings).done(function (response) {
-    console.log(response);
-});
-```
-
-> Example response:
-
-```json
-[
-    {
-        "id": 2,
-        "name": "Mota",
-        "created_at": null,
-        "updated_at": null
-    }
-]
-```
-
-### HTTP Request
-`GET api/family`
-
-`HEAD api/family`
-
-
-<!-- END_1a24898fc594d249385c079d5cbf7353 -->
-<!-- START_abce2a9725475b1e0e7c2527ae541fe2 -->
-## api/family/create
-
-> Example request:
-
-```bash
-curl "http://localhost/api/family/create" \
--H "Accept: application/json"
-```
-
-```javascript
-var settings = {
-    "async": true,
-    "crossDomain": true,
-    "url": "http://localhost/api/family/create",
-    "method": "GET",
-    "headers": {
-        "accept": "application/json"
-    }
-}
-
-$.ajax(settings).done(function (response) {
-    console.log(response);
-});
-```
-
-> Example response:
-
-```json
-null
-```
-
-### HTTP Request
-`GET api/family/create`
-
-`HEAD api/family/create`
-
-
-<!-- END_abce2a9725475b1e0e7c2527ae541fe2 -->
-<!-- START_d60496443e529c37287fd3855181d81d -->
-## api/family
-
-> Example request:
-
-```bash
-curl "http://localhost/api/family" \
--H "Accept: application/json"
-```
-
-```javascript
-var settings = {
-    "async": true,
-    "crossDomain": true,
-    "url": "http://localhost/api/family",
-    "method": "POST",
-    "headers": {
-        "accept": "application/json"
-    }
-}
-
-$.ajax(settings).done(function (response) {
-    console.log(response);
-});
-```
-
-
-### HTTP Request
-`POST api/family`
-
-
-<!-- END_d60496443e529c37287fd3855181d81d -->
-<!-- START_290c637213107aab0776fa671513a0a6 -->
-## api/family/{family}
-
-> Example request:
-
-```bash
-curl "http://localhost/api/family/{family}" \
--H "Accept: application/json"
-```
-
-```javascript
-var settings = {
-    "async": true,
-    "crossDomain": true,
-    "url": "http://localhost/api/family/{family}",
-    "method": "GET",
-    "headers": {
-        "accept": "application/json"
-    }
-}
-
-$.ajax(settings).done(function (response) {
-    console.log(response);
-});
-```
-
-> Example response:
-
-```json
-null
-```
-
-### HTTP Request
-`GET api/family/{family}`
-
-`HEAD api/family/{family}`
-
-
-<!-- END_290c637213107aab0776fa671513a0a6 -->
-<!-- START_dea4720a86babe83b263054410b8f13a -->
-## api/family/{family}/edit
-
-> Example request:
-
-```bash
-curl "http://localhost/api/family/{family}/edit" \
--H "Accept: application/json"
-```
-
-```javascript
-var settings = {
-    "async": true,
-    "crossDomain": true,
-    "url": "http://localhost/api/family/{family}/edit",
-    "method": "GET",
-    "headers": {
-        "accept": "application/json"
-    }
-}
-
-$.ajax(settings).done(function (response) {
-    console.log(response);
-});
-```
-
-> Example response:
-
-```json
-null
-```
-
-### HTTP Request
-`GET api/family/{family}/edit`
-
-`HEAD api/family/{family}/edit`
-
-
-<!-- END_dea4720a86babe83b263054410b8f13a -->
-<!-- START_f8b8a12aad7af333bffbc3d4eddb22cd -->
-## api/family/{family}
-
-> Example request:
-
-```bash
-curl "http://localhost/api/family/{family}" \
--H "Accept: application/json"
-```
-
-```javascript
-var settings = {
-    "async": true,
-    "crossDomain": true,
-    "url": "http://localhost/api/family/{family}",
-    "method": "PUT",
-    "headers": {
-        "accept": "application/json"
-    }
-}
-
-$.ajax(settings).done(function (response) {
-    console.log(response);
-});
-```
-
-
-### HTTP Request
-`PUT api/family/{family}`
-
-`PATCH api/family/{family}`
-
-
-<!-- END_f8b8a12aad7af333bffbc3d4eddb22cd -->
-<!-- START_2ba79a5b9929988114a3b1a89261799c -->
-## api/family/{family}
-
-> Example request:
-
-```bash
-curl "http://localhost/api/family/{family}" \
--H "Accept: application/json"
-```
-
-```javascript
-var settings = {
-    "async": true,
-    "crossDomain": true,
-    "url": "http://localhost/api/family/{family}",
-    "method": "DELETE",
-    "headers": {
-        "accept": "application/json"
-    }
-}
-
-$.ajax(settings).done(function (response) {
-    console.log(response);
-});
-```
-
-
-### HTTP Request
-`DELETE api/family/{family}`
-
-
-<!-- END_2ba79a5b9929988114a3b1a89261799c -->
-<!-- START_8bb774a868ec24b998841380193620e1 -->
-## api/family/{family}/users
-
-> Example request:
-
-```bash
-curl "http://localhost/api/family/{family}/users" \
--H "Accept: application/json"
-```
-
-```javascript
-var settings = {
-    "async": true,
-    "crossDomain": true,
-    "url": "http://localhost/api/family/{family}/users",
-    "method": "GET",
-    "headers": {
-        "accept": "application/json"
-    }
-}
-
-$.ajax(settings).done(function (response) {
-    console.log(response);
-});
-```
-
-> Example response:
-
-```json
-null
-```
-
-### HTTP Request
-`GET api/family/{family}/users`
-
-`HEAD api/family/{family}/users`
-
-
-<!-- END_8bb774a868ec24b998841380193620e1 -->
 <!-- START_da5727be600e4865c1b632f7745c8e91 -->
 ## api/users
 
@@ -1090,12 +1161,12 @@ $.ajax(settings).done(function (response) {
     },
     {
         "id": 4,
-        "name": "COmpras",
-        "color": "blue",
-        "email": "natal",
+        "name": "Martinho",
+        "color": "red",
+        "email": "martinho@ua.pt",
         "family_id": 2,
-        "created_at": "2017-01-12 14:15:37",
-        "updated_at": "2017-01-12 14:15:37"
+        "created_at": null,
+        "updated_at": null
     }
 ]
 ```

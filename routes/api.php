@@ -3,7 +3,6 @@
 use Illuminate\Http\Request;
 use App\Lists;
 
-
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -15,32 +14,21 @@ use App\Lists;
 |
 */
 
-// Produtos
-Route::resource('products', 'ProductsApiController');
+// Products
+Route::resource('products', 'ProductsController');
+Route::post('products/upload', 'ProductsController@upload');
 
-Route::post('products/upload', 'ProductsApiController@upload');
+// Lists
+Route::resource('lists', 'ListsController');
+Route::get('lists/{list}/users', 'ListsController@getusers');
+Route::post('lists/{list}/users', 'ListsController@addusers');
+Route::get('lists/{list}/products', 'ListsController@getproducts');
 
-// Listas
-Route::resource('lists', 'ListsApiController');
-
-//Route::post('lists/upload', 'ListsApiController@upload');
-
-Route::get('lists/{list}/users', 'ListsApiController@getusers');
-Route::post('lists/{list}/users', 'ListsApiController@addusers');
-
-Route::get('lists/{list}/products', 'ListsApiController@getproducts');
-
-// Produtos
-Route::resource('products', 'ProductsApiController');
-
-
-//Families
+//Family
 Route::resource('family', 'FamilyController');
-
 Route::get('family/{family}/users', 'FamilyController@getusers');
 
 //Users
 Route::resource('users', 'UsersController');
 
-//Route::get('family/{family}/users', 'FamilyController@getusers');
 
