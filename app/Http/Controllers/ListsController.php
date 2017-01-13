@@ -79,6 +79,7 @@ class ListsController extends Controller
 
         $listID = Lists::find($list['id']);
         $users = $data['users'];
+        print_r($users);
         foreach ($users as $value) {
             $listID->users()->attach($value);
         }
