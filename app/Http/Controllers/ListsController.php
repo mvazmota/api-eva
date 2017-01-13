@@ -72,10 +72,14 @@ class ListsController extends Controller
             'name' => $data['name'],
             'icon' => $data['icon'],
         ]);
+
         $listID = Lists::find($list['id']);
         $users = $data['users'];
-        print_r($users);
-        foreach ($users as $value) {
+
+        $array = explode(',', $users);
+
+        print_r($array);
+        foreach ($array as $value) {
             $listID->users()->attach($value);
             print_r("User ".$value." was added.");
         }
