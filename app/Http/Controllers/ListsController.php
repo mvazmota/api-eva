@@ -145,6 +145,13 @@ class ListsController extends Controller
     public function destroy($id)
     {
         $list = Lists::whereId($id)->first();
+        // Detach users of the list
+        $listID = Lists::find($list['id']);
+        $users = $list['users'];
+        foreach ($users as $value) {
+            $listID->users()->detach($value);
+            print_r("User ".$value['id']." was removed.");
+        }
         $list->delete();
         return $this->_result('Lista removida com sucesso');
     }
@@ -157,7 +164,16 @@ class ListsController extends Controller
         return $products;
     }
 
-    //Methods related to users of a list
+    /**
+     * Users of a List
+     *
+     * Gives the users linked of a list
+     *
+     * @param int $id Id of the list
+     *
+     * @return array
+     */
+
     public function getusers($id)
     {
         $users = Lists::find($id)->users()->orderBy('name')->get();
