@@ -51,16 +51,16 @@ class ListsController extends Controller
     public function store(Request $request)
     {
         $data = $request->all();
+        print_r($data);
         $validator = Validator::make($data, [
             'name' => 'required|max:20',
             'icon' => 'required',
             'users' => 'required',
         ],
             [
-                'name' => 'O campo de título é obrigatório',
-                'icon' => 'O campo de imagem é obrigatório',
-                'users' => 'O campo de users é obrigatório',
-
+                'name' => 'The title field is required',
+                'icon' => 'The icon field is required',
+                'users' => 'The users field is required',
             ]);
         if($validator->fails())
         {
@@ -72,20 +72,14 @@ class ListsController extends Controller
             'name' => $data['name'],
             'icon' => $data['icon'],
         ]);
-
-//        $data = $request->all();
-//        $users = Lists::find($data['list_id']);
-//        $users->users()->attach($data['user_id']);
-
         $listID = Lists::find($list['id']);
         $users = $data['users'];
         print_r($users);
         foreach ($users as $value) {
             $listID->users()->attach($value);
-            print_r($value);
-
+            print_r("User ".$value." was added.");
         }
-        return $this->_result('Lista inserida com sucesso');
+        return $list;
     }
 
     /**
@@ -106,9 +100,9 @@ class ListsController extends Controller
     }
 
     /**
-     * Family Update
+     * List Update
      *
-     * Update a family in the database
+     * Update a list in the database
      *
      * @param \Illuminate\Http\Request $request Post data
      *
@@ -118,10 +112,26 @@ class ListsController extends Controller
     public function update(Request $request, $id)
     {
         $data = $request->all();
-        $family = Family::whereId($id)->first();
-        $family->name = $data['name'];
-        $family->save();
-        return $family;
+        $list = Lists::whereId($id)->first();
+        $list->name = $data['name'];
+        $list->icon = $data['icon'];
+        $list->save();
+
+        $listID = Lists::find($list['id']);
+        $users = $data['users'];
+        foreach ($users as $value) {
+            $listID->users()->detach($value);
+            print_r("User ".$value." was removed.");
+        }
+
+        $listID = Lists::find($data['id']);
+        $users = $data['users'];
+        foreach ($users as $value) {
+            $listID->users()->attach($value);
+            print_r("User ".$value." was added.");
+        }
+
+        return $list;
     }
 
     /**
