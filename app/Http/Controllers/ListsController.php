@@ -82,6 +82,8 @@ class ListsController extends Controller
         print_r($users);
         foreach ($users as $value) {
             $listID->users()->attach($value);
+            print_r($value);
+
         }
         return $this->_result('Lista inserida com sucesso');
     }
