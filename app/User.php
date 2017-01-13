@@ -28,6 +28,11 @@ class User extends Authenticatable
         'password', 'remember_token',
     ];
 
+    public function lists()
+    {
+        return $this->belongsToMany('App\Lists', 'list_user', 'list_id', 'user_id');
+    }
+
     public function family()
     {
         return $this->belongsTo('App\Family', 'family_id');

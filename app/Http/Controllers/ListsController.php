@@ -50,7 +50,9 @@ class ListsController extends Controller
 
     public function store(Request $request)
     {
-        $data = $request->all();
+
+        $data = $request->input();
+
         print_r($data);
         $validator = Validator::make($data, [
             'name' => 'required|max:20',
@@ -113,25 +115,27 @@ class ListsController extends Controller
     {
         $data = $request->all();
         $list = Lists::whereId($id)->first();
+
         $list->name = $data['name'];
         $list->icon = $data['icon'];
         $list->save();
 
         $listID = Lists::find($list['id']);
-        $users = $data['users'];
+        $users = $list['users'];
         foreach ($users as $value) {
             $listID->users()->detach($value);
-            print_r("User ".$value." was removed.");
+            print_r("User ".$value['id']." was removed.");
         }
 
-        $listID = Lists::find($data['id']);
+        $listID = Lists::find($list['id']);
         $users = $data['users'];
+
         foreach ($users as $value) {
             $listID->users()->attach($value);
             print_r("User ".$value." was added.");
         }
 
-        return $list;
+//        return $list;
     }
 
     /**
