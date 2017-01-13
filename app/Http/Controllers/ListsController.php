@@ -51,7 +51,6 @@ class ListsController extends Controller
     public function store(Request $request)
     {
         $data = $request->all();
-        print_r($data);
         $validator = Validator::make($data, [
             'name' => 'required|max:20',
             'icon' => 'required',
@@ -69,17 +68,21 @@ class ListsController extends Controller
             return $this->_result($errors, 1, 'NOK');
         }
 
-        // adds to database
         $list = Lists::create([
             'name' => $data['name'],
             'icon' => $data['icon'],
         ]);
 
-        return $list;
+//        $data = $request->all();
+//        $users = Lists::find($data['list_id']);
+//        $users->users()->attach($data['user_id']);
 
-        $users = Lists::find($data['list_id']);
-        $users->users()->attach($data['users']);
-
+        $listID = Lists::find($list['id']);
+        $users = $data['users'];
+        foreach ($users as $value) {
+            $listID->users()->attach($value);
+        }
+        return $this->_result('Lista inserida com sucesso');
     }
 
     /**
