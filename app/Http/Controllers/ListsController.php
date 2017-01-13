@@ -51,7 +51,6 @@ class ListsController extends Controller
     public function store(Request $request)
     {
         $data = $request->all();
-        print_r($data);
         $validator = Validator::make($data, [
             'name' => 'required|max:20',
             'icon' => 'required',
@@ -75,10 +74,7 @@ class ListsController extends Controller
 
         $listID = Lists::find($list['id']);
         $users = $data['users'];
-
         $array = explode(',', $users);
-
-        print_r($array);
         foreach ($array as $value) {
             $listID->users()->attach($value);
             print_r("User ".$value." was added.");
