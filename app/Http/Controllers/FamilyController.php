@@ -132,7 +132,6 @@ class FamilyController extends Controller
     public function destroy($id)
     {
         $family = Family::whereId($id)->first();
-        $family->delete();
 
         if (empty($family)){
             return $this->_result('Family doesn\'t exist');

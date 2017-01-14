@@ -20,8 +20,8 @@ class ListsController extends Controller
 
     public function __construct()
     {
-        header('Access-Control-Allow-Origin: *');
-        header('Access-Control-Allow-Headers: *');
+//        header('Access-Control-Allow-Origin: *');
+//        header('Access-Control-Allow-Headers: *');
 
 //        $this->middleware('auth:api', ['except' => ['index','show', 'getusers', 'getproducts']]);
     }
@@ -151,15 +151,15 @@ class ListsController extends Controller
         header("Access-Control-Allow-Credentials: true");
         header('Access-Control-Max-Age: 1000');
         header('Access-Control-Allow-Headers: Origin, Content-Type, X-Auth-Token , Authorization');
-        
+
         $list = Lists::whereId($id)->first();
         // Detach users of the list
         $listID = Lists::find($list['id']);
         $users = $list['users'];
         foreach ($users as $value) {
             $listID->users()->detach($value);
-            print_r("User ".$value['id']." was removed.");
         }
+
         $list->delete();
         return $this->_result('Lista removida com sucesso');
     }
