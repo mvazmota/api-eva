@@ -163,7 +163,7 @@ class ProductsController extends Controller
 
     public function destroy($id)
     {
-                header("Access-Control-Allow-Credentials: true");
+        header("Access-Control-Allow-Credentials: true");
         header('Access-Control-Max-Age: 1000');
         header('Access-Control-Allow-Headers: Origin, Content-Type, X-Auth-Token , Authorization');
 
@@ -176,7 +176,7 @@ class ProductsController extends Controller
         } else {
             $product->delete();
 
-            return $this->_result('Produto '.$id.' removido com sucesso');
+            return $this->_result('Product '.$id.' sucessfuly removed');
         }
     }
 

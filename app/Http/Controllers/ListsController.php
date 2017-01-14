@@ -122,6 +122,7 @@ class ListsController extends Controller
         $list->icon = $data['icon'];
         $list->save();
 
+        // Detach old users of the list
         $listID = Lists::find($list['id']);
         $listID->users()->detach();
 
@@ -148,10 +149,6 @@ class ListsController extends Controller
 
     public function destroy($id)
     {
-//        header("Access-Control-Allow-Credentials: true");
-//        header('Access-Control-Max-Age: 1000');
-//        header('Access-Control-Allow-Headers: Origin, Content-Type, X-Auth-Token , Authorization');
-
         $list = Lists::whereId($id)->first();
         // Detach users of the list
         $listID = Lists::find($list['id']);
@@ -159,6 +156,8 @@ class ListsController extends Controller
         foreach ($users as $value) {
             $listID->users()->detach($value);
         }
+
+        $listID->products()->delete();
 
         $list->delete();
         return $this->_result('Lista removida com sucesso');
