@@ -148,9 +148,9 @@ class ListsController extends Controller
 
     public function destroy($id)
     {
-        header("Access-Control-Allow-Credentials: true");
-        header('Access-Control-Max-Age: 1000');
-        header('Access-Control-Allow-Headers: Origin, Content-Type, X-Auth-Token , Authorization');
+//        header("Access-Control-Allow-Credentials: true");
+//        header('Access-Control-Max-Age: 1000');
+//        header('Access-Control-Allow-Headers: Origin, Content-Type, X-Auth-Token , Authorization');
 
         $list = Lists::whereId($id)->first();
         // Detach users of the list
