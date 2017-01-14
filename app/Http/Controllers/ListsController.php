@@ -79,9 +79,9 @@ class ListsController extends Controller
         // Attach new users of the list
         foreach ($array as $value) {
             $listID->users()->attach($value);
-            print_r("User ".$value." was added.");
+//            print_r("User ".$value." was added.");
         }
-        return $list;
+        return $this->_result($list);
     }
 
     /**

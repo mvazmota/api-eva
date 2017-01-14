@@ -37,8 +37,11 @@ class ProductsController extends Controller
     {
         $products = Products::get();
 
-        return $products;
-    }
+        if (empty($products)){
+            return $this->_result('Product doesn\'t exist');
+        } else {
+            return $this->_result($products);
+        }    }
 
 
 

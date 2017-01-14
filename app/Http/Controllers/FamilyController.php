@@ -83,7 +83,7 @@ class FamilyController extends Controller
         $family = Family::whereId($id)->first();
 
         if (empty($family)){
-            return $this->_result('Family doesn\'t exist');
+            return $this->_result('Family doesn\'t exist', 1, "NOK");
         } else {
             return $this->_result($family);
         }
