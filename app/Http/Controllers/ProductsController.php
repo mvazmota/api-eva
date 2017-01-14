@@ -160,6 +160,8 @@ class ProductsController extends Controller
 
     public function destroy($id)
     {
+        header('Access-Control-Allow-Methods: DELETE, OPTIONS');
+
         $product = Products::whereId($id)->first();
 
         if (empty($product)){
