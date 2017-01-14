@@ -73,8 +73,10 @@ class ListsController extends Controller
         ]);
 
         $listID = Lists::find($list['id']);
+        // Split users into an array
         $users = $data['users'];
         $array = explode(',', $users);
+        // Attach new users of the list
         foreach ($array as $value) {
             $listID->users()->attach($value);
             print_r("User ".$value." was added.");
@@ -116,16 +118,21 @@ class ListsController extends Controller
         $list->name = $data['name'];
         $list->icon = $data['icon'];
         $list->save();
-        // Detach users of the list
+
         $listID = Lists::find($list['id']);
+        // Split users into an array
         $users = $list['users'];
-        foreach ($users as $value) {
+        $array = explode(',', $users);
+        // Detach users of the list
+        foreach ($array as $value) {
             $listID->users()->detach($value);
             print_r("User ".$value['id']." was removed.");
         }
-        // Attach new users of the list
+        // Split users into an array
         $users = $data['users'];
-        foreach ($users as $value) {
+        $array = explode(',', $users);
+        // Attach new users of the list
+        foreach ($array as $value) {
             $listID->users()->attach($value);
             print_r("User ".$value." was added.");
         }

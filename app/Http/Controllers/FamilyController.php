@@ -33,7 +33,7 @@ class FamilyController extends Controller
     public function index()
     {
         $family = Family::get();
-        return $family;
+        return $this->_result($family);
     }
 
     /**
@@ -65,7 +65,7 @@ class FamilyController extends Controller
             'name' => $data['name'],
         ]);
 
-        return $family;
+        return $this->_result($family);
     }
 
     /**
@@ -81,7 +81,12 @@ class FamilyController extends Controller
     public function show($id)
     {
         $family = Family::whereId($id)->first();
-        return $family;
+
+        if (empty($family)){
+            return $this->_result('Family doesn\'t exist');
+        } else {
+            return $this->_result($family);
+        }
     }
 
     /**
@@ -111,7 +116,7 @@ class FamilyController extends Controller
         $family = Family::whereId($id)->first();
         $family->name = $data['name'];
         $family->save();
-        return $family;
+        return $this->_result($family);
     }
 
     /**
@@ -160,10 +165,18 @@ class FamilyController extends Controller
         ));
     }
 
+    /**
+     * @hideFromAPIDocumentation
+     */
+
     public function create()
     {
 //
     }
+
+    /**
+     * @hideFromAPIDocumentation
+     */
 
     public function edit()
     {

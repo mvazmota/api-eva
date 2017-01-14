@@ -84,45 +84,6 @@ $.ajax(settings).done(function (response) {
 
 
 <!-- END_1a24898fc594d249385c079d5cbf7353 -->
-<!-- START_abce2a9725475b1e0e7c2527ae541fe2 -->
-## api/family/create
-
-> Example request:
-
-```bash
-curl "http://localhost/api/family/create" \
--H "Accept: application/json"
-```
-
-```javascript
-var settings = {
-    "async": true,
-    "crossDomain": true,
-    "url": "http://localhost/api/family/create",
-    "method": "GET",
-    "headers": {
-        "accept": "application/json"
-    }
-}
-
-$.ajax(settings).done(function (response) {
-    console.log(response);
-});
-```
-
-> Example response:
-
-```json
-null
-```
-
-### HTTP Request
-`GET api/family/create`
-
-`HEAD api/family/create`
-
-
-<!-- END_abce2a9725475b1e0e7c2527ae541fe2 -->
 <!-- START_d60496443e529c37287fd3855181d81d -->
 ## Family Insert
 
@@ -198,45 +159,6 @@ null
 
 
 <!-- END_290c637213107aab0776fa671513a0a6 -->
-<!-- START_dea4720a86babe83b263054410b8f13a -->
-## api/family/{family}/edit
-
-> Example request:
-
-```bash
-curl "http://localhost/api/family/{family}/edit" \
--H "Accept: application/json"
-```
-
-```javascript
-var settings = {
-    "async": true,
-    "crossDomain": true,
-    "url": "http://localhost/api/family/{family}/edit",
-    "method": "GET",
-    "headers": {
-        "accept": "application/json"
-    }
-}
-
-$.ajax(settings).done(function (response) {
-    console.log(response);
-});
-```
-
-> Example response:
-
-```json
-null
-```
-
-### HTTP Request
-`GET api/family/{family}/edit`
-
-`HEAD api/family/{family}/edit`
-
-
-<!-- END_dea4720a86babe83b263054410b8f13a -->
 <!-- START_f8b8a12aad7af333bffbc3d4eddb22cd -->
 ## Family Update
 
@@ -348,369 +270,13 @@ null
 
 
 <!-- END_8bb774a868ec24b998841380193620e1 -->
-#Produtos
+#Lists
 
-Método geral para controla produtos
-<!-- START_d6315c0f80fdc5b8b5cafcb7768d054e -->
-## List All Products
-
-Listagem de todas os produtos existentes em base de dados
-
-> Example request:
-
-```bash
-curl "http://localhost/api/products" \
--H "Accept: application/json"
-```
-
-```javascript
-var settings = {
-    "async": true,
-    "crossDomain": true,
-    "url": "http://localhost/api/products",
-    "method": "GET",
-    "headers": {
-        "accept": "application/json"
-    }
-}
-
-$.ajax(settings).done(function (response) {
-    console.log(response);
-});
-```
-
-> Example response:
-
-```json
-[
-    {
-        "id": 2,
-        "title": "afrGtSXkEs",
-        "description": "XReAfFvTrg",
-        "quant": "4 peças",
-        "image": "bfimhDOOcw.png",
-        "list_id": 2,
-        "created_at": null,
-        "updated_at": null
-    },
-    {
-        "id": 3,
-        "title": "aqBVplmHcs",
-        "description": "zZoVFOlFRT",
-        "quant": "2 caixas",
-        "image": "AsMf3TDe0O.png",
-        "list_id": 2,
-        "created_at": null,
-        "updated_at": null
-    },
-    {
-        "id": 4,
-        "title": "SuperTeste123",
-        "description": "natal",
-        "quant": "Carlos 1231421",
-        "image": null,
-        "list_id": 2,
-        "created_at": "2017-01-12 16:48:47",
-        "updated_at": "2017-01-12 16:48:47"
-    },
-    {
-        "id": 5,
-        "title": "SuperTeste123",
-        "description": "natal",
-        "quant": "Carlos 1231421",
-        "image": "bc3e0e6100a7119660cefc3226f6ddb0.png",
-        "list_id": 2,
-        "created_at": "2017-01-12 16:48:54",
-        "updated_at": "2017-01-12 16:48:54"
-    },
-    {
-        "id": 6,
-        "title": "SuperTeste123",
-        "description": "natal",
-        "quant": "Carlos 1231421",
-        "image": "bc3e0e6100a7119660cefc3226f6ddb0.png",
-        "list_id": 2,
-        "created_at": "2017-01-12 16:51:53",
-        "updated_at": "2017-01-12 16:51:53"
-    },
-    {
-        "id": 7,
-        "title": "SuperTeste123",
-        "description": "natal",
-        "quant": "Carlos 1231421",
-        "image": "bc3e0e6100a7119660cefc3226f6ddb0.png",
-        "list_id": 2,
-        "created_at": "2017-01-12 16:51:55",
-        "updated_at": "2017-01-12 16:51:55"
-    }
-]
-```
-
-### HTTP Request
-`GET api/products`
-
-`HEAD api/products`
-
-
-<!-- END_d6315c0f80fdc5b8b5cafcb7768d054e -->
-<!-- START_f2f2090b9a602ce8e87f3aae72d92a01 -->
-## api/products/create
-
-> Example request:
-
-```bash
-curl "http://localhost/api/products/create" \
--H "Accept: application/json"
-```
-
-```javascript
-var settings = {
-    "async": true,
-    "crossDomain": true,
-    "url": "http://localhost/api/products/create",
-    "method": "GET",
-    "headers": {
-        "accept": "application/json"
-    }
-}
-
-$.ajax(settings).done(function (response) {
-    console.log(response);
-});
-```
-
-> Example response:
-
-```json
-null
-```
-
-### HTTP Request
-`GET api/products/create`
-
-`HEAD api/products/create`
-
-
-<!-- END_f2f2090b9a602ce8e87f3aae72d92a01 -->
-<!-- START_05b4383f00fd57c4828a831e7057e920 -->
-## News Insert
-
-Inserir uma nova notícia em base de dados
-
-> Example request:
-
-```bash
-curl "http://localhost/api/products" \
--H "Accept: application/json"
-```
-
-```javascript
-var settings = {
-    "async": true,
-    "crossDomain": true,
-    "url": "http://localhost/api/products",
-    "method": "POST",
-    "headers": {
-        "accept": "application/json"
-    }
-}
-
-$.ajax(settings).done(function (response) {
-    console.log(response);
-});
-```
-
-
-### HTTP Request
-`POST api/products`
-
-
-<!-- END_05b4383f00fd57c4828a831e7057e920 -->
-<!-- START_963ec11fd78da94f0900b0c6baf959a3 -->
-## News Detail
-
-Detalhe de uma notícia
-
-> Example request:
-
-```bash
-curl "http://localhost/api/products/{product}" \
--H "Accept: application/json"
-```
-
-```javascript
-var settings = {
-    "async": true,
-    "crossDomain": true,
-    "url": "http://localhost/api/products/{product}",
-    "method": "GET",
-    "headers": {
-        "accept": "application/json"
-    }
-}
-
-$.ajax(settings).done(function (response) {
-    console.log(response);
-});
-```
-
-> Example response:
-
-```json
-null
-```
-
-### HTTP Request
-`GET api/products/{product}`
-
-`HEAD api/products/{product}`
-
-
-<!-- END_963ec11fd78da94f0900b0c6baf959a3 -->
-<!-- START_15fd9a28fd1841c5c4b2ddeeb49de761 -->
-## api/products/{product}/edit
-
-> Example request:
-
-```bash
-curl "http://localhost/api/products/{product}/edit" \
--H "Accept: application/json"
-```
-
-```javascript
-var settings = {
-    "async": true,
-    "crossDomain": true,
-    "url": "http://localhost/api/products/{product}/edit",
-    "method": "GET",
-    "headers": {
-        "accept": "application/json"
-    }
-}
-
-$.ajax(settings).done(function (response) {
-    console.log(response);
-});
-```
-
-> Example response:
-
-```json
-null
-```
-
-### HTTP Request
-`GET api/products/{product}/edit`
-
-`HEAD api/products/{product}/edit`
-
-
-<!-- END_15fd9a28fd1841c5c4b2ddeeb49de761 -->
-<!-- START_b7842ce7893c09eb3c53713f82c2e12d -->
-## News Update
-
-Atualizar uma notícia em base de dados
-
-> Example request:
-
-```bash
-curl "http://localhost/api/products/{product}" \
--H "Accept: application/json"
-```
-
-```javascript
-var settings = {
-    "async": true,
-    "crossDomain": true,
-    "url": "http://localhost/api/products/{product}",
-    "method": "PUT",
-    "headers": {
-        "accept": "application/json"
-    }
-}
-
-$.ajax(settings).done(function (response) {
-    console.log(response);
-});
-```
-
-
-### HTTP Request
-`PUT api/products/{product}`
-
-`PATCH api/products/{product}`
-
-
-<!-- END_b7842ce7893c09eb3c53713f82c2e12d -->
-<!-- START_1d809ca5e8b10fa7fdc75d04506a55ea -->
-## News Delete
-
-Apagar uma notícia da base de dados
-
-> Example request:
-
-```bash
-curl "http://localhost/api/products/{product}" \
--H "Accept: application/json"
-```
-
-```javascript
-var settings = {
-    "async": true,
-    "crossDomain": true,
-    "url": "http://localhost/api/products/{product}",
-    "method": "DELETE",
-    "headers": {
-        "accept": "application/json"
-    }
-}
-
-$.ajax(settings).done(function (response) {
-    console.log(response);
-});
-```
-
-
-### HTTP Request
-`DELETE api/products/{product}`
-
-
-<!-- END_1d809ca5e8b10fa7fdc75d04506a55ea -->
-<!-- START_c9ceb101ecf927d266fb890d551c7e84 -->
-## api/products/upload
-
-> Example request:
-
-```bash
-curl "http://localhost/api/products/upload" \
--H "Accept: application/json"
-```
-
-```javascript
-var settings = {
-    "async": true,
-    "crossDomain": true,
-    "url": "http://localhost/api/products/upload",
-    "method": "POST",
-    "headers": {
-        "accept": "application/json"
-    }
-}
-
-$.ajax(settings).done(function (response) {
-    console.log(response);
-});
-```
-
-
-### HTTP Request
-`POST api/products/upload`
-
-
-<!-- END_c9ceb101ecf927d266fb890d551c7e84 -->
-#general
+Controller for shopping lists related operations
 <!-- START_2535121d38b5231985e5394363ce74e1 -->
-## api/lists
+## List all Lists
+
+Lists all lists in the database
 
 > Example request:
 
@@ -766,6 +332,55 @@ $.ajax(settings).done(function (response) {
         "icon": "trabalho",
         "created_at": null,
         "updated_at": null
+    },
+    {
+        "id": 6,
+        "name": "Nova Lista",
+        "icon": "trabalho",
+        "created_at": "2017-01-13 15:09:42",
+        "updated_at": "2017-01-13 16:03:15"
+    },
+    {
+        "id": 7,
+        "name": "teste23",
+        "icon": "natalol11",
+        "created_at": "2017-01-13 15:22:43",
+        "updated_at": "2017-01-13 15:22:43"
+    },
+    {
+        "id": 8,
+        "name": "teste234312",
+        "icon": "natalol11",
+        "created_at": "2017-01-13 15:29:30",
+        "updated_at": "2017-01-13 15:29:30"
+    },
+    {
+        "id": 9,
+        "name": "teste234312",
+        "icon": "natalol11",
+        "created_at": "2017-01-13 15:29:42",
+        "updated_at": "2017-01-13 15:29:42"
+    },
+    {
+        "id": 11,
+        "name": "teste234312",
+        "icon": "natalol11",
+        "created_at": "2017-01-13 15:30:37",
+        "updated_at": "2017-01-13 15:30:37"
+    },
+    {
+        "id": 12,
+        "name": "Nova Lista",
+        "icon": "trabalho",
+        "created_at": "2017-01-13 17:00:40",
+        "updated_at": "2017-01-13 17:00:40"
+    },
+    {
+        "id": 13,
+        "name": "Nova Lista34",
+        "icon": "trabalho",
+        "created_at": "2017-01-13 17:01:13",
+        "updated_at": "2017-01-13 17:01:13"
     }
 ]
 ```
@@ -817,7 +432,9 @@ null
 
 <!-- END_45576e17ce2b7b15720a3060e601dbac -->
 <!-- START_6e80312e61d28100fddedd59ee6f1dc9 -->
-## api/lists
+## List Insert
+
+Inserts a list in the database
 
 > Example request:
 
@@ -849,7 +466,9 @@ $.ajax(settings).done(function (response) {
 
 <!-- END_6e80312e61d28100fddedd59ee6f1dc9 -->
 <!-- START_ea2a7ee423318c58030a68197e50cf45 -->
-## api/lists/{list}
+## List Detail
+
+Gives the details of a list
 
 > Example request:
 
@@ -927,7 +546,9 @@ null
 
 <!-- END_c15d64c5208426d308516ee8be4abe6c -->
 <!-- START_2a34ad1fcadacd12d8f5fe79f9ccc127 -->
-## api/lists/{list}
+## List Update
+
+Update a list in the database
 
 > Example request:
 
@@ -961,7 +582,9 @@ $.ajax(settings).done(function (response) {
 
 <!-- END_2a34ad1fcadacd12d8f5fe79f9ccc127 -->
 <!-- START_956541e48346440c128d087e6133ce21 -->
-## api/lists/{list}
+## Delete List
+
+Deletes a list in the database
 
 > Example request:
 
@@ -993,7 +616,9 @@ $.ajax(settings).done(function (response) {
 
 <!-- END_956541e48346440c128d087e6133ce21 -->
 <!-- START_201a586a6cf4a763fdd4caec7d524eeb -->
-## api/lists/{list}/users
+## Users of a List
+
+Gives the users linked of a list
 
 > Example request:
 
@@ -1102,6 +727,249 @@ null
 
 
 <!-- END_1ddf7af8bf64c4c731a227b1fb9ebb76 -->
+#Produtos
+
+Método geral para controla produtos
+<!-- START_d6315c0f80fdc5b8b5cafcb7768d054e -->
+## List All Products
+
+Listagem de todas os produtos existentes em base de dados
+
+> Example request:
+
+```bash
+curl "http://localhost/api/products" \
+-H "Accept: application/json"
+```
+
+```javascript
+var settings = {
+    "async": true,
+    "crossDomain": true,
+    "url": "http://localhost/api/products",
+    "method": "GET",
+    "headers": {
+        "accept": "application/json"
+    }
+}
+
+$.ajax(settings).done(function (response) {
+    console.log(response);
+});
+```
+
+> Example response:
+
+```json
+[
+    {
+        "id": 2,
+        "title": "kcwyl9t9Yg",
+        "description": "D9dMZ2C5lB",
+        "quant": "4 peças",
+        "image": "vP8o4sOEEp.png",
+        "list_id": 2,
+        "created_at": null,
+        "updated_at": null
+    },
+    {
+        "id": 3,
+        "title": "HKvTw6q949",
+        "description": "fuNumBKsMJ",
+        "quant": "2 caixas",
+        "image": "rRsHNWfWO0.png",
+        "list_id": 2,
+        "created_at": null,
+        "updated_at": null
+    }
+]
+```
+
+### HTTP Request
+`GET api/products`
+
+`HEAD api/products`
+
+
+<!-- END_d6315c0f80fdc5b8b5cafcb7768d054e -->
+<!-- START_05b4383f00fd57c4828a831e7057e920 -->
+## News Insert
+
+Inserir uma nova notícia em base de dados
+
+> Example request:
+
+```bash
+curl "http://localhost/api/products" \
+-H "Accept: application/json"
+```
+
+```javascript
+var settings = {
+    "async": true,
+    "crossDomain": true,
+    "url": "http://localhost/api/products",
+    "method": "POST",
+    "headers": {
+        "accept": "application/json"
+    }
+}
+
+$.ajax(settings).done(function (response) {
+    console.log(response);
+});
+```
+
+
+### HTTP Request
+`POST api/products`
+
+
+<!-- END_05b4383f00fd57c4828a831e7057e920 -->
+<!-- START_963ec11fd78da94f0900b0c6baf959a3 -->
+## News Detail
+
+Detalhe de uma notícia
+
+> Example request:
+
+```bash
+curl "http://localhost/api/products/{product}" \
+-H "Accept: application/json"
+```
+
+```javascript
+var settings = {
+    "async": true,
+    "crossDomain": true,
+    "url": "http://localhost/api/products/{product}",
+    "method": "GET",
+    "headers": {
+        "accept": "application/json"
+    }
+}
+
+$.ajax(settings).done(function (response) {
+    console.log(response);
+});
+```
+
+> Example response:
+
+```json
+null
+```
+
+### HTTP Request
+`GET api/products/{product}`
+
+`HEAD api/products/{product}`
+
+
+<!-- END_963ec11fd78da94f0900b0c6baf959a3 -->
+<!-- START_b7842ce7893c09eb3c53713f82c2e12d -->
+## News Update
+
+Atualizar uma notícia em base de dados
+
+> Example request:
+
+```bash
+curl "http://localhost/api/products/{product}" \
+-H "Accept: application/json"
+```
+
+```javascript
+var settings = {
+    "async": true,
+    "crossDomain": true,
+    "url": "http://localhost/api/products/{product}",
+    "method": "PUT",
+    "headers": {
+        "accept": "application/json"
+    }
+}
+
+$.ajax(settings).done(function (response) {
+    console.log(response);
+});
+```
+
+
+### HTTP Request
+`PUT api/products/{product}`
+
+`PATCH api/products/{product}`
+
+
+<!-- END_b7842ce7893c09eb3c53713f82c2e12d -->
+<!-- START_1d809ca5e8b10fa7fdc75d04506a55ea -->
+## News Delete
+
+Apagar uma notícia da base de dados
+
+> Example request:
+
+```bash
+curl "http://localhost/api/products/{product}" \
+-H "Accept: application/json"
+```
+
+```javascript
+var settings = {
+    "async": true,
+    "crossDomain": true,
+    "url": "http://localhost/api/products/{product}",
+    "method": "DELETE",
+    "headers": {
+        "accept": "application/json"
+    }
+}
+
+$.ajax(settings).done(function (response) {
+    console.log(response);
+});
+```
+
+
+### HTTP Request
+`DELETE api/products/{product}`
+
+
+<!-- END_1d809ca5e8b10fa7fdc75d04506a55ea -->
+<!-- START_c9ceb101ecf927d266fb890d551c7e84 -->
+## api/products/upload
+
+> Example request:
+
+```bash
+curl "http://localhost/api/products/upload" \
+-H "Accept: application/json"
+```
+
+```javascript
+var settings = {
+    "async": true,
+    "crossDomain": true,
+    "url": "http://localhost/api/products/upload",
+    "method": "POST",
+    "headers": {
+        "accept": "application/json"
+    }
+}
+
+$.ajax(settings).done(function (response) {
+    console.log(response);
+});
+```
+
+
+### HTTP Request
+`POST api/products/upload`
+
+
+<!-- END_c9ceb101ecf927d266fb890d551c7e84 -->
+#general
 <!-- START_da5727be600e4865c1b632f7745c8e91 -->
 ## api/users
 

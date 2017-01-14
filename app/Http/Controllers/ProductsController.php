@@ -35,7 +35,6 @@ class ProductsController extends Controller
 
     public function index()
     {
-
         $products = Products::get();
 
         return $products;
@@ -161,12 +160,16 @@ class ProductsController extends Controller
 
     public function destroy($id)
     {
-
         $product = Products::whereId($id)->first();
-        $product->delete();
 
-        return $this->_result('Produto removida com sucesso');
+        if (empty($product)){
+            return $this->_result('Product doesn\'t exist');
 
+        } else {
+            $product->delete();
+
+            return $this->_result('Produto '.$id.' removido com sucesso');
+        }
     }
 
     /**
@@ -183,7 +186,6 @@ class ProductsController extends Controller
         $data = $request->all();
 
         $products = Products::whereId($id)->first();
-
         $products->title = $data['title'];
         $products->description = $data['description'];
         $products->quant = $data['quant'];
@@ -206,10 +208,18 @@ class ProductsController extends Controller
         ));
     }
 
+    /**
+     * @hideFromAPIDocumentation
+     */
+
     public function create()
     {
 //
     }
+
+    /**
+     * @hideFromAPIDocumentation
+     */
 
     public function edit()
     {
