@@ -20,7 +20,7 @@ class ProductsController extends Controller
 
     public function __construct()
     {
-        header('Access-Control-Allow-Origin: *');
+//        header('Access-Control-Allow-Origin: *');
 //        $this->middleware('auth:api', ['except' => ['index','show']]);
     }
 
@@ -163,6 +163,11 @@ class ProductsController extends Controller
 
     public function destroy($id)
     {
+                header("Access-Control-Allow-Credentials: true");
+        header('Access-Control-Max-Age: 1000');
+        header('Access-Control-Allow-Headers: Origin, Content-Type, X-Auth-Token , Authorization');
+
+
         $product = Products::whereId($id)->first();
 
         if (empty($product)){
