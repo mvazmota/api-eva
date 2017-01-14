@@ -116,6 +116,7 @@ class FamilyController extends Controller
         $family = Family::whereId($id)->first();
         $family->name = $data['name'];
         $family->save();
+
         return $this->_result($family);
     }
 

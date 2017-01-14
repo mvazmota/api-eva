@@ -100,7 +100,7 @@ class ListsController extends Controller
     {
         $lists = Lists::whereId($id)->first();
 
-        return $lists;
+        return $this->_result($list);
     }
 
     /**
@@ -134,7 +134,7 @@ class ListsController extends Controller
         foreach ($array as $value) {
             $listID->users()->attach($value);
         }
-        return $list;
+        return $this->_result($list);
     }
 
     /**
@@ -160,15 +160,29 @@ class ListsController extends Controller
         $listID->products()->delete();
 
         $list->delete();
-        return $this->_result('Lista removida com sucesso');
+
+        return $this->_result('List successfully removed.');
     }
 
+    /**
+     * Get List Products
+     *
+     * Shows the users of a list
+     *
+     * @param int $id
+     *
+     * @return array
+     */
 
     public function getproducts($listId)
     {
         $products = Lists::find($listId)->products()->get();
 
-        return $products;
+        if ($products->isEmpty()){
+            return $this->_result('List doesn\'t have products', 1, "NOK");
+        } else {
+            return $this->_result($products);
+        }
     }
 
     /**
@@ -185,15 +199,15 @@ class ListsController extends Controller
     {
         $users = Lists::find($id)->users()->orderBy('name')->get();
 
-        return $users;
+        return $this->_result($users);
     }
 
-    public function addusers(Request $request)
-    {
-        $data = $request->all();
-        $users = Lists::find($data['list_id']);
-        $users->users()->attach($data['user_id']);
-    }
+//    public function addusers(Request $request)
+//    {
+//        $data = $request->all();
+//        $users = Lists::find($data['list_id']);
+//        $users->users()->attach($data['user_id']);
+//    }
 
     /**
      * @hideFromAPIDocumentation
