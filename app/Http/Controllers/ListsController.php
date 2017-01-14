@@ -21,6 +21,8 @@ class ListsController extends Controller
     public function __construct()
     {
         header('Access-Control-Allow-Origin: *');
+        header('Access-Control-Allow-Headers: *');
+
 //        $this->middleware('auth:api', ['except' => ['index','show', 'getusers', 'getproducts']]);
     }
 
@@ -114,27 +116,22 @@ class ListsController extends Controller
     public function update(Request $request, $id)
     {
         $data = $request->all();
+
         $list = Lists::whereId($id)->first();
         $list->name = $data['name'];
         $list->icon = $data['icon'];
         $list->save();
 
         $listID = Lists::find($list['id']);
-        // Split users into an array
-        $users = $list['users'];
-        $array = explode(',', $users);
-        // Detach users of the list
-        foreach ($array as $value) {
-            $listID->users()->detach($value);
-            print_r("User ".$value['id']." was removed.");
-        }
+        $listID->users()->detach();
+
         // Split users into an array
         $users = $data['users'];
         $array = explode(',', $users);
+
         // Attach new users of the list
         foreach ($array as $value) {
             $listID->users()->attach($value);
-            print_r("User ".$value." was added.");
         }
         return $list;
     }

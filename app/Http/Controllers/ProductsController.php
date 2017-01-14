@@ -28,7 +28,7 @@ class ProductsController extends Controller
     /**
      * List All Products
      *
-     * Listagem de todas os produtos existentes em base de dados
+     * Lists all products in the database
      *
      * @return array
      */
@@ -41,35 +41,36 @@ class ProductsController extends Controller
             return $this->_result('Product doesn\'t exist');
         } else {
             return $this->_result($products);
-        }    }
-
-
+        }
+    }
 
     /**
-     * News Detail
+     * Products Detail
      *
-     * Detalhe de uma notícia
+     * Shows the details of a product
      *
-     * @param int $id Id da notícia em base de dados
+     * @param int $id Id of a product in the database
      *
      * @return array
      */
+
     public function show($id)
     {
         $products = Products::whereId($id)->first();
 
-        return $products;
+        return $this->_result($products);
     }
 
      /**
-      * News Insert
+     * Product Insert
      *
-     * Inserir uma nova notícia em base de dados
+     * Inserts a product in the database
      *
      * @param \Illuminate\Http\Request $request Post data
      *
      * @return array
      */
+
     public function store(Request $request)
     {
         $data = $request->all();
@@ -99,10 +100,9 @@ class ProductsController extends Controller
             // generate filename from random string
             $path = $request->file('image')->hashName();
             // upload process
-
             $request->file('image')->move(public_path('images'), $path);
             // adds to database
-            $product = Products::create([
+            $products = Products::create([
                 'title' => $data['title'],
                 'description' => $data['description'],
                 'quant' => $data['quant'],
@@ -110,51 +110,51 @@ class ProductsController extends Controller
                 'image' => $path,
             ]);
 
-            return $product;
+            return $this->_result($products);
 
         } else {
             // adds to database
-            $product = Products::create([
+            $products = Products::create([
                 'title' => $data['title'],
                 'description' => $data['description'],
                 'quant' => $data['quant'],
                 'list_id' => $data['list_id'],
             ]);
 
-            return $product;
+            return $this->_result($products);
         }
 
     }
 
-    public function upload(Request $request)
-    {
-        $data = $request->all();
-
-        $validator = Validator::make($data, [
-            'image' => 'required|image'
-        ],
-            [
-                'image.required' => 'O campo de imagem é obrigatório',
-                'image.image' => 'O campo de imagem é tem de ser do tipo imagem',
-            ]);
-
-        if($validator->fails())
-        {
-            $errors = $validator->errors()->all();
-
-            return $this->_result($errors, 1, 'NOK');
-        }
-
-        $path = $request->file('image')->hashName();
-        $request->file('image')->move(public_path('images'), $path);
-
-        return $data;
-    }
+//    public function upload(Request $request)
+//    {
+//        $data = $request->all();
+//
+//        $validator = Validator::make($data, [
+//            'image' => 'required|image'
+//        ],
+//            [
+//                'image.required' => 'O campo de imagem é obrigatório',
+//                'image.image' => 'O campo de imagem é tem de ser do tipo imagem',
+//            ]);
+//
+//        if($validator->fails())
+//        {
+//            $errors = $validator->errors()->all();
+//
+//            return $this->_result($errors, 1, 'NOK');
+//        }
+//
+//        $path = $request->file('image')->hashName();
+//        $request->file('image')->move(public_path('images'), $path);
+//
+//        return $this->_result($data);
+//    }
 
     /**
-     * News Delete
+     * Product Delete
      *
-     * Apagar uma notícia da base de dados
+     * Deletes a product in the database
      *
      * @param int $id Post data
      *
@@ -163,8 +163,6 @@ class ProductsController extends Controller
 
     public function destroy($id)
     {
-        header('Access-Control-Allow-Methods: DELETE, OPTIONS');
-
         $product = Products::whereId($id)->first();
 
         if (empty($product)){
@@ -178,14 +176,15 @@ class ProductsController extends Controller
     }
 
     /**
-     * News Update
+     * Product Update
      *
-     * Atualizar uma notícia em base de dados
+     * Updates a product in the database
      *
      * @param \Illuminate\Http\Request $request Post data
      *
      * @return array
      */
+
     public function update(Request $request, $id)
     {
         $data = $request->all();

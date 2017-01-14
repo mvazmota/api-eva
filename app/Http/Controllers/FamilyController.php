@@ -133,7 +133,14 @@ class FamilyController extends Controller
     {
         $family = Family::whereId($id)->first();
         $family->delete();
-        return $this->_result('Familia removida com sucesso');
+
+        if (empty($family)){
+            return $this->_result('Family doesn\'t exist');
+        } else {
+            $family->delete();
+
+            return $this->_result('Family '.$id.' removed with sucess');
+        }
     }
 
     /**
@@ -149,7 +156,8 @@ class FamilyController extends Controller
     public function getusers($id)
     {
         $users = Family::find($id)->users()->get();
-        return $users;
+
+        return $this->_result($users);
     }
 
     /**

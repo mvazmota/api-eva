@@ -16,7 +16,7 @@ use App\Lists;
 
 // Products
 Route::resource('products', 'ProductsController');
-Route::post('products/upload', 'ProductsController@upload');
+//Route::post('products/upload', 'ProductsController@upload');
 
 // Lists
 Route::resource('lists', 'ListsController');
