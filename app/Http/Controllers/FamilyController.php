@@ -18,7 +18,6 @@ class FamilyController extends Controller
 
     public function __construct()
     {
-        header('Access-Control-Allow-Origin: *');
 //        $this->middleware('auth:api', ['except' => ['index','show']]);
     }
 
