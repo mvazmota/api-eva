@@ -118,26 +118,26 @@ class ListsController extends Controller
 
 //        print_r($data);
 
-        return(dd($data));
+//        return(dd($data));
 
-//        $list = Lists::whereId($id)->first();
-//        $list->name = $data['name'];
-//        $list->icon = $data['icon'];
-//        $list->save();
-//
-//        // Detach old users of the list
-//        $listID = Lists::find($list['id']);
-//        $listID->users()->detach();
-//
-//        // Split users into an array
-//        $users = $data['users'];
-//        $array = explode(',', $users);
-//
-//        // Attach new users of the list
-//        foreach ($array as $value) {
-//            $listID->users()->attach($value);
-//        }
-//        return $this->_result($list);
+        $list = Lists::whereId($id)->first();
+        $list->name = $data['name'];
+        $list->icon = $data['icon'];
+        $list->save();
+
+        // Detach old users of the list
+        $listID = Lists::find($list['id']);
+        $listID->users()->detach();
+
+        // Split users into an array
+        $users = $data['users'];
+        $array = explode(',', $users);
+
+        // Attach new users of the list
+        foreach ($array as $value) {
+            $listID->users()->attach($value);
+        }
+        return $this->_result($list);
     }
 
     /**
