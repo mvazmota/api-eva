@@ -112,9 +112,10 @@ class ListsController extends Controller
 
     public function update(Request $request, $id)
     {
+        print_r($request);
+
         $data = $request->all();
 
-        print_r($request->all());
 
         $list = Lists::whereId($id)->first();
         $list->name = $data['name'];
