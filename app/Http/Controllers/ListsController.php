@@ -100,7 +100,7 @@ class ListsController extends Controller
     {
         $lists = Lists::whereId($id)->first();
 
-        return $this->_result($list);
+        return $this->_result($lists);
     }
 
     /**
@@ -116,6 +116,8 @@ class ListsController extends Controller
     public function update(Request $request, $id)
     {
         $data = $request->all();
+
+        print_r($data);
 
         $list = Lists::whereId($id)->first();
         $list->name = $data['name'];

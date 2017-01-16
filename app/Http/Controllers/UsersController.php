@@ -10,14 +10,13 @@ use Validator;
 /**
  * @resource Users
  *
- * Controller for family related operations
+ * Controller for user related operations
  */
 
 class UsersController extends Controller
 {
     public function __construct()
     {
-        header('Access-Control-Allow-Origin: *');
 //        $this->middleware('auth:api', ['except' => ['index','show']]);
     }
 
@@ -96,7 +95,7 @@ class UsersController extends Controller
     {
         $users = User::whereId($id)->first();
 
-        print_r($users);
+//        print_r($users);
 
         if (empty($users)){
             return $this->_result('User doesn\'t exist', 1, "NOK");
