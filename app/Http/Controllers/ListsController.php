@@ -20,10 +20,7 @@ class ListsController extends Controller
 
     public function __construct()
     {
-//        header('Access-Control-Allow-Origin: *');
-//        header('Access-Control-Allow-Headers: *');
-
-//        $this->middleware('auth:api', ['except' => ['index','show', 'getusers', 'getproducts']]);
+///        $this->middleware('auth:api', ['except' => ['index','show', 'getusers', 'getproducts']]);
     }
 
     /**
@@ -117,7 +114,7 @@ class ListsController extends Controller
     {
         $data = $request->all();
 
-        print_r($data);
+        print_r($request->all());
 
         $list = Lists::whereId($id)->first();
         $list->name = $data['name'];
