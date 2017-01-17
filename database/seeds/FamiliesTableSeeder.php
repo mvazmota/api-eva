@@ -18,6 +18,5 @@ class FamiliesTableSeeder extends Seeder
         DB::table('families')->insert([
             'name' => 'Mota',
         ]);
-
     }
 }

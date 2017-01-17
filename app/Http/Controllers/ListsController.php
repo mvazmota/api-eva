@@ -4,7 +4,6 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests;
 use App\Lists;
-use App\User;
 use App\Tools;
 use Illuminate\Http\Request;
 use Validator;
@@ -20,7 +19,7 @@ class ListsController extends Controller
 
     public function __construct()
     {
-///        $this->middleware('auth:api', ['except' => ['index','show', 'getusers', 'getproducts']]);
+//        $this->middleware('auth:api', ['except' => ['index','show', 'getusers', 'getproducts']]);
     }
 
     /**
@@ -34,7 +33,12 @@ class ListsController extends Controller
     public function index()
     {
         $lists = Lists::get();
-        return $lists;
+
+        if ($lists->isEmpty()){
+            return $this->_result('No lists on the database', 404);
+        } else {
+            return $this->_result($lists);
+        }
     }
 
     /**
@@ -50,37 +54,40 @@ class ListsController extends Controller
     public function store(Request $request)
     {
         $data = $request->all();
+
         $validator = Validator::make($data, [
             'name' => 'required|max:20',
             'icon' => 'required',
             'users' => 'required',
         ],
-            [
-                'name' => 'The title field is required',
-                'icon' => 'The icon field is required',
-                'users' => 'The users field is required',
-            ]);
+        [
+            'name' => 'The title field is required',
+            'icon' => 'The icon field is required',
+            'users' => 'The users field is required',
+        ]);
         if($validator->fails())
         {
             $errors = $validator->errors()->all();
-            return $this->_result($errors, 1, 'NOK');
+            return $this->_result($errors, 400, 'NOK');
         }
 
-        $list = Lists::create([
+        $lists = Lists::create([
             'name' => $data['name'],
             'icon' => $data['icon'],
         ]);
 
-        $listID = Lists::find($list['id']);
+        $listID = Lists::find($lists['id']);
+
         // Split users into an array
         $users = $data['users'];
         $array = explode(',', $users);
+
         // Attach new users of the list
         foreach ($array as $value) {
             $listID->users()->attach($value);
-//            print_r("User ".$value." was added.");
         }
-        return $this->_result($list);
+
+        return $this->_result($lists);
     }
 
     /**
@@ -116,13 +123,24 @@ class ListsController extends Controller
 
     public function update(Request $request, $id)
     {
-//        print_r($request);
-
         $data = $request->all();
 
-//        print_r($data);
+        $validator = Validator::make($data, [
+            'name' => 'required|max:20',
+            'icon' => 'required',
+            'users' => 'required',
+        ],
+        [
+            'name' => 'The title field is required',
+            'icon' => 'The icon field is required',
+            'users' => 'The users field is required',
+        ]);
 
-//        return(dd($data));
+        if($validator->fails())
+        {
+            $errors = $validator->errors()->all();
+            return $this->_result($errors, 400, 'NOK');
+        }
 
         $list = Lists::whereId($id)->first();
         $list->name = $data['name'];
@@ -141,6 +159,7 @@ class ListsController extends Controller
         foreach ($array as $value) {
             $listID->users()->attach($value);
         }
+
         return $this->_result($list);
     }
 
@@ -156,19 +175,26 @@ class ListsController extends Controller
 
     public function destroy($id)
     {
-        $list = Lists::whereId($id)->first();
+        $lists = Lists::whereId($id)->first();
+
+        // Check if list exists
+        if (empty($lists)){
+            return $this->_result('List doesn\'t exist', 404, "NOK");
+        }
+
         // Detach users of the list
-        $listID = Lists::find($list['id']);
-        $users = $list['users'];
+        $listID = Lists::find($lists['id']);
+        $users = $lists['users'];
+
         foreach ($users as $value) {
             $listID->users()->detach($value);
         }
 
         $listID->products()->delete();
 
-        $list->delete();
+        $lists->delete();
 
-        return $this->_result('List successfully removed.');
+        return $this->_result('List successfully removed');
     }
 
     /**
@@ -186,7 +212,7 @@ class ListsController extends Controller
         $products = Lists::find($listId)->products()->get();
 
         if ($products->isEmpty()){
-            return $this->_result('List doesn\'t have products', 1, "NOK");
+            return $this->_result('List doesn\'t have products', 404, "NOK");
         } else {
             return $this->_result($products);
         }
@@ -206,7 +232,11 @@ class ListsController extends Controller
     {
         $users = Lists::find($id)->users()->orderBy('name')->get();
 
-        return $this->_result($users);
+        if ($users->isEmpty()){
+            return $this->_result('List doesn\'t have users', 404, "NOK");
+        } else {
+            return $this->_result($users);
+        }
     }
 
 //    public function addusers(Request $request)
@@ -220,7 +250,7 @@ class ListsController extends Controller
      * @hideFromAPIDocumentation
      */
 
-    private function _result($data, $status = 0, $msg = 'OK')
+    private function _result($data, $status = 200, $msg = 'OK')
     {
         return json_encode(array(
             'status' => $status,
@@ -229,10 +259,18 @@ class ListsController extends Controller
         ));
     }
 
+    /**
+     * @hideFromAPIDocumentation
+     */
+
     public function create()
     {
         //
     }
+
+    /**
+     * @hideFromAPIDocumentation
+     */
 
     public function edit()
     {

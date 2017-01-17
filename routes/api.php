@@ -15,13 +15,12 @@ use Illuminate\Http\Request;
 
 // Products
 Route::resource('products', 'ProductsController');
-Route::post('products/{products}', 'ProductsController@updateproduct');
 
 // Lists
 Route::resource('lists', 'ListsController');
-Route::get('lists/{list}/users', 'ListsController@getusers');
-Route::post('lists/{list}/users', 'ListsController@addusers');
-Route::get('lists/{list}/products', 'ListsController@getproducts');
+Route::get('lists/{list}/users', 'ListsController@getUsers');
+//Route::post('lists/{list}/users', 'ListsController@addUsers');
+Route::get('lists/{list}/products', 'ListsController@getProducts');
 
 //Family
 Route::resource('family', 'FamilyController');

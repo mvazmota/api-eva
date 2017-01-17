@@ -57,7 +57,11 @@ class ProductsController extends Controller
     {
         $products = Products::whereId($id)->first();
 
-        return $this->_result($products);
+        if (empty($products)){
+            return $this->_result('Product doesn\'t exist', 404, "NOK");
+        } else {
+            return $this->_result($products);
+        }
     }
 
      /**
@@ -188,7 +192,7 @@ class ProductsController extends Controller
     {
         $data = $request->all();
 
-        print_r($data);
+//        print_r($data);
 
         $products = Products::whereId($id)->first();
         $products->title = $data['title'];
@@ -197,21 +201,7 @@ class ProductsController extends Controller
         $products->list_id = $data['list_id'];
         $products->save();
 
-        return $products;
-    }
-
-    public function updateproduct(Request $request, $id)
-    {
-        $data = $request->all();
-
-        $products = Products::whereId($id)->first();
-        $products->title = $data['title'];
-        $products->description = $data['description'];
-        $products->quant = $data['quant'];
-        $products->list_id = $data['list_id'];
-        $products->save();
-
-        return $products;
+        return $this->_result($products);
     }
 
     /**

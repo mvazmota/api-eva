@@ -19,6 +19,7 @@ class CreateUsersTable extends Migration
             $table->string('color')->default('blue');
             $table->string('email')->unique();
             $table->string('password');
+            $table->string('birthday');
             $table->integer('family_id')->unsigned()->nullable();
             $table->foreign('family_id')->references('id')->on('families')->onDelete('set null');
             $table->rememberToken();
