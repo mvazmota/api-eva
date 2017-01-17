@@ -188,6 +188,22 @@ class ProductsController extends Controller
     {
         $data = $request->all();
 
+        print_r($data);
+
+        $products = Products::whereId($id)->first();
+        $products->title = $data['title'];
+        $products->description = $data['description'];
+        $products->quant = $data['quant'];
+        $products->list_id = $data['list_id'];
+        $products->save();
+
+        return $products;
+    }
+
+    public function updateproduct(Request $request, $id)
+    {
+        $data = $request->all();
+
         $products = Products::whereId($id)->first();
         $products->title = $data['title'];
         $products->description = $data['description'];

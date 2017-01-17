@@ -97,7 +97,11 @@ class ListsController extends Controller
     {
         $lists = Lists::whereId($id)->first();
 
-        return $this->_result($lists);
+        if (empty($lists)){
+            return $this->_result('List doesn\'t exist', 404, "NOK");
+        } else {
+            return $this->_result($lists);
+        }
     }
 
     /**
