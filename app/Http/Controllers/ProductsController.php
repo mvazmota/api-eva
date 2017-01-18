@@ -23,7 +23,6 @@ class ProductsController extends Controller
 //        $this->middleware('auth:api', ['except' => ['index','show']]);
     }
 
-
     /**
      * List All Products
      *
@@ -37,7 +36,7 @@ class ProductsController extends Controller
         $products = Products::get();
 
         if (empty($products)){
-            return $this->_result('Product doesn\'t exist');
+            return $this->_result('Product doesn\'t exist', 404, "NOK");
         } else {
             return $this->_result($products);
         }
@@ -79,23 +78,25 @@ class ProductsController extends Controller
         $data = $request->all();
 
         $validator = Validator::make($data, [
-                'title' => 'required|max:20',
-                'description' => 'max:100',
-                'quant' => 'required',
-                'image' => 'image',
-                'list_id' => 'required',
-            ],
-            [
-                'title' => 'O campo de título é obrigatório',
-                'description' => 'O campo de descrição é obrigatório',
-                'image' => 'O campo de imagem é obrigatório',
-            ]);
+            'title' => 'required|max:20',
+            'description' => 'max:100',
+            'quant' => 'max:40',
+            'image' => 'image',
+            'list_id' => 'required',
+        ],
+        [
+            'title' => 'The title field is required',
+            'description' => 'The description field is required',
+            'quant' => 'The quant field is required',
+            'image' => 'The image field must be an image',
+            'list_id' => 'The list_id field is required',
+        ]);
 
         if($validator->fails())
         {
             $errors = $validator->errors()->all();
 
-            return $this->_result($errors, 1, 'NOK');
+            return $this->_result($errors, 400, 'NOK');
         }
 
         if ( !empty($data['image']))
@@ -126,33 +127,7 @@ class ProductsController extends Controller
 
             return $this->_result($products);
         }
-
     }
-
-//    public function upload(Request $request)
-//    {
-//        $data = $request->all();
-//
-//        $validator = Validator::make($data, [
-//            'image' => 'required|image'
-//        ],
-//            [
-//                'image.required' => 'O campo de imagem é obrigatório',
-//                'image.image' => 'O campo de imagem é tem de ser do tipo imagem',
-//            ]);
-//
-//        if($validator->fails())
-//        {
-//            $errors = $validator->errors()->all();
-//
-//            return $this->_result($errors, 1, 'NOK');
-//        }
-//
-//        $path = $request->file('image')->hashName();
-//        $request->file('image')->move(public_path('images'), $path);
-//
-//        return $this->_result($data);
-//    }
 
     /**
      * Product Delete
@@ -169,7 +144,7 @@ class ProductsController extends Controller
         $product = Products::whereId($id)->first();
 
         if (empty($product)){
-            return $this->_result('Product doesn\'t exist');
+            return $this->_result('Product doesn\'t exist', 404, "NOK");
 
         } else {
             $product->delete();
@@ -192,16 +167,60 @@ class ProductsController extends Controller
     {
         $data = $request->all();
 
-//        print_r($data);
+        $validator = Validator::make($data, [
+            'title' => 'required|max:20',
+            'description' => 'max:100',
+            'quant' => 'max:40',
+            'image' => 'image',
+            'list_id' => 'required',
+        ],
+        [
+            'title' => 'The title field is required',
+            'description' => 'The description field is required',
+            'quant' => 'The quant field is required',
+            'image' => 'The image field is required',
+            'list_id' => 'The list_id field is required',
+        ]);
 
-        $products = Products::whereId($id)->first();
-        $products->title = $data['title'];
-        $products->description = $data['description'];
-        $products->quant = $data['quant'];
-        $products->list_id = $data['list_id'];
-        $products->save();
+        if($validator->fails())
+        {
+            $errors = $validator->errors()->all();
 
-        return $this->_result($products);
+            return $this->_result($errors, 400, 'NOK');
+        }
+
+        if ( !empty($data['image']))
+        {
+            //check if the product has an image
+
+            // generate filename from random string
+            $path = $request->file('image')->hashName();
+            // upload process
+            $request->file('image')->move(public_path('images'), $path);
+
+
+
+            $products = Products::whereId($id)->first();
+            $products->title = $data['title'];
+            $products->description = $data['description'];
+            $products->quant = $data['quant'];
+            $products->list_id = $data['list_id'];
+            $products->save();
+
+            return $this->_result($products);
+
+        } else {
+            $products = Products::whereId($id)->first();
+            $products->title = $data['title'];
+            $products->description = $data['description'];
+            $products->quant = $data['quant'];
+            $products->list_id = $data['list_id'];
+            $products->save();
+
+            return $this->_result($products);
+        }
+
+
     }
 
     /**

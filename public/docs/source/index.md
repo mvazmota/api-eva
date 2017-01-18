@@ -55,26 +55,36 @@ $.ajax(settings).done(function (response) {
 > Example response:
 
 ```json
-[
-    {
-        "id": 2,
-        "name": "Mota",
-        "created_at": null,
-        "updated_at": null
-    },
-    {
-        "id": 3,
-        "name": "Silva",
-        "created_at": null,
-        "updated_at": null
-    },
-    {
-        "id": 4,
-        "name": "Mota",
-        "created_at": null,
-        "updated_at": null
-    }
-]
+{
+    "status": 0,
+    "msg": "OK",
+    "data": [
+        {
+            "id": 1,
+            "name": "Silva",
+            "created_at": null,
+            "updated_at": null
+        },
+        {
+            "id": 2,
+            "name": "Mota",
+            "created_at": null,
+            "updated_at": null
+        },
+        {
+            "id": 3,
+            "name": "Silva",
+            "created_at": null,
+            "updated_at": null
+        },
+        {
+            "id": 4,
+            "name": "Mota",
+            "created_at": null,
+            "updated_at": null
+        }
+    ]
+}
 ```
 
 ### HTTP Request
@@ -149,7 +159,16 @@ $.ajax(settings).done(function (response) {
 > Example response:
 
 ```json
-null
+{
+    "status": 0,
+    "msg": "OK",
+    "data": {
+        "id": 1,
+        "name": "Silva",
+        "created_at": null,
+        "updated_at": null
+    }
+}
 ```
 
 ### HTTP Request
@@ -304,85 +323,33 @@ $.ajax(settings).done(function (response) {
 > Example response:
 
 ```json
-[
-    {
-        "id": 2,
-        "name": "Festa Joana",
-        "icon": "prenda",
-        "created_at": null,
-        "updated_at": null
-    },
-    {
-        "id": 3,
-        "name": "Passagem de Ano",
-        "icon": "trabalho",
-        "created_at": null,
-        "updated_at": null
-    },
-    {
-        "id": 4,
-        "name": "Passagem de Ano",
-        "icon": "trabalho",
-        "created_at": null,
-        "updated_at": null
-    },
-    {
-        "id": 5,
-        "name": "Passagem de Ano",
-        "icon": "trabalho",
-        "created_at": null,
-        "updated_at": null
-    },
-    {
-        "id": 6,
-        "name": "Nova Lista",
-        "icon": "trabalho",
-        "created_at": "2017-01-13 15:09:42",
-        "updated_at": "2017-01-13 16:03:15"
-    },
-    {
-        "id": 7,
-        "name": "teste23",
-        "icon": "natalol11",
-        "created_at": "2017-01-13 15:22:43",
-        "updated_at": "2017-01-13 15:22:43"
-    },
-    {
-        "id": 8,
-        "name": "teste234312",
-        "icon": "natalol11",
-        "created_at": "2017-01-13 15:29:30",
-        "updated_at": "2017-01-13 15:29:30"
-    },
-    {
-        "id": 9,
-        "name": "teste234312",
-        "icon": "natalol11",
-        "created_at": "2017-01-13 15:29:42",
-        "updated_at": "2017-01-13 15:29:42"
-    },
-    {
-        "id": 11,
-        "name": "teste234312",
-        "icon": "natalol11",
-        "created_at": "2017-01-13 15:30:37",
-        "updated_at": "2017-01-13 15:30:37"
-    },
-    {
-        "id": 12,
-        "name": "Nova Lista",
-        "icon": "trabalho",
-        "created_at": "2017-01-13 17:00:40",
-        "updated_at": "2017-01-13 17:00:40"
-    },
-    {
-        "id": 13,
-        "name": "Nova Lista34",
-        "icon": "trabalho",
-        "created_at": "2017-01-13 17:01:13",
-        "updated_at": "2017-01-13 17:01:13"
-    }
-]
+{
+    "status": 200,
+    "msg": "OK",
+    "data": [
+        {
+            "id": 1,
+            "name": "Casa",
+            "icon": "casa",
+            "created_at": null,
+            "updated_at": null
+        },
+        {
+            "id": 2,
+            "name": "Festa Joana",
+            "icon": "prenda",
+            "created_at": null,
+            "updated_at": null
+        },
+        {
+            "id": 3,
+            "name": "Passagem de Ano",
+            "icon": "trabalho",
+            "created_at": null,
+            "updated_at": null
+        }
+    ]
+}
 ```
 
 ### HTTP Request
@@ -392,45 +359,6 @@ $.ajax(settings).done(function (response) {
 
 
 <!-- END_2535121d38b5231985e5394363ce74e1 -->
-<!-- START_45576e17ce2b7b15720a3060e601dbac -->
-## api/lists/create
-
-> Example request:
-
-```bash
-curl "http://localhost/api/lists/create" \
--H "Accept: application/json"
-```
-
-```javascript
-var settings = {
-    "async": true,
-    "crossDomain": true,
-    "url": "http://localhost/api/lists/create",
-    "method": "GET",
-    "headers": {
-        "accept": "application/json"
-    }
-}
-
-$.ajax(settings).done(function (response) {
-    console.log(response);
-});
-```
-
-> Example response:
-
-```json
-null
-```
-
-### HTTP Request
-`GET api/lists/create`
-
-`HEAD api/lists/create`
-
-
-<!-- END_45576e17ce2b7b15720a3060e601dbac -->
 <!-- START_6e80312e61d28100fddedd59ee6f1dc9 -->
 ## List Insert
 
@@ -496,7 +424,17 @@ $.ajax(settings).done(function (response) {
 > Example response:
 
 ```json
-null
+{
+    "status": 200,
+    "msg": "OK",
+    "data": {
+        "id": 1,
+        "name": "Casa",
+        "icon": "casa",
+        "created_at": null,
+        "updated_at": null
+    }
+}
 ```
 
 ### HTTP Request
@@ -506,45 +444,6 @@ null
 
 
 <!-- END_ea2a7ee423318c58030a68197e50cf45 -->
-<!-- START_c15d64c5208426d308516ee8be4abe6c -->
-## api/lists/{list}/edit
-
-> Example request:
-
-```bash
-curl "http://localhost/api/lists/{list}/edit" \
--H "Accept: application/json"
-```
-
-```javascript
-var settings = {
-    "async": true,
-    "crossDomain": true,
-    "url": "http://localhost/api/lists/{list}/edit",
-    "method": "GET",
-    "headers": {
-        "accept": "application/json"
-    }
-}
-
-$.ajax(settings).done(function (response) {
-    console.log(response);
-});
-```
-
-> Example response:
-
-```json
-null
-```
-
-### HTTP Request
-`GET api/lists/{list}/edit`
-
-`HEAD api/lists/{list}/edit`
-
-
-<!-- END_c15d64c5208426d308516ee8be4abe6c -->
 <!-- START_2a34ad1fcadacd12d8f5fe79f9ccc127 -->
 ## List Update
 
@@ -656,40 +555,10 @@ null
 
 
 <!-- END_201a586a6cf4a763fdd4caec7d524eeb -->
-<!-- START_996cd264227f3a33843985d3cb9279a9 -->
-## api/lists/{list}/users
-
-> Example request:
-
-```bash
-curl "http://localhost/api/lists/{list}/users" \
--H "Accept: application/json"
-```
-
-```javascript
-var settings = {
-    "async": true,
-    "crossDomain": true,
-    "url": "http://localhost/api/lists/{list}/users",
-    "method": "POST",
-    "headers": {
-        "accept": "application/json"
-    }
-}
-
-$.ajax(settings).done(function (response) {
-    console.log(response);
-});
-```
-
-
-### HTTP Request
-`POST api/lists/{list}/users`
-
-
-<!-- END_996cd264227f3a33843985d3cb9279a9 -->
 <!-- START_1ddf7af8bf64c4c731a227b1fb9ebb76 -->
-## api/lists/{list}/products
+## Get List Products
+
+Shows the users of a list
 
 > Example request:
 
@@ -733,7 +602,7 @@ Método geral para controla produtos
 <!-- START_d6315c0f80fdc5b8b5cafcb7768d054e -->
 ## List All Products
 
-Listagem de todas os produtos existentes em base de dados
+Lists all products in the database
 
 > Example request:
 
@@ -761,28 +630,42 @@ $.ajax(settings).done(function (response) {
 > Example response:
 
 ```json
-[
-    {
-        "id": 2,
-        "title": "kcwyl9t9Yg",
-        "description": "D9dMZ2C5lB",
-        "quant": "4 peças",
-        "image": "vP8o4sOEEp.png",
-        "list_id": 2,
-        "created_at": null,
-        "updated_at": null
-    },
-    {
-        "id": 3,
-        "title": "HKvTw6q949",
-        "description": "fuNumBKsMJ",
-        "quant": "2 caixas",
-        "image": "rRsHNWfWO0.png",
-        "list_id": 2,
-        "created_at": null,
-        "updated_at": null
-    }
-]
+{
+    "status": 0,
+    "msg": "OK",
+    "data": [
+        {
+            "id": 1,
+            "title": "Q6eHZC3wCW",
+            "description": "AY2bYcHSgf",
+            "quant": "1 unidades",
+            "image": "WKwybAFT4m.png",
+            "list_id": 1,
+            "created_at": null,
+            "updated_at": null
+        },
+        {
+            "id": 2,
+            "title": "iiubCMCmXe",
+            "description": "mSc3gNTz0L",
+            "quant": "4 peças",
+            "image": "C3z4JyMqTT.png",
+            "list_id": 2,
+            "created_at": null,
+            "updated_at": null
+        },
+        {
+            "id": 3,
+            "title": "TGJGjmitte",
+            "description": "z7QqIIcL59",
+            "quant": "2 caixas",
+            "image": "GCJykLM9Q4.png",
+            "list_id": 2,
+            "created_at": null,
+            "updated_at": null
+        }
+    ]
+}
 ```
 
 ### HTTP Request
@@ -793,9 +676,9 @@ $.ajax(settings).done(function (response) {
 
 <!-- END_d6315c0f80fdc5b8b5cafcb7768d054e -->
 <!-- START_05b4383f00fd57c4828a831e7057e920 -->
-## News Insert
+## Product Insert
 
-Inserir uma nova notícia em base de dados
+Inserts a product in the database
 
 > Example request:
 
@@ -827,9 +710,9 @@ $.ajax(settings).done(function (response) {
 
 <!-- END_05b4383f00fd57c4828a831e7057e920 -->
 <!-- START_963ec11fd78da94f0900b0c6baf959a3 -->
-## News Detail
+## Products Detail
 
-Detalhe de uma notícia
+Shows the details of a product
 
 > Example request:
 
@@ -857,7 +740,20 @@ $.ajax(settings).done(function (response) {
 > Example response:
 
 ```json
-null
+{
+    "status": 0,
+    "msg": "OK",
+    "data": {
+        "id": 1,
+        "title": "Q6eHZC3wCW",
+        "description": "AY2bYcHSgf",
+        "quant": "1 unidades",
+        "image": "WKwybAFT4m.png",
+        "list_id": 1,
+        "created_at": null,
+        "updated_at": null
+    }
+}
 ```
 
 ### HTTP Request
@@ -868,9 +764,9 @@ null
 
 <!-- END_963ec11fd78da94f0900b0c6baf959a3 -->
 <!-- START_b7842ce7893c09eb3c53713f82c2e12d -->
-## News Update
+## Product Update
 
-Atualizar uma notícia em base de dados
+Updates a product in the database
 
 > Example request:
 
@@ -904,9 +800,9 @@ $.ajax(settings).done(function (response) {
 
 <!-- END_b7842ce7893c09eb3c53713f82c2e12d -->
 <!-- START_1d809ca5e8b10fa7fdc75d04506a55ea -->
-## News Delete
+## Product Delete
 
-Apagar uma notícia da base de dados
+Deletes a product in the database
 
 > Example request:
 
@@ -937,41 +833,13 @@ $.ajax(settings).done(function (response) {
 
 
 <!-- END_1d809ca5e8b10fa7fdc75d04506a55ea -->
-<!-- START_c9ceb101ecf927d266fb890d551c7e84 -->
-## api/products/upload
+#Users
 
-> Example request:
-
-```bash
-curl "http://localhost/api/products/upload" \
--H "Accept: application/json"
-```
-
-```javascript
-var settings = {
-    "async": true,
-    "crossDomain": true,
-    "url": "http://localhost/api/products/upload",
-    "method": "POST",
-    "headers": {
-        "accept": "application/json"
-    }
-}
-
-$.ajax(settings).done(function (response) {
-    console.log(response);
-});
-```
-
-
-### HTTP Request
-`POST api/products/upload`
-
-
-<!-- END_c9ceb101ecf927d266fb890d551c7e84 -->
-#general
+Controller for user related operations
 <!-- START_da5727be600e4865c1b632f7745c8e91 -->
-## api/users
+## List all Users
+
+Lists all users in the database
 
 > Example request:
 
@@ -999,44 +867,72 @@ $.ajax(settings).done(function (response) {
 > Example response:
 
 ```json
-[
-    {
-        "id": 1,
-        "name": "Carlos",
-        "color": "red",
-        "email": "carlos@ua.pt",
-        "family_id": null,
-        "created_at": null,
-        "updated_at": null
-    },
-    {
-        "id": 2,
-        "name": "Alexandre",
-        "color": "blue",
-        "email": "alex@ua.pt",
-        "family_id": 2,
-        "created_at": null,
-        "updated_at": null
-    },
-    {
-        "id": 3,
-        "name": "Ana",
-        "color": "pink",
-        "email": "ana@ua.pt",
-        "family_id": 2,
-        "created_at": null,
-        "updated_at": null
-    },
-    {
-        "id": 4,
-        "name": "Martinho",
-        "color": "red",
-        "email": "martinho@ua.pt",
-        "family_id": 2,
-        "created_at": null,
-        "updated_at": null
-    }
-]
+{
+    "status": 200,
+    "msg": "OK",
+    "data": [
+        {
+            "id": 1,
+            "name": "Carlos",
+            "color": "red",
+            "email": "carlos@ua.pt",
+            "birthday": "22\/10\/2000",
+            "family_id": null,
+            "created_at": null,
+            "updated_at": null
+        },
+        {
+            "id": 2,
+            "name": "Alexandre",
+            "color": "blue",
+            "email": "alex@ua.pt",
+            "birthday": "22\/10\/2000",
+            "family_id": 2,
+            "created_at": null,
+            "updated_at": null
+        },
+        {
+            "id": 3,
+            "name": "Ana",
+            "color": "pink",
+            "email": "ana@ua.pt",
+            "birthday": "22\/10\/2000",
+            "family_id": 2,
+            "created_at": null,
+            "updated_at": null
+        },
+        {
+            "id": 4,
+            "name": "Martinho",
+            "color": "red",
+            "email": "martinho@ua.pt",
+            "birthday": "22\/10\/2000",
+            "family_id": 2,
+            "created_at": null,
+            "updated_at": null
+        },
+        {
+            "id": 5,
+            "name": "Catarina",
+            "color": "yellow",
+            "email": "cat@ua.pt",
+            "birthday": "22\/10\/2000",
+            "family_id": 2,
+            "created_at": null,
+            "updated_at": null
+        },
+        {
+            "id": 6,
+            "name": "tester",
+            "color": "red2",
+            "email": "rirttt@ua.pt",
+            "birthday": "12\/11\/1992",
+            "family_id": null,
+            "created_at": "2017-01-17 16:04:19",
+            "updated_at": "2017-01-17 16:05:16"
+        }
+    ]
+}
 ```
 
 ### HTTP Request
@@ -1046,47 +942,10 @@ $.ajax(settings).done(function (response) {
 
 
 <!-- END_da5727be600e4865c1b632f7745c8e91 -->
-<!-- START_4e4753f9744661bac1222d8c1d4f2ff5 -->
-## api/users/create
-
-> Example request:
-
-```bash
-curl "http://localhost/api/users/create" \
--H "Accept: application/json"
-```
-
-```javascript
-var settings = {
-    "async": true,
-    "crossDomain": true,
-    "url": "http://localhost/api/users/create",
-    "method": "GET",
-    "headers": {
-        "accept": "application/json"
-    }
-}
-
-$.ajax(settings).done(function (response) {
-    console.log(response);
-});
-```
-
-> Example response:
-
-```json
-null
-```
-
-### HTTP Request
-`GET api/users/create`
-
-`HEAD api/users/create`
-
-
-<!-- END_4e4753f9744661bac1222d8c1d4f2ff5 -->
 <!-- START_12e37982cc5398c7100e59625ebb5514 -->
-## api/users
+## User Insert
+
+Inserts a user in the database
 
 > Example request:
 
@@ -1118,7 +977,9 @@ $.ajax(settings).done(function (response) {
 
 <!-- END_12e37982cc5398c7100e59625ebb5514 -->
 <!-- START_8f99b42746e451f8dc43742e118cb47b -->
-## api/users/{user}
+## User Detail
+
+Gives the details of a user
 
 > Example request:
 
@@ -1147,13 +1008,18 @@ $.ajax(settings).done(function (response) {
 
 ```json
 {
-    "id": 1,
-    "name": "Carlos",
-    "color": "red",
-    "email": "carlos@ua.pt",
-    "family_id": null,
-    "created_at": null,
-    "updated_at": null
+    "status": 200,
+    "msg": "OK",
+    "data": {
+        "id": 1,
+        "name": "Carlos",
+        "color": "red",
+        "email": "carlos@ua.pt",
+        "birthday": "22\/10\/2000",
+        "family_id": null,
+        "created_at": null,
+        "updated_at": null
+    }
 }
 ```
 
@@ -1164,47 +1030,10 @@ $.ajax(settings).done(function (response) {
 
 
 <!-- END_8f99b42746e451f8dc43742e118cb47b -->
-<!-- START_6fd4489b8b8c9812aa72c8e332ce8b39 -->
-## api/users/{user}/edit
-
-> Example request:
-
-```bash
-curl "http://localhost/api/users/{user}/edit" \
--H "Accept: application/json"
-```
-
-```javascript
-var settings = {
-    "async": true,
-    "crossDomain": true,
-    "url": "http://localhost/api/users/{user}/edit",
-    "method": "GET",
-    "headers": {
-        "accept": "application/json"
-    }
-}
-
-$.ajax(settings).done(function (response) {
-    console.log(response);
-});
-```
-
-> Example response:
-
-```json
-null
-```
-
-### HTTP Request
-`GET api/users/{user}/edit`
-
-`HEAD api/users/{user}/edit`
-
-
-<!-- END_6fd4489b8b8c9812aa72c8e332ce8b39 -->
 <!-- START_48a3115be98493a3c866eb0e23347262 -->
-## api/users/{user}
+## User Update
+
+Update a family in the database
 
 > Example request:
 
@@ -1238,7 +1067,9 @@ $.ajax(settings).done(function (response) {
 
 <!-- END_48a3115be98493a3c866eb0e23347262 -->
 <!-- START_d2db7a9fe3abd141d5adbc367a88e969 -->
-## api/users/{user}
+## Delete User
+
+Deletes a user in the database
 
 > Example request:
 

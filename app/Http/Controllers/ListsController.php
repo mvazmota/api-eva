@@ -65,6 +65,7 @@ class ListsController extends Controller
             'icon' => 'The icon field is required',
             'users' => 'The users field is required',
         ]);
+
         if($validator->fails())
         {
             $errors = $validator->errors()->all();
@@ -194,7 +195,7 @@ class ListsController extends Controller
 
         $lists->delete();
 
-        return $this->_result('List successfully removed');
+        return $this->_result('List '.$id.' successfully removed');
     }
 
     /**

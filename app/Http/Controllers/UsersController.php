@@ -32,7 +32,11 @@ class UsersController extends Controller
     {
         $users = User::get();
 
-        return $this->_result($users);
+        if ($users->isEmpty()){
+            return $this->_result('No users on the database', 404, "NOK");
+        } else {
+            return $this->_result($users);
+        }
     }
 
     /**
@@ -54,28 +58,32 @@ class UsersController extends Controller
             'email' => 'required',
             'color' => 'required',
             'family_id' => 'required',
-            'password' => 'required'
+            'password' => 'required',
+            'birthday' => 'required'
         ],
-            [
-                'name' => 'O campo de título é obrigatório',
-                'email' => 'O campo de descrição é obrigatório',
-                'color' => 'O campo de imagem é obrigatório',
-            ]);
+        [
+            'name' => 'The name field is required',
+            'email' => 'The email field is required',
+            'color' => 'The color field is required',
+            'family_id' => 'The family_id field is required',
+            'password' => 'The password field is required',
+            'birthday' => 'The birthday field is required',
+        ]);
 
         if($validator->fails())
         {
             $errors = $validator->errors()->all();
 
-            return $this->_result($errors, 1, 'NOK');
+            return $this->_result($errors, 400, 'NOK');
         }
 
-        // adds to database
         $users = User::create([
             'name' => $data['name'],
             'email' => $data['email'],
             'color' => $data['color'],
             'password' => $data['password'],
             'family_id' => $data['family_id'],
+            'birthday' => $data['birthday'],
         ]);
 
         return $this->_result($users);
@@ -95,10 +103,8 @@ class UsersController extends Controller
     {
         $users = User::whereId($id)->first();
 
-//        print_r($users);
-
         if (empty($users)){
-            return $this->_result('User doesn\'t exist', 1, "NOK");
+            return $this->_result('User doesn\'t exist', 404, "NOK");
         } else {
             return $this->_result($users);
         }
@@ -117,25 +123,30 @@ class UsersController extends Controller
     public function update(Request $request, $id)
     {
         $data = $request->all();
-//        $validator = Validator::make($data, [
-//            'name' => 'required',
-//            'email' => 'required',
-//            'color' => 'required',
-//            'family_id' => 'required',
-//            'password' => 'required'
-//        ],
-//            [
-//                'name' => 'O campo de título é obrigatório',
-//                'email' => 'O campo de descrição é obrigatório',
-//                'color' => 'O campo de imagem é obrigatório',
-//            ]);
-//
-//        if($validator->fails())
-//        {
-//            $errors = $validator->errors()->all();
-//
-//            return $this->_result($errors, 1, 'NOK');
-//        }
+
+        $validator = Validator::make($data, [
+            'name' => 'required',
+            'email' => 'required',
+            'color' => 'required',
+            'family_id' => 'required',
+            'password' => 'required',
+            'birthday' => 'required'
+        ],
+        [
+            'name' => 'The name field is required',
+            'email' => 'The email field is required',
+            'color' => 'The color field is required',
+            'family_id' => 'The family_id field is required',
+            'password' => 'The password field is required',
+            'birthday' => 'The birthday field is required',
+        ]);
+
+        if($validator->fails())
+        {
+            $errors = $validator->errors()->all();
+
+            return $this->_result($errors, 400, 'NOK');
+        }
 
         $users = User::whereId($id)->first();
         $users->name = $data['name'];
@@ -143,11 +154,11 @@ class UsersController extends Controller
         $users->color = $data['color'];
         $users->family_id = $data['family_id'];
         $users->password = $data['password'];
+        $users->birthday = $data['birthday'];
         $users->save();
 
         return $this->_result($users);
     }
-
 
     /**
      * Delete User
@@ -164,20 +175,19 @@ class UsersController extends Controller
         $users = User::whereId($id)->first();
 
         if (empty($users)){
-            return $this->_result('User doesn\'t exist');
-
-        } else {
-            $users->delete();
-
-            return $this->_result('User '.$id.' removed with sucess');
+            return $this->_result('User doesn\'t exist', 404, 'NOK');
         }
+
+        $users->delete();
+
+        return $this->_result('User '.$id.' removed with sucess');
     }
 
     /**
      * @hideFromAPIDocumentation
      */
 
-    private function _result($data, $status = 0, $msg = 'OK')
+    private function _result($data, $status = 200, $msg = 'OK')
     {
         return json_encode(array(
             'status' => $status,
