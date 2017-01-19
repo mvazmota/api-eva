@@ -40,7 +40,9 @@ class UsersController extends Controller
 //            return $this->_result($users);
 //        }
         $user = Auth::user();
-        return $user;
+
+        return array('user'=>$user, 'status'=>'ok');
+//        return $user;
     }
 
     /**
