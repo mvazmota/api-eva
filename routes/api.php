@@ -28,5 +28,5 @@ Route::get('family/{family}/users', 'FamilyController@getusers');
 
 //Users
 Route::resource('users', 'UsersController');
-
+Route::get('user', 'UsersController@authUser');
 

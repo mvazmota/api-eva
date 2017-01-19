@@ -636,30 +636,30 @@ $.ajax(settings).done(function (response) {
     "data": [
         {
             "id": 1,
-            "title": "Q6eHZC3wCW",
-            "description": "AY2bYcHSgf",
+            "title": "KszMxA8NXz",
+            "description": "9AAEIcIFPg",
             "quant": "1 unidades",
-            "image": "WKwybAFT4m.png",
+            "image": "3oBtKcfgjA.png",
             "list_id": 1,
             "created_at": null,
             "updated_at": null
         },
         {
             "id": 2,
-            "title": "iiubCMCmXe",
-            "description": "mSc3gNTz0L",
+            "title": "f2Y051TmvE",
+            "description": "SYgKmlsHrW",
             "quant": "4 peças",
-            "image": "C3z4JyMqTT.png",
+            "image": "7R0LJGU5bH.png",
             "list_id": 2,
             "created_at": null,
             "updated_at": null
         },
         {
             "id": 3,
-            "title": "TGJGjmitte",
-            "description": "z7QqIIcL59",
+            "title": "pMXe246nwd",
+            "description": "wCugpz4MrL",
             "quant": "2 caixas",
-            "image": "GCJykLM9Q4.png",
+            "image": "P7E1LWeskn.png",
             "list_id": 2,
             "created_at": null,
             "updated_at": null
@@ -745,10 +745,10 @@ $.ajax(settings).done(function (response) {
     "msg": "OK",
     "data": {
         "id": 1,
-        "title": "Q6eHZC3wCW",
-        "description": "AY2bYcHSgf",
+        "title": "KszMxA8NXz",
+        "description": "9AAEIcIFPg",
         "quant": "1 unidades",
-        "image": "WKwybAFT4m.png",
+        "image": "3oBtKcfgjA.png",
         "list_id": 1,
         "created_at": null,
         "updated_at": null
@@ -868,70 +868,7 @@ $.ajax(settings).done(function (response) {
 
 ```json
 {
-    "status": 200,
-    "msg": "OK",
-    "data": [
-        {
-            "id": 1,
-            "name": "Carlos",
-            "color": "red",
-            "email": "carlos@ua.pt",
-            "birthday": "22\/10\/2000",
-            "family_id": null,
-            "created_at": null,
-            "updated_at": null
-        },
-        {
-            "id": 2,
-            "name": "Alexandre",
-            "color": "blue",
-            "email": "alex@ua.pt",
-            "birthday": "22\/10\/2000",
-            "family_id": 2,
-            "created_at": null,
-            "updated_at": null
-        },
-        {
-            "id": 3,
-            "name": "Ana",
-            "color": "pink",
-            "email": "ana@ua.pt",
-            "birthday": "22\/10\/2000",
-            "family_id": 2,
-            "created_at": null,
-            "updated_at": null
-        },
-        {
-            "id": 4,
-            "name": "Martinho",
-            "color": "red",
-            "email": "martinho@ua.pt",
-            "birthday": "22\/10\/2000",
-            "family_id": 2,
-            "created_at": null,
-            "updated_at": null
-        },
-        {
-            "id": 5,
-            "name": "Catarina",
-            "color": "yellow",
-            "email": "cat@ua.pt",
-            "birthday": "22\/10\/2000",
-            "family_id": 2,
-            "created_at": null,
-            "updated_at": null
-        },
-        {
-            "id": 6,
-            "name": "tester",
-            "color": "red2",
-            "email": "rirttt@ua.pt",
-            "birthday": "12\/11\/1992",
-            "family_id": null,
-            "created_at": "2017-01-17 16:04:19",
-            "updated_at": "2017-01-17 16:05:16"
-        }
-    ]
+    "error": "Unauthenticated."
 }
 ```
 
@@ -1008,18 +945,7 @@ $.ajax(settings).done(function (response) {
 
 ```json
 {
-    "status": 200,
-    "msg": "OK",
-    "data": {
-        "id": 1,
-        "name": "Carlos",
-        "color": "red",
-        "email": "carlos@ua.pt",
-        "birthday": "22\/10\/2000",
-        "family_id": null,
-        "created_at": null,
-        "updated_at": null
-    }
+    "error": "Unauthenticated."
 }
 ```
 
@@ -1100,3 +1026,46 @@ $.ajax(settings).done(function (response) {
 
 
 <!-- END_d2db7a9fe3abd141d5adbc367a88e969 -->
+<!-- START_2ea88ff35aa222f5582e50f39a2b35fd -->
+## Authenticate User
+
+Authenticate a user in the database
+
+> Example request:
+
+```bash
+curl "http://localhost/api/user" \
+-H "Accept: application/json"
+```
+
+```javascript
+var settings = {
+    "async": true,
+    "crossDomain": true,
+    "url": "http://localhost/api/user",
+    "method": "GET",
+    "headers": {
+        "accept": "application/json"
+    }
+}
+
+$.ajax(settings).done(function (response) {
+    console.log(response);
+});
+```
+
+> Example response:
+
+```json
+{
+    "error": "Unauthenticated."
+}
+```
+
+### HTTP Request
+`GET api/user`
+
+`HEAD api/user`
+
+
+<!-- END_2ea88ff35aa222f5582e50f39a2b35fd -->

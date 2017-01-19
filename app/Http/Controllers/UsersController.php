@@ -32,17 +32,13 @@ class UsersController extends Controller
 
     public function index()
     {
-//        $users = User::get();
+        $users = User::get();
 
-//        if ($users->isEmpty()){
-//            return $this->_result('No users on the database', 404, "NOK");
-//        } else {
-//            return $this->_result($users);
-//        }
-        $user = Auth::user();
-
-        return array('user'=>$user, 'status'=>'ok');
-//        return $user;
+        if ($users->isEmpty()){
+            return $this->_result('No users on the database', 404, "NOK");
+        } else {
+            return $this->_result($users);
+        }
     }
 
     /**
@@ -187,6 +183,21 @@ class UsersController extends Controller
         $users->delete();
 
         return $this->_result('User '.$id.' removed with sucess');
+    }
+
+    /**
+     * Authenticate User
+     *
+     * Authenticate a user in the database
+     *
+     * @return array
+     */
+
+    public function authUser()
+    {
+        $users = Auth::user();
+
+        return $this->_result($users);
     }
 
     /**
