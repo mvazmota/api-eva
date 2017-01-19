@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 use App\User;
 use App\Http\Requests;
 use Validator;
+use Auth;
+
 
 /**
  * @resource Users
@@ -17,7 +19,7 @@ class UsersController extends Controller
 {
     public function __construct()
     {
-//        $this->middleware('auth:api', ['except' => ['index','show']]);
+        $this->middleware('auth:api', ['except' => ['index','show']]);
     }
 
     /**
@@ -32,11 +34,13 @@ class UsersController extends Controller
     {
         $users = User::get();
 
-        if ($users->isEmpty()){
-            return $this->_result('No users on the database', 404, "NOK");
-        } else {
-            return $this->_result($users);
-        }
+//        if ($users->isEmpty()){
+//            return $this->_result('No users on the database', 404, "NOK");
+//        } else {
+//            return $this->_result($users);
+//        }
+        $user = Auth::user();
+        return $user;
     }
 
     /**
