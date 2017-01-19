@@ -51,9 +51,10 @@ class FamilyController extends Controller
         $validator = Validator::make($data, [
             'name' => 'required|max:20',
         ],
-            [
-                'name' => 'O campo de nome é obrigatório',
-            ]);
+        [
+            'name' => 'O campo de nome é obrigatório',
+        ]);
+
         if($validator->fails())
         {
             $errors = $validator->errors()->all();
@@ -104,9 +105,10 @@ class FamilyController extends Controller
         $validator = Validator::make($data, [
             'name' => 'required|max:20',
         ],
-            [
-                'name' => 'O campo de nome é obrigatório',
-            ]);
+        [
+            'name' => 'O campo de nome é obrigatório',
+        ]);
+
         if($validator->fails())
         {
             $errors = $validator->errors()->all();

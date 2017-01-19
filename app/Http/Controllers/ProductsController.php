@@ -199,7 +199,6 @@ class ProductsController extends Controller
             $request->file('image')->move(public_path('images'), $path);
 
 
-
             $products = Products::whereId($id)->first();
             $products->title = $data['title'];
             $products->description = $data['description'];
