@@ -32,7 +32,7 @@ class UsersController extends Controller
 
     public function index()
     {
-        $users = User::get();
+//        $users = User::get();
 
 //        if ($users->isEmpty()){
 //            return $this->_result('No users on the database', 404, "NOK");
