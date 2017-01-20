@@ -183,6 +183,8 @@ return [
 
         Barryvdh\Cors\ServiceProvider::class,
 
+        Spatie\GoogleCalendar\GoogleCalendarServiceProvider::class,
+
     ],
 
     /*
@@ -231,6 +233,7 @@ return [
         'Validator' => Illuminate\Support\Facades\Validator::class,
         'View' => Illuminate\Support\Facades\View::class,
 
+        'GoogleCalendar' => Spatie\GoogleCalendar\GoogleCalendarFacade::class,
 
 
     ],
