@@ -12,27 +12,75 @@ class ProductsTableSeeder extends Seeder
     public function run()
     {
         DB::table('products')->insert([
-            'title' => str_random(10),
-            'description' => str_random(10),
-            'quant' => '1 unidades',
-            'image' => str_random(10).'.png',
+            'title' => 'Bananas',
+            'description' => 'Comprar as mais baratas!',
+            'quant' => '1 cacho',
+            'image' => '',
             'list_id' => '1',
         ]);
 
         DB::table('products')->insert([
-            'title' => str_random(10),
-            'description' => str_random(10),
-            'quant' => '4 peças',
-            'image' => str_random(10).'.png',
+            'title' => 'Laranjas',
+            'description' => 'Comprar as mais baratas!',
+            'quant' => '6',
+            'image' => '',
+            'list_id' => '1',
+        ]);
+
+        DB::table('products')->insert([
+            'title' => 'Café',
+            'description' => 'Comprar as mais baratas!',
+            'quant' => '2 pacotes',
+            'image' => '',
+            'list_id' => '1',
+        ]);
+
+        DB::table('products')->insert([
+            'title' => 'Bananas',
+            'description' => 'Comprar as mais baratas!',
+            'quant' => '1 cacho',
+            'image' => '',
+            'list_id' => '3',
+        ]);
+
+        DB::table('products')->insert([
+            'title' => 'Laranjas',
+            'description' => 'Comprar as mais baratas!',
+            'quant' => '6',
+            'image' => '',
             'list_id' => '2',
         ]);
 
         DB::table('products')->insert([
-            'title' => str_random(10),
-            'description' => str_random(10),
-            'quant' => '2 caixas',
-            'image' => str_random(10).'.png',
+            'title' => 'Café',
+            'description' => 'Comprar as mais baratas!',
+            'quant' => '2 pacotes',
+            'image' => '',
             'list_id' => '2',
+        ]);
+
+        DB::table('products')->insert([
+            'title' => 'Bananas',
+            'description' => 'Comprar as mais baratas!',
+            'quant' => '1 cacho',
+            'image' => '',
+            'list_id' => '3',
+        ]);
+
+        DB::table('products')->insert([
+            'title' => 'Laranjas',
+            'description' => 'Comprar as mais baratas!',
+            'quant' => '6',
+            'image' => '',
+            'list_id' => '3',
+        ]);
+
+        DB::table('products')->insert([
+            'title' => 'Café',
+            'description' => 'Comprar as mais baratas!',
+            'quant' => '2 pacotes',
+            'image' => '',
+            'list_id' => '3',
         ]);
     }
 }

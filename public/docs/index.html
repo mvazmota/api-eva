@@ -420,7 +420,7 @@ $.ajax(settings).done(function (response) {
 <!-- END_956541e48346440c128d087e6133ce21 -->
 <!-- START_201a586a6cf4a763fdd4caec7d524eeb -->
 <h2>Users of a List</h2>
-<p>Gives the users linked of a list</p>
+<p>Returns the users linked to a list</p>
 <blockquote>
 <p>Example request:</p>
 </blockquote>
@@ -476,6 +476,214 @@ $.ajax(settings).done(function (response) {
 <p><code>GET api/lists/{list}/products</code></p>
 <p><code>HEAD api/lists/{list}/products</code></p>
 <!-- END_1ddf7af8bf64c4c731a227b1fb9ebb76 -->
+<!-- START_0f5e59e5d39a318daed6631442199c5d -->
+<h2>List all Events</h2>
+<p>Lists all events in the database</p>
+<blockquote>
+<p>Example request:</p>
+</blockquote>
+<pre><code class="language-bash">curl "http://localhost/api/events" \
+-H "Accept: application/json"</code></pre>
+<pre><code class="language-javascript">var settings = {
+    "async": true,
+    "crossDomain": true,
+    "url": "http://localhost/api/events",
+    "method": "GET",
+    "headers": {
+        "accept": "application/json"
+    }
+}
+
+$.ajax(settings).done(function (response) {
+    console.log(response);
+});</code></pre>
+<blockquote>
+<p>Example response:</p>
+</blockquote>
+<pre><code class="language-json">{
+    "status": 200,
+    "msg": "OK",
+    "data": [
+        {
+            "id": 1,
+            "title": "Festa da Catarina",
+            "date": "09\/01\/2017",
+            "time": "12h30",
+            "location": "Aveiro",
+            "description": "Que festa que vai ser!",
+            "created_at": null,
+            "updated_at": null
+        },
+        {
+            "id": 2,
+            "title": "Festa da Catarina2",
+            "date": "22\/01\/2017",
+            "time": "12h30",
+            "location": "Aveiro",
+            "description": "Que festa que vai ser!",
+            "created_at": null,
+            "updated_at": null
+        },
+        {
+            "id": 3,
+            "title": "Festa da Catarina",
+            "date": "12\/02\/2017",
+            "time": "12h30",
+            "location": "Aveiro",
+            "description": "Que festa que vai ser!",
+            "created_at": null,
+            "updated_at": null
+        }
+    ]
+}</code></pre>
+<h3>HTTP Request</h3>
+<p><code>GET api/events</code></p>
+<p><code>HEAD api/events</code></p>
+<!-- END_0f5e59e5d39a318daed6631442199c5d -->
+<!-- START_de3413bf02c9bb71627fa96e1c1c409f -->
+<h2>Event Insert</h2>
+<p>Inserts an event in the database</p>
+<blockquote>
+<p>Example request:</p>
+</blockquote>
+<pre><code class="language-bash">curl "http://localhost/api/events" \
+-H "Accept: application/json"</code></pre>
+<pre><code class="language-javascript">var settings = {
+    "async": true,
+    "crossDomain": true,
+    "url": "http://localhost/api/events",
+    "method": "POST",
+    "headers": {
+        "accept": "application/json"
+    }
+}
+
+$.ajax(settings).done(function (response) {
+    console.log(response);
+});</code></pre>
+<h3>HTTP Request</h3>
+<p><code>POST api/events</code></p>
+<!-- END_de3413bf02c9bb71627fa96e1c1c409f -->
+<!-- START_c54bb5cf8265a0ccd3737adca15dfb18 -->
+<h2>Event Detail</h2>
+<p>Gives the details of a event</p>
+<blockquote>
+<p>Example request:</p>
+</blockquote>
+<pre><code class="language-bash">curl "http://localhost/api/events/{event}" \
+-H "Accept: application/json"</code></pre>
+<pre><code class="language-javascript">var settings = {
+    "async": true,
+    "crossDomain": true,
+    "url": "http://localhost/api/events/{event}",
+    "method": "GET",
+    "headers": {
+        "accept": "application/json"
+    }
+}
+
+$.ajax(settings).done(function (response) {
+    console.log(response);
+});</code></pre>
+<blockquote>
+<p>Example response:</p>
+</blockquote>
+<pre><code class="language-json">{
+    "status": 200,
+    "msg": "OK",
+    "data": {
+        "id": 1,
+        "title": "Festa da Catarina",
+        "date": "09\/01\/2017",
+        "time": "12h30",
+        "location": "Aveiro",
+        "description": "Que festa que vai ser!",
+        "created_at": null,
+        "updated_at": null
+    }
+}</code></pre>
+<h3>HTTP Request</h3>
+<p><code>GET api/events/{event}</code></p>
+<p><code>HEAD api/events/{event}</code></p>
+<!-- END_c54bb5cf8265a0ccd3737adca15dfb18 -->
+<!-- START_d16967fd1d3d935666f7e8112a1a4451 -->
+<h2>Event Update</h2>
+<p>Update an event in the database</p>
+<blockquote>
+<p>Example request:</p>
+</blockquote>
+<pre><code class="language-bash">curl "http://localhost/api/events/{event}" \
+-H "Accept: application/json"</code></pre>
+<pre><code class="language-javascript">var settings = {
+    "async": true,
+    "crossDomain": true,
+    "url": "http://localhost/api/events/{event}",
+    "method": "PUT",
+    "headers": {
+        "accept": "application/json"
+    }
+}
+
+$.ajax(settings).done(function (response) {
+    console.log(response);
+});</code></pre>
+<h3>HTTP Request</h3>
+<p><code>PUT api/events/{event}</code></p>
+<p><code>PATCH api/events/{event}</code></p>
+<!-- END_d16967fd1d3d935666f7e8112a1a4451 -->
+<!-- START_379a30feb2949828b5f95efbfd7649c3 -->
+<h2>Delete Event</h2>
+<p>Deletes an event in the database</p>
+<blockquote>
+<p>Example request:</p>
+</blockquote>
+<pre><code class="language-bash">curl "http://localhost/api/events/{event}" \
+-H "Accept: application/json"</code></pre>
+<pre><code class="language-javascript">var settings = {
+    "async": true,
+    "crossDomain": true,
+    "url": "http://localhost/api/events/{event}",
+    "method": "DELETE",
+    "headers": {
+        "accept": "application/json"
+    }
+}
+
+$.ajax(settings).done(function (response) {
+    console.log(response);
+});</code></pre>
+<h3>HTTP Request</h3>
+<p><code>DELETE api/events/{event}</code></p>
+<!-- END_379a30feb2949828b5f95efbfd7649c3 -->
+<!-- START_0950a4da92a2c2dfccd656f9df9ea43e -->
+<h2>Users of a Event</h2>
+<p>Returns the users linked to an event</p>
+<blockquote>
+<p>Example request:</p>
+</blockquote>
+<pre><code class="language-bash">curl "http://localhost/api/events/{event}/users" \
+-H "Accept: application/json"</code></pre>
+<pre><code class="language-javascript">var settings = {
+    "async": true,
+    "crossDomain": true,
+    "url": "http://localhost/api/events/{event}/users",
+    "method": "GET",
+    "headers": {
+        "accept": "application/json"
+    }
+}
+
+$.ajax(settings).done(function (response) {
+    console.log(response);
+});</code></pre>
+<blockquote>
+<p>Example response:</p>
+</blockquote>
+<pre><code class="language-json">null</code></pre>
+<h3>HTTP Request</h3>
+<p><code>GET api/events/{event}/users</code></p>
+<p><code>HEAD api/events/{event}/users</code></p>
+<!-- END_0950a4da92a2c2dfccd656f9df9ea43e -->
 <h1>Produtos</h1>
 <p>Método geral para controla produtos</p>
 <!-- START_d6315c0f80fdc5b8b5cafcb7768d054e -->
@@ -508,31 +716,91 @@ $.ajax(settings).done(function (response) {
     "data": [
         {
             "id": 1,
-            "title": "KszMxA8NXz",
-            "description": "9AAEIcIFPg",
-            "quant": "1 unidades",
-            "image": "3oBtKcfgjA.png",
+            "title": "teste",
+            "description": "teste",
+            "quant": "2 chachos",
+            "image": "",
+            "list_id": 1,
+            "created_at": null,
+            "updated_at": "2017-01-23 14:26:14"
+        },
+        {
+            "id": 2,
+            "title": "Laranjas",
+            "description": "Comprar as mais baratas!",
+            "quant": "6",
+            "image": "",
             "list_id": 1,
             "created_at": null,
             "updated_at": null
         },
         {
-            "id": 2,
-            "title": "f2Y051TmvE",
-            "description": "SYgKmlsHrW",
-            "quant": "4 peças",
-            "image": "7R0LJGU5bH.png",
+            "id": 3,
+            "title": "Café",
+            "description": "Comprar as mais baratas!",
+            "quant": "2 pacotes",
+            "image": "",
+            "list_id": 1,
+            "created_at": null,
+            "updated_at": null
+        },
+        {
+            "id": 4,
+            "title": "Bananas",
+            "description": "Comprar as mais baratas!",
+            "quant": "1 cacho",
+            "image": "",
+            "list_id": 3,
+            "created_at": null,
+            "updated_at": null
+        },
+        {
+            "id": 5,
+            "title": "Laranjas",
+            "description": "Comprar as mais baratas!",
+            "quant": "6",
+            "image": "",
             "list_id": 2,
             "created_at": null,
             "updated_at": null
         },
         {
-            "id": 3,
-            "title": "pMXe246nwd",
-            "description": "wCugpz4MrL",
-            "quant": "2 caixas",
-            "image": "P7E1LWeskn.png",
+            "id": 6,
+            "title": "Café",
+            "description": "Comprar as mais baratas!",
+            "quant": "2 pacotes",
+            "image": "",
             "list_id": 2,
+            "created_at": null,
+            "updated_at": null
+        },
+        {
+            "id": 7,
+            "title": "Bananas",
+            "description": "Comprar as mais baratas!",
+            "quant": "1 cacho",
+            "image": "",
+            "list_id": 3,
+            "created_at": null,
+            "updated_at": null
+        },
+        {
+            "id": 8,
+            "title": "Laranjas",
+            "description": "Comprar as mais baratas!",
+            "quant": "6",
+            "image": "",
+            "list_id": 3,
+            "created_at": null,
+            "updated_at": null
+        },
+        {
+            "id": 9,
+            "title": "Café",
+            "description": "Comprar as mais baratas!",
+            "quant": "2 pacotes",
+            "image": "",
+            "list_id": 3,
             "created_at": null,
             "updated_at": null
         }
@@ -595,13 +863,13 @@ $.ajax(settings).done(function (response) {
     "msg": "OK",
     "data": {
         "id": 1,
-        "title": "KszMxA8NXz",
-        "description": "9AAEIcIFPg",
-        "quant": "1 unidades",
-        "image": "3oBtKcfgjA.png",
+        "title": "teste",
+        "description": "teste",
+        "quant": "2 chachos",
+        "image": "",
         "list_id": 1,
         "created_at": null,
-        "updated_at": null
+        "updated_at": "2017-01-23 14:26:14"
     }
 }</code></pre>
 <h3>HTTP Request</h3>
@@ -684,7 +952,60 @@ $.ajax(settings).done(function (response) {
 <p>Example response:</p>
 </blockquote>
 <pre><code class="language-json">{
-    "error": "Unauthenticated."
+    "status": 200,
+    "msg": "OK",
+    "data": [
+        {
+            "id": 1,
+            "name": "Carlos",
+            "color": "red",
+            "email": "carlos@ua.pt",
+            "birthday": "22\/10\/2000",
+            "family_id": null,
+            "created_at": null,
+            "updated_at": null
+        },
+        {
+            "id": 2,
+            "name": "Alexandre",
+            "color": "blue",
+            "email": "alex@ua.pt",
+            "birthday": "22\/10\/2000",
+            "family_id": 2,
+            "created_at": null,
+            "updated_at": null
+        },
+        {
+            "id": 3,
+            "name": "Ana",
+            "color": "pink",
+            "email": "ana@ua.pt",
+            "birthday": "22\/10\/2000",
+            "family_id": 2,
+            "created_at": null,
+            "updated_at": null
+        },
+        {
+            "id": 4,
+            "name": "Martinho",
+            "color": "red",
+            "email": "martinho@ua.pt",
+            "birthday": "22\/10\/2000",
+            "family_id": 2,
+            "created_at": null,
+            "updated_at": null
+        },
+        {
+            "id": 5,
+            "name": "Catarina",
+            "color": "yellow",
+            "email": "cat@ua.pt",
+            "birthday": "22\/10\/2000",
+            "family_id": 2,
+            "created_at": null,
+            "updated_at": null
+        }
+    ]
 }</code></pre>
 <h3>HTTP Request</h3>
 <p><code>GET api/users</code></p>
@@ -739,7 +1060,18 @@ $.ajax(settings).done(function (response) {
 <p>Example response:</p>
 </blockquote>
 <pre><code class="language-json">{
-    "error": "Unauthenticated."
+    "status": 200,
+    "msg": "OK",
+    "data": {
+        "id": 1,
+        "name": "Carlos",
+        "color": "red",
+        "email": "carlos@ua.pt",
+        "birthday": "22\/10\/2000",
+        "family_id": null,
+        "created_at": null,
+        "updated_at": null
+    }
 }</code></pre>
 <h3>HTTP Request</h3>
 <p><code>GET api/users/{user}</code></p>
@@ -819,7 +1151,9 @@ $.ajax(settings).done(function (response) {
 <p>Example response:</p>
 </blockquote>
 <pre><code class="language-json">{
-    "error": "Unauthenticated."
+    "status": 200,
+    "msg": "OK",
+    "data": null
 }</code></pre>
 <h3>HTTP Request</h3>
 <p><code>GET api/user</code></p>

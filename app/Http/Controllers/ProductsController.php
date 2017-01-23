@@ -167,6 +167,8 @@ class ProductsController extends Controller
     {
         $data = $request->all();
 
+        print_r($data);
+
         $validator = Validator::make($data, [
             'title' => 'required|max:20',
             'description' => 'max:100',

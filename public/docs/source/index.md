@@ -517,7 +517,7 @@ $.ajax(settings).done(function (response) {
 <!-- START_201a586a6cf4a763fdd4caec7d524eeb -->
 ## Users of a List
 
-Gives the users linked of a list
+Returns the users linked to a list
 
 > Example request:
 
@@ -596,6 +596,281 @@ null
 
 
 <!-- END_1ddf7af8bf64c4c731a227b1fb9ebb76 -->
+<!-- START_0f5e59e5d39a318daed6631442199c5d -->
+## List all Events
+
+Lists all events in the database
+
+> Example request:
+
+```bash
+curl "http://localhost/api/events" \
+-H "Accept: application/json"
+```
+
+```javascript
+var settings = {
+    "async": true,
+    "crossDomain": true,
+    "url": "http://localhost/api/events",
+    "method": "GET",
+    "headers": {
+        "accept": "application/json"
+    }
+}
+
+$.ajax(settings).done(function (response) {
+    console.log(response);
+});
+```
+
+> Example response:
+
+```json
+{
+    "status": 200,
+    "msg": "OK",
+    "data": [
+        {
+            "id": 1,
+            "title": "Festa da Catarina",
+            "date": "09\/01\/2017",
+            "time": "12h30",
+            "location": "Aveiro",
+            "description": "Que festa que vai ser!",
+            "created_at": null,
+            "updated_at": null
+        },
+        {
+            "id": 2,
+            "title": "Festa da Catarina2",
+            "date": "22\/01\/2017",
+            "time": "12h30",
+            "location": "Aveiro",
+            "description": "Que festa que vai ser!",
+            "created_at": null,
+            "updated_at": null
+        },
+        {
+            "id": 3,
+            "title": "Festa da Catarina",
+            "date": "12\/02\/2017",
+            "time": "12h30",
+            "location": "Aveiro",
+            "description": "Que festa que vai ser!",
+            "created_at": null,
+            "updated_at": null
+        }
+    ]
+}
+```
+
+### HTTP Request
+`GET api/events`
+
+`HEAD api/events`
+
+
+<!-- END_0f5e59e5d39a318daed6631442199c5d -->
+<!-- START_de3413bf02c9bb71627fa96e1c1c409f -->
+## Event Insert
+
+Inserts an event in the database
+
+> Example request:
+
+```bash
+curl "http://localhost/api/events" \
+-H "Accept: application/json"
+```
+
+```javascript
+var settings = {
+    "async": true,
+    "crossDomain": true,
+    "url": "http://localhost/api/events",
+    "method": "POST",
+    "headers": {
+        "accept": "application/json"
+    }
+}
+
+$.ajax(settings).done(function (response) {
+    console.log(response);
+});
+```
+
+
+### HTTP Request
+`POST api/events`
+
+
+<!-- END_de3413bf02c9bb71627fa96e1c1c409f -->
+<!-- START_c54bb5cf8265a0ccd3737adca15dfb18 -->
+## Event Detail
+
+Gives the details of a event
+
+> Example request:
+
+```bash
+curl "http://localhost/api/events/{event}" \
+-H "Accept: application/json"
+```
+
+```javascript
+var settings = {
+    "async": true,
+    "crossDomain": true,
+    "url": "http://localhost/api/events/{event}",
+    "method": "GET",
+    "headers": {
+        "accept": "application/json"
+    }
+}
+
+$.ajax(settings).done(function (response) {
+    console.log(response);
+});
+```
+
+> Example response:
+
+```json
+{
+    "status": 200,
+    "msg": "OK",
+    "data": {
+        "id": 1,
+        "title": "Festa da Catarina",
+        "date": "09\/01\/2017",
+        "time": "12h30",
+        "location": "Aveiro",
+        "description": "Que festa que vai ser!",
+        "created_at": null,
+        "updated_at": null
+    }
+}
+```
+
+### HTTP Request
+`GET api/events/{event}`
+
+`HEAD api/events/{event}`
+
+
+<!-- END_c54bb5cf8265a0ccd3737adca15dfb18 -->
+<!-- START_d16967fd1d3d935666f7e8112a1a4451 -->
+## Event Update
+
+Update an event in the database
+
+> Example request:
+
+```bash
+curl "http://localhost/api/events/{event}" \
+-H "Accept: application/json"
+```
+
+```javascript
+var settings = {
+    "async": true,
+    "crossDomain": true,
+    "url": "http://localhost/api/events/{event}",
+    "method": "PUT",
+    "headers": {
+        "accept": "application/json"
+    }
+}
+
+$.ajax(settings).done(function (response) {
+    console.log(response);
+});
+```
+
+
+### HTTP Request
+`PUT api/events/{event}`
+
+`PATCH api/events/{event}`
+
+
+<!-- END_d16967fd1d3d935666f7e8112a1a4451 -->
+<!-- START_379a30feb2949828b5f95efbfd7649c3 -->
+## Delete Event
+
+Deletes an event in the database
+
+> Example request:
+
+```bash
+curl "http://localhost/api/events/{event}" \
+-H "Accept: application/json"
+```
+
+```javascript
+var settings = {
+    "async": true,
+    "crossDomain": true,
+    "url": "http://localhost/api/events/{event}",
+    "method": "DELETE",
+    "headers": {
+        "accept": "application/json"
+    }
+}
+
+$.ajax(settings).done(function (response) {
+    console.log(response);
+});
+```
+
+
+### HTTP Request
+`DELETE api/events/{event}`
+
+
+<!-- END_379a30feb2949828b5f95efbfd7649c3 -->
+<!-- START_0950a4da92a2c2dfccd656f9df9ea43e -->
+## Users of a Event
+
+Returns the users linked to an event
+
+> Example request:
+
+```bash
+curl "http://localhost/api/events/{event}/users" \
+-H "Accept: application/json"
+```
+
+```javascript
+var settings = {
+    "async": true,
+    "crossDomain": true,
+    "url": "http://localhost/api/events/{event}/users",
+    "method": "GET",
+    "headers": {
+        "accept": "application/json"
+    }
+}
+
+$.ajax(settings).done(function (response) {
+    console.log(response);
+});
+```
+
+> Example response:
+
+```json
+null
+```
+
+### HTTP Request
+`GET api/events/{event}/users`
+
+`HEAD api/events/{event}/users`
+
+
+<!-- END_0950a4da92a2c2dfccd656f9df9ea43e -->
 #Produtos
 
 Método geral para controla produtos
@@ -636,31 +911,91 @@ $.ajax(settings).done(function (response) {
     "data": [
         {
             "id": 1,
-            "title": "KszMxA8NXz",
-            "description": "9AAEIcIFPg",
-            "quant": "1 unidades",
-            "image": "3oBtKcfgjA.png",
+            "title": "teste",
+            "description": "teste",
+            "quant": "2 chachos",
+            "image": "",
+            "list_id": 1,
+            "created_at": null,
+            "updated_at": "2017-01-23 14:26:14"
+        },
+        {
+            "id": 2,
+            "title": "Laranjas",
+            "description": "Comprar as mais baratas!",
+            "quant": "6",
+            "image": "",
             "list_id": 1,
             "created_at": null,
             "updated_at": null
         },
         {
-            "id": 2,
-            "title": "f2Y051TmvE",
-            "description": "SYgKmlsHrW",
-            "quant": "4 peças",
-            "image": "7R0LJGU5bH.png",
+            "id": 3,
+            "title": "Café",
+            "description": "Comprar as mais baratas!",
+            "quant": "2 pacotes",
+            "image": "",
+            "list_id": 1,
+            "created_at": null,
+            "updated_at": null
+        },
+        {
+            "id": 4,
+            "title": "Bananas",
+            "description": "Comprar as mais baratas!",
+            "quant": "1 cacho",
+            "image": "",
+            "list_id": 3,
+            "created_at": null,
+            "updated_at": null
+        },
+        {
+            "id": 5,
+            "title": "Laranjas",
+            "description": "Comprar as mais baratas!",
+            "quant": "6",
+            "image": "",
             "list_id": 2,
             "created_at": null,
             "updated_at": null
         },
         {
-            "id": 3,
-            "title": "pMXe246nwd",
-            "description": "wCugpz4MrL",
-            "quant": "2 caixas",
-            "image": "P7E1LWeskn.png",
+            "id": 6,
+            "title": "Café",
+            "description": "Comprar as mais baratas!",
+            "quant": "2 pacotes",
+            "image": "",
             "list_id": 2,
+            "created_at": null,
+            "updated_at": null
+        },
+        {
+            "id": 7,
+            "title": "Bananas",
+            "description": "Comprar as mais baratas!",
+            "quant": "1 cacho",
+            "image": "",
+            "list_id": 3,
+            "created_at": null,
+            "updated_at": null
+        },
+        {
+            "id": 8,
+            "title": "Laranjas",
+            "description": "Comprar as mais baratas!",
+            "quant": "6",
+            "image": "",
+            "list_id": 3,
+            "created_at": null,
+            "updated_at": null
+        },
+        {
+            "id": 9,
+            "title": "Café",
+            "description": "Comprar as mais baratas!",
+            "quant": "2 pacotes",
+            "image": "",
+            "list_id": 3,
             "created_at": null,
             "updated_at": null
         }
@@ -745,13 +1080,13 @@ $.ajax(settings).done(function (response) {
     "msg": "OK",
     "data": {
         "id": 1,
-        "title": "KszMxA8NXz",
-        "description": "9AAEIcIFPg",
-        "quant": "1 unidades",
-        "image": "3oBtKcfgjA.png",
+        "title": "teste",
+        "description": "teste",
+        "quant": "2 chachos",
+        "image": "",
         "list_id": 1,
         "created_at": null,
-        "updated_at": null
+        "updated_at": "2017-01-23 14:26:14"
     }
 }
 ```
@@ -868,7 +1203,60 @@ $.ajax(settings).done(function (response) {
 
 ```json
 {
-    "error": "Unauthenticated."
+    "status": 200,
+    "msg": "OK",
+    "data": [
+        {
+            "id": 1,
+            "name": "Carlos",
+            "color": "red",
+            "email": "carlos@ua.pt",
+            "birthday": "22\/10\/2000",
+            "family_id": null,
+            "created_at": null,
+            "updated_at": null
+        },
+        {
+            "id": 2,
+            "name": "Alexandre",
+            "color": "blue",
+            "email": "alex@ua.pt",
+            "birthday": "22\/10\/2000",
+            "family_id": 2,
+            "created_at": null,
+            "updated_at": null
+        },
+        {
+            "id": 3,
+            "name": "Ana",
+            "color": "pink",
+            "email": "ana@ua.pt",
+            "birthday": "22\/10\/2000",
+            "family_id": 2,
+            "created_at": null,
+            "updated_at": null
+        },
+        {
+            "id": 4,
+            "name": "Martinho",
+            "color": "red",
+            "email": "martinho@ua.pt",
+            "birthday": "22\/10\/2000",
+            "family_id": 2,
+            "created_at": null,
+            "updated_at": null
+        },
+        {
+            "id": 5,
+            "name": "Catarina",
+            "color": "yellow",
+            "email": "cat@ua.pt",
+            "birthday": "22\/10\/2000",
+            "family_id": 2,
+            "created_at": null,
+            "updated_at": null
+        }
+    ]
 }
 ```
 
@@ -945,7 +1333,18 @@ $.ajax(settings).done(function (response) {
 
 ```json
 {
-    "error": "Unauthenticated."
+    "status": 200,
+    "msg": "OK",
+    "data": {
+        "id": 1,
+        "name": "Carlos",
+        "color": "red",
+        "email": "carlos@ua.pt",
+        "birthday": "22\/10\/2000",
+        "family_id": null,
+        "created_at": null,
+        "updated_at": null
+    }
 }
 ```
 
@@ -1058,7 +1457,9 @@ $.ajax(settings).done(function (response) {
 
 ```json
 {
-    "error": "Unauthenticated."
+    "status": 200,
+    "msg": "OK",
+    "data": null
 }
 ```
 
