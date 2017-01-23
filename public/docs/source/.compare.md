@@ -871,13 +871,13 @@ $.ajax(settings).done(function (response) {
     "data": [
         {
             "id": 4,
-            "title": "Bananas",
-            "description": "Comprar as mais baratas!",
-            "quant": "1 cacho",
+            "title": "teste3333",
+            "description": "teste2",
+            "quant": "teste2",
             "image": "",
-            "list_id": 3,
+            "list_id": 2,
             "created_at": null,
-            "updated_at": null
+            "updated_at": "2017-01-23 16:09:12"
         },
         {
             "id": 5,
@@ -928,6 +928,16 @@ $.ajax(settings).done(function (response) {
             "list_id": 3,
             "created_at": null,
             "updated_at": null
+        },
+        {
+            "id": 10,
+            "title": "teste3333",
+            "description": "teste2",
+            "quant": "teste2",
+            "image": "e497e8c48c80090800dd7e606cd3f9b8.jpeg",
+            "list_id": 2,
+            "created_at": "2017-01-23 16:12:37",
+            "updated_at": "2017-01-23 16:22:07"
         }
     ]
 }
@@ -1019,42 +1029,6 @@ $.ajax(settings).done(function (response) {
 
 
 <!-- END_963ec11fd78da94f0900b0c6baf959a3 -->
-<!-- START_b7842ce7893c09eb3c53713f82c2e12d -->
-## Product Update
-
-Updates a product in the database
-
-> Example request:
-
-```bash
-curl "http://localhost/api/products/{product}" \
--H "Accept: application/json"
-```
-
-```javascript
-var settings = {
-    "async": true,
-    "crossDomain": true,
-    "url": "http://localhost/api/products/{product}",
-    "method": "PUT",
-    "headers": {
-        "accept": "application/json"
-    }
-}
-
-$.ajax(settings).done(function (response) {
-    console.log(response);
-});
-```
-
-
-### HTTP Request
-`PUT api/products/{product}`
-
-`PATCH api/products/{product}`
-
-
-<!-- END_b7842ce7893c09eb3c53713f82c2e12d -->
 <!-- START_1d809ca5e8b10fa7fdc75d04506a55ea -->
 ## Product Delete
 
@@ -1089,6 +1063,40 @@ $.ajax(settings).done(function (response) {
 
 
 <!-- END_1d809ca5e8b10fa7fdc75d04506a55ea -->
+<!-- START_7ad6b2dbfbd58a7c201ba85e185e0eb4 -->
+## Product Update
+
+Updates a product in the database
+
+> Example request:
+
+```bash
+curl "http://localhost/api/products/{product}" \
+-H "Accept: application/json"
+```
+
+```javascript
+var settings = {
+    "async": true,
+    "crossDomain": true,
+    "url": "http://localhost/api/products/{product}",
+    "method": "POST",
+    "headers": {
+        "accept": "application/json"
+    }
+}
+
+$.ajax(settings).done(function (response) {
+    console.log(response);
+});
+```
+
+
+### HTTP Request
+`POST api/products/{product}`
+
+
+<!-- END_7ad6b2dbfbd58a7c201ba85e185e0eb4 -->
 #Users
 
 Controller for user related operations
@@ -1175,7 +1183,7 @@ $.ajax(settings).done(function (response) {
             "birthday": "12\/11\/1992",
             "family_id": null,
             "created_at": "2017-01-23 14:45:34",
-            "updated_at": "2017-01-23 14:45:34"
+            "updated_at": "2017-01-23 14:48:10"
         }
     ]
 }

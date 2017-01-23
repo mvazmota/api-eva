@@ -675,13 +675,13 @@ $.ajax(settings).done(function (response) {
     "data": [
         {
             "id": 4,
-            "title": "Bananas",
-            "description": "Comprar as mais baratas!",
-            "quant": "1 cacho",
+            "title": "teste3333",
+            "description": "teste2",
+            "quant": "teste2",
             "image": "",
-            "list_id": 3,
+            "list_id": 2,
             "created_at": null,
-            "updated_at": null
+            "updated_at": "2017-01-23 16:09:12"
         },
         {
             "id": 5,
@@ -732,6 +732,16 @@ $.ajax(settings).done(function (response) {
             "list_id": 3,
             "created_at": null,
             "updated_at": null
+        },
+        {
+            "id": 10,
+            "title": "teste3333",
+            "description": "teste2",
+            "quant": "teste2",
+            "image": "e497e8c48c80090800dd7e606cd3f9b8.jpeg",
+            "list_id": 2,
+            "created_at": "2017-01-23 16:12:37",
+            "updated_at": "2017-01-23 16:22:07"
         }
     ]
 }</code></pre>
@@ -796,31 +806,6 @@ $.ajax(settings).done(function (response) {
 <p><code>GET api/products/{product}</code></p>
 <p><code>HEAD api/products/{product}</code></p>
 <!-- END_963ec11fd78da94f0900b0c6baf959a3 -->
-<!-- START_b7842ce7893c09eb3c53713f82c2e12d -->
-<h2>Product Update</h2>
-<p>Updates a product in the database</p>
-<blockquote>
-<p>Example request:</p>
-</blockquote>
-<pre><code class="language-bash">curl "http://localhost/api/products/{product}" \
--H "Accept: application/json"</code></pre>
-<pre><code class="language-javascript">var settings = {
-    "async": true,
-    "crossDomain": true,
-    "url": "http://localhost/api/products/{product}",
-    "method": "PUT",
-    "headers": {
-        "accept": "application/json"
-    }
-}
-
-$.ajax(settings).done(function (response) {
-    console.log(response);
-});</code></pre>
-<h3>HTTP Request</h3>
-<p><code>PUT api/products/{product}</code></p>
-<p><code>PATCH api/products/{product}</code></p>
-<!-- END_b7842ce7893c09eb3c53713f82c2e12d -->
 <!-- START_1d809ca5e8b10fa7fdc75d04506a55ea -->
 <h2>Product Delete</h2>
 <p>Deletes a product in the database</p>
@@ -845,6 +830,30 @@ $.ajax(settings).done(function (response) {
 <h3>HTTP Request</h3>
 <p><code>DELETE api/products/{product}</code></p>
 <!-- END_1d809ca5e8b10fa7fdc75d04506a55ea -->
+<!-- START_7ad6b2dbfbd58a7c201ba85e185e0eb4 -->
+<h2>Product Update</h2>
+<p>Updates a product in the database</p>
+<blockquote>
+<p>Example request:</p>
+</blockquote>
+<pre><code class="language-bash">curl "http://localhost/api/products/{product}" \
+-H "Accept: application/json"</code></pre>
+<pre><code class="language-javascript">var settings = {
+    "async": true,
+    "crossDomain": true,
+    "url": "http://localhost/api/products/{product}",
+    "method": "POST",
+    "headers": {
+        "accept": "application/json"
+    }
+}
+
+$.ajax(settings).done(function (response) {
+    console.log(response);
+});</code></pre>
+<h3>HTTP Request</h3>
+<p><code>POST api/products/{product}</code></p>
+<!-- END_7ad6b2dbfbd58a7c201ba85e185e0eb4 -->
 <h1>Users</h1>
 <p>Controller for user related operations</p>
 <!-- START_da5727be600e4865c1b632f7745c8e91 -->
@@ -923,7 +932,7 @@ $.ajax(settings).done(function (response) {
             "birthday": "12\/11\/1992",
             "family_id": null,
             "created_at": "2017-01-23 14:45:34",
-            "updated_at": "2017-01-23 14:45:34"
+            "updated_at": "2017-01-23 14:48:10"
         }
     ]
 }</code></pre>

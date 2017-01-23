@@ -15,6 +15,7 @@ use Illuminate\Http\Request;
 
 // Products
 Route::resource('products', 'ProductsController');
+Route::post('products/{product}', 'ProductsController@updateProduct');
 
 // Lists
 Route::resource('lists', 'ListsController');

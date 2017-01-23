@@ -154,6 +154,15 @@ class ProductsController extends Controller
     }
 
     /**
+     * @hideFromAPIDocumentation
+     */
+
+    public function update(Request $request, $id)
+    {
+//
+    }
+
+    /**
      * Product Update
      *
      * Updates a product in the database
@@ -163,11 +172,9 @@ class ProductsController extends Controller
      * @return array
      */
 
-    public function update(Request $request, $id)
+    public function updateProduct(Request $request, $id)
     {
         $data = $request->all();
-
-        print_r($data);
 
         $validator = Validator::make($data, [
             'title' => 'required|max:20',
@@ -176,13 +183,13 @@ class ProductsController extends Controller
             'image' => 'image',
             'list_id' => 'required',
         ],
-        [
-            'title' => 'The title field is required',
-            'description' => 'The description field is required',
-            'quant' => 'The quant field is required',
-            'image' => 'The image field is required',
-            'list_id' => 'The list_id field is required',
-        ]);
+            [
+                'title' => 'The title field is required',
+                'description' => 'The description field is required',
+                'quant' => 'The quant field is required',
+                'image' => 'The image field is required',
+                'list_id' => 'The list_id field is required',
+            ]);
 
         if($validator->fails())
         {
@@ -193,18 +200,16 @@ class ProductsController extends Controller
 
         if ( !empty($data['image']))
         {
-            //check if the product has an image
-
             // generate filename from random string
             $path = $request->file('image')->hashName();
             // upload process
             $request->file('image')->move(public_path('images'), $path);
 
-
-            $products = Products::whereId($id)->first();
+            $products = Products::find($id);
             $products->title = $data['title'];
             $products->description = $data['description'];
             $products->quant = $data['quant'];
+            $products->image = $path;
             $products->list_id = $data['list_id'];
             $products->save();
 
@@ -220,9 +225,8 @@ class ProductsController extends Controller
 
             return $this->_result($products);
         }
-
-
     }
+
 
     /**
      * @hideFromAPIDocumentation
