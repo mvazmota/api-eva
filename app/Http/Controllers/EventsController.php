@@ -9,9 +9,9 @@ use Illuminate\Http\Request;
 use Validator;
 
 /**
- * @resource Lists
+ * @resource Events
  *
- * Controller for shopping lists related operations
+ * Controller for event related operations
  */
 
 class EventsController extends Controller
@@ -103,7 +103,7 @@ class EventsController extends Controller
      *
      * Gives the details of a event
      *
-     * @param int $id Id of the list
+     * @param int $id Id of the event
      *
      * @return array
      */
@@ -162,7 +162,7 @@ class EventsController extends Controller
         $events->description = $data['description'];
         $events->save();
 
-        // Detach old users of the list
+        // Detach old users of the event
         $eventID = Events::find($events['id']);
         $eventID->users()->detach();
 
@@ -170,7 +170,7 @@ class EventsController extends Controller
         $users = $data['users'];
         $array = explode(',', $users);
 
-        // Attach new users of the list
+        // Attach new users of the event
         foreach ($array as $value) {
             $eventID->users()->attach($value);
         }
@@ -192,7 +192,7 @@ class EventsController extends Controller
     {
         $events = Events::whereId($id)->first();
 
-        // Check if list exists
+        // Check if event exists
         if (empty($events)){
             return $this->_result('Event doesn\'t exist', 404, "NOK");
         }
@@ -215,7 +215,7 @@ class EventsController extends Controller
      *
      * Returns the users linked to an event
      *
-     * @param int $id Id of the list
+     * @param int $id Id of the event
      *
      * @return array
      */

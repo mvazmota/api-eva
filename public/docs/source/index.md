@@ -21,6 +21,265 @@ Welcome to the generated API reference.
 API EXEMPLO MCMM-MI TDI 2016 - NEWS API
 <!-- END_INFO -->
 
+#Events
+
+Controller for event related operations
+<!-- START_0f5e59e5d39a318daed6631442199c5d -->
+## List all Events
+
+Lists all events in the database
+
+> Example request:
+
+```bash
+curl "http://localhost/api/events" \
+-H "Accept: application/json"
+```
+
+```javascript
+var settings = {
+    "async": true,
+    "crossDomain": true,
+    "url": "http://localhost/api/events",
+    "method": "GET",
+    "headers": {
+        "accept": "application/json"
+    }
+}
+
+$.ajax(settings).done(function (response) {
+    console.log(response);
+});
+```
+
+> Example response:
+
+```json
+{
+    "status": 200,
+    "msg": "OK",
+    "data": [
+        {
+            "id": 2,
+            "title": "Festa da Catarina2",
+            "date": "22\/01\/2017",
+            "time": "12h30",
+            "location": "Aveiro",
+            "description": "Que festa que vai ser!",
+            "created_at": null,
+            "updated_at": null
+        },
+        {
+            "id": 3,
+            "title": "Festa da Catarina",
+            "date": "12\/02\/2017",
+            "time": "12h30",
+            "location": "Aveiro",
+            "description": "Que festa que vai ser!",
+            "created_at": null,
+            "updated_at": null
+        }
+    ]
+}
+```
+
+### HTTP Request
+`GET api/events`
+
+`HEAD api/events`
+
+
+<!-- END_0f5e59e5d39a318daed6631442199c5d -->
+<!-- START_de3413bf02c9bb71627fa96e1c1c409f -->
+## Event Insert
+
+Inserts an event in the database
+
+> Example request:
+
+```bash
+curl "http://localhost/api/events" \
+-H "Accept: application/json"
+```
+
+```javascript
+var settings = {
+    "async": true,
+    "crossDomain": true,
+    "url": "http://localhost/api/events",
+    "method": "POST",
+    "headers": {
+        "accept": "application/json"
+    }
+}
+
+$.ajax(settings).done(function (response) {
+    console.log(response);
+});
+```
+
+
+### HTTP Request
+`POST api/events`
+
+
+<!-- END_de3413bf02c9bb71627fa96e1c1c409f -->
+<!-- START_c54bb5cf8265a0ccd3737adca15dfb18 -->
+## Event Detail
+
+Gives the details of a event
+
+> Example request:
+
+```bash
+curl "http://localhost/api/events/{event}" \
+-H "Accept: application/json"
+```
+
+```javascript
+var settings = {
+    "async": true,
+    "crossDomain": true,
+    "url": "http://localhost/api/events/{event}",
+    "method": "GET",
+    "headers": {
+        "accept": "application/json"
+    }
+}
+
+$.ajax(settings).done(function (response) {
+    console.log(response);
+});
+```
+
+> Example response:
+
+```json
+{
+    "status": 404,
+    "msg": "NOK",
+    "data": "Event doesn't exist"
+}
+```
+
+### HTTP Request
+`GET api/events/{event}`
+
+`HEAD api/events/{event}`
+
+
+<!-- END_c54bb5cf8265a0ccd3737adca15dfb18 -->
+<!-- START_d16967fd1d3d935666f7e8112a1a4451 -->
+## Event Update
+
+Update an event in the database
+
+> Example request:
+
+```bash
+curl "http://localhost/api/events/{event}" \
+-H "Accept: application/json"
+```
+
+```javascript
+var settings = {
+    "async": true,
+    "crossDomain": true,
+    "url": "http://localhost/api/events/{event}",
+    "method": "PUT",
+    "headers": {
+        "accept": "application/json"
+    }
+}
+
+$.ajax(settings).done(function (response) {
+    console.log(response);
+});
+```
+
+
+### HTTP Request
+`PUT api/events/{event}`
+
+`PATCH api/events/{event}`
+
+
+<!-- END_d16967fd1d3d935666f7e8112a1a4451 -->
+<!-- START_379a30feb2949828b5f95efbfd7649c3 -->
+## Delete Event
+
+Deletes an event in the database
+
+> Example request:
+
+```bash
+curl "http://localhost/api/events/{event}" \
+-H "Accept: application/json"
+```
+
+```javascript
+var settings = {
+    "async": true,
+    "crossDomain": true,
+    "url": "http://localhost/api/events/{event}",
+    "method": "DELETE",
+    "headers": {
+        "accept": "application/json"
+    }
+}
+
+$.ajax(settings).done(function (response) {
+    console.log(response);
+});
+```
+
+
+### HTTP Request
+`DELETE api/events/{event}`
+
+
+<!-- END_379a30feb2949828b5f95efbfd7649c3 -->
+<!-- START_0950a4da92a2c2dfccd656f9df9ea43e -->
+## Users of a Event
+
+Returns the users linked to an event
+
+> Example request:
+
+```bash
+curl "http://localhost/api/events/{event}/users" \
+-H "Accept: application/json"
+```
+
+```javascript
+var settings = {
+    "async": true,
+    "crossDomain": true,
+    "url": "http://localhost/api/events/{event}/users",
+    "method": "GET",
+    "headers": {
+        "accept": "application/json"
+    }
+}
+
+$.ajax(settings).done(function (response) {
+    console.log(response);
+});
+```
+
+> Example response:
+
+```json
+null
+```
+
+### HTTP Request
+`GET api/events/{event}/users`
+
+`HEAD api/events/{event}/users`
+
+
+<!-- END_0950a4da92a2c2dfccd656f9df9ea43e -->
 #Family
 
 Controller for family related operations
@@ -59,12 +318,6 @@ $.ajax(settings).done(function (response) {
     "status": 0,
     "msg": "OK",
     "data": [
-        {
-            "id": 1,
-            "name": "Silva",
-            "created_at": null,
-            "updated_at": null
-        },
         {
             "id": 2,
             "name": "Mota",
@@ -160,14 +413,9 @@ $.ajax(settings).done(function (response) {
 
 ```json
 {
-    "status": 0,
-    "msg": "OK",
-    "data": {
-        "id": 1,
-        "name": "Silva",
-        "created_at": null,
-        "updated_at": null
-    }
+    "status": 1,
+    "msg": "NOK",
+    "data": "Family doesn't exist"
 }
 ```
 
@@ -328,13 +576,6 @@ $.ajax(settings).done(function (response) {
     "msg": "OK",
     "data": [
         {
-            "id": 1,
-            "name": "Casa",
-            "icon": "casa",
-            "created_at": null,
-            "updated_at": null
-        },
-        {
             "id": 2,
             "name": "Festa Joana",
             "icon": "prenda",
@@ -425,15 +666,9 @@ $.ajax(settings).done(function (response) {
 
 ```json
 {
-    "status": 200,
-    "msg": "OK",
-    "data": {
-        "id": 1,
-        "name": "Casa",
-        "icon": "casa",
-        "created_at": null,
-        "updated_at": null
-    }
+    "status": 404,
+    "msg": "NOK",
+    "data": "List doesn't exist"
 }
 ```
 
@@ -596,281 +831,6 @@ null
 
 
 <!-- END_1ddf7af8bf64c4c731a227b1fb9ebb76 -->
-<!-- START_0f5e59e5d39a318daed6631442199c5d -->
-## List all Events
-
-Lists all events in the database
-
-> Example request:
-
-```bash
-curl "http://localhost/api/events" \
--H "Accept: application/json"
-```
-
-```javascript
-var settings = {
-    "async": true,
-    "crossDomain": true,
-    "url": "http://localhost/api/events",
-    "method": "GET",
-    "headers": {
-        "accept": "application/json"
-    }
-}
-
-$.ajax(settings).done(function (response) {
-    console.log(response);
-});
-```
-
-> Example response:
-
-```json
-{
-    "status": 200,
-    "msg": "OK",
-    "data": [
-        {
-            "id": 1,
-            "title": "Festa da Catarina",
-            "date": "09\/01\/2017",
-            "time": "12h30",
-            "location": "Aveiro",
-            "description": "Que festa que vai ser!",
-            "created_at": null,
-            "updated_at": null
-        },
-        {
-            "id": 2,
-            "title": "Festa da Catarina2",
-            "date": "22\/01\/2017",
-            "time": "12h30",
-            "location": "Aveiro",
-            "description": "Que festa que vai ser!",
-            "created_at": null,
-            "updated_at": null
-        },
-        {
-            "id": 3,
-            "title": "Festa da Catarina",
-            "date": "12\/02\/2017",
-            "time": "12h30",
-            "location": "Aveiro",
-            "description": "Que festa que vai ser!",
-            "created_at": null,
-            "updated_at": null
-        }
-    ]
-}
-```
-
-### HTTP Request
-`GET api/events`
-
-`HEAD api/events`
-
-
-<!-- END_0f5e59e5d39a318daed6631442199c5d -->
-<!-- START_de3413bf02c9bb71627fa96e1c1c409f -->
-## Event Insert
-
-Inserts an event in the database
-
-> Example request:
-
-```bash
-curl "http://localhost/api/events" \
--H "Accept: application/json"
-```
-
-```javascript
-var settings = {
-    "async": true,
-    "crossDomain": true,
-    "url": "http://localhost/api/events",
-    "method": "POST",
-    "headers": {
-        "accept": "application/json"
-    }
-}
-
-$.ajax(settings).done(function (response) {
-    console.log(response);
-});
-```
-
-
-### HTTP Request
-`POST api/events`
-
-
-<!-- END_de3413bf02c9bb71627fa96e1c1c409f -->
-<!-- START_c54bb5cf8265a0ccd3737adca15dfb18 -->
-## Event Detail
-
-Gives the details of a event
-
-> Example request:
-
-```bash
-curl "http://localhost/api/events/{event}" \
--H "Accept: application/json"
-```
-
-```javascript
-var settings = {
-    "async": true,
-    "crossDomain": true,
-    "url": "http://localhost/api/events/{event}",
-    "method": "GET",
-    "headers": {
-        "accept": "application/json"
-    }
-}
-
-$.ajax(settings).done(function (response) {
-    console.log(response);
-});
-```
-
-> Example response:
-
-```json
-{
-    "status": 200,
-    "msg": "OK",
-    "data": {
-        "id": 1,
-        "title": "Festa da Catarina",
-        "date": "09\/01\/2017",
-        "time": "12h30",
-        "location": "Aveiro",
-        "description": "Que festa que vai ser!",
-        "created_at": null,
-        "updated_at": null
-    }
-}
-```
-
-### HTTP Request
-`GET api/events/{event}`
-
-`HEAD api/events/{event}`
-
-
-<!-- END_c54bb5cf8265a0ccd3737adca15dfb18 -->
-<!-- START_d16967fd1d3d935666f7e8112a1a4451 -->
-## Event Update
-
-Update an event in the database
-
-> Example request:
-
-```bash
-curl "http://localhost/api/events/{event}" \
--H "Accept: application/json"
-```
-
-```javascript
-var settings = {
-    "async": true,
-    "crossDomain": true,
-    "url": "http://localhost/api/events/{event}",
-    "method": "PUT",
-    "headers": {
-        "accept": "application/json"
-    }
-}
-
-$.ajax(settings).done(function (response) {
-    console.log(response);
-});
-```
-
-
-### HTTP Request
-`PUT api/events/{event}`
-
-`PATCH api/events/{event}`
-
-
-<!-- END_d16967fd1d3d935666f7e8112a1a4451 -->
-<!-- START_379a30feb2949828b5f95efbfd7649c3 -->
-## Delete Event
-
-Deletes an event in the database
-
-> Example request:
-
-```bash
-curl "http://localhost/api/events/{event}" \
--H "Accept: application/json"
-```
-
-```javascript
-var settings = {
-    "async": true,
-    "crossDomain": true,
-    "url": "http://localhost/api/events/{event}",
-    "method": "DELETE",
-    "headers": {
-        "accept": "application/json"
-    }
-}
-
-$.ajax(settings).done(function (response) {
-    console.log(response);
-});
-```
-
-
-### HTTP Request
-`DELETE api/events/{event}`
-
-
-<!-- END_379a30feb2949828b5f95efbfd7649c3 -->
-<!-- START_0950a4da92a2c2dfccd656f9df9ea43e -->
-## Users of a Event
-
-Returns the users linked to an event
-
-> Example request:
-
-```bash
-curl "http://localhost/api/events/{event}/users" \
--H "Accept: application/json"
-```
-
-```javascript
-var settings = {
-    "async": true,
-    "crossDomain": true,
-    "url": "http://localhost/api/events/{event}/users",
-    "method": "GET",
-    "headers": {
-        "accept": "application/json"
-    }
-}
-
-$.ajax(settings).done(function (response) {
-    console.log(response);
-});
-```
-
-> Example response:
-
-```json
-null
-```
-
-### HTTP Request
-`GET api/events/{event}/users`
-
-`HEAD api/events/{event}/users`
-
-
-<!-- END_0950a4da92a2c2dfccd656f9df9ea43e -->
 #Produtos
 
 Método geral para controla produtos
@@ -909,36 +869,6 @@ $.ajax(settings).done(function (response) {
     "status": 0,
     "msg": "OK",
     "data": [
-        {
-            "id": 1,
-            "title": "teste",
-            "description": "teste",
-            "quant": "2 chachos",
-            "image": "",
-            "list_id": 1,
-            "created_at": null,
-            "updated_at": "2017-01-23 14:26:14"
-        },
-        {
-            "id": 2,
-            "title": "Laranjas",
-            "description": "Comprar as mais baratas!",
-            "quant": "6",
-            "image": "",
-            "list_id": 1,
-            "created_at": null,
-            "updated_at": null
-        },
-        {
-            "id": 3,
-            "title": "Café",
-            "description": "Comprar as mais baratas!",
-            "quant": "2 pacotes",
-            "image": "",
-            "list_id": 1,
-            "created_at": null,
-            "updated_at": null
-        },
         {
             "id": 4,
             "title": "Bananas",
@@ -1076,18 +1006,9 @@ $.ajax(settings).done(function (response) {
 
 ```json
 {
-    "status": 0,
-    "msg": "OK",
-    "data": {
-        "id": 1,
-        "title": "teste",
-        "description": "teste",
-        "quant": "2 chachos",
-        "image": "",
-        "list_id": 1,
-        "created_at": null,
-        "updated_at": "2017-01-23 14:26:14"
-    }
+    "status": 404,
+    "msg": "NOK",
+    "data": "Product doesn't exist"
 }
 ```
 
@@ -1207,16 +1128,6 @@ $.ajax(settings).done(function (response) {
     "msg": "OK",
     "data": [
         {
-            "id": 1,
-            "name": "Carlos",
-            "color": "red",
-            "email": "carlos@ua.pt",
-            "birthday": "22\/10\/2000",
-            "family_id": null,
-            "created_at": null,
-            "updated_at": null
-        },
-        {
             "id": 2,
             "name": "Alexandre",
             "color": "blue",
@@ -1255,6 +1166,16 @@ $.ajax(settings).done(function (response) {
             "family_id": 2,
             "created_at": null,
             "updated_at": null
+        },
+        {
+            "id": 6,
+            "name": "Martin",
+            "color": "blue",
+            "email": "m.vaz.mota@gmail.com",
+            "birthday": "12\/11\/1992",
+            "family_id": null,
+            "created_at": "2017-01-23 14:45:34",
+            "updated_at": "2017-01-23 14:45:34"
         }
     ]
 }
@@ -1333,18 +1254,9 @@ $.ajax(settings).done(function (response) {
 
 ```json
 {
-    "status": 200,
-    "msg": "OK",
-    "data": {
-        "id": 1,
-        "name": "Carlos",
-        "color": "red",
-        "email": "carlos@ua.pt",
-        "birthday": "22\/10\/2000",
-        "family_id": null,
-        "created_at": null,
-        "updated_at": null
-    }
+    "status": 404,
+    "msg": "NOK",
+    "data": "User doesn't exist"
 }
 ```
 
