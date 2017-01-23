@@ -30,3 +30,7 @@ Route::get('family/{family}/users', 'FamilyController@getusers');
 Route::resource('users', 'UsersController');
 Route::get('user', 'UsersController@authUser');
 
+//Events
+Route::resource('events', 'EventsController');
+Route::get('events/{event}/users', 'EventsController@getUsers');
+

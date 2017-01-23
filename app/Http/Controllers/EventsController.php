@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests;
-use App\Lists;
+use App\Events;
 use App\Tools;
 use Illuminate\Http\Request;
 use Validator;
@@ -14,7 +14,7 @@ use Validator;
  * Controller for shopping lists related operations
  */
 
-class ListsController extends Controller
+class EventsController extends Controller
 {
 
     public function __construct()
@@ -23,28 +23,28 @@ class ListsController extends Controller
     }
 
     /**
-     * List all Lists
+     * List all Events
      *
-     * Lists all lists in the database
+     * Lists all events in the database
      *
      * @return array
      */
 
     public function index()
     {
-        $lists = Lists::get();
+        $events = Events::get();
 
-        if ($lists->isEmpty()){
-            return $this->_result('No lists on the database', 404);
+        if ($events->isEmpty()){
+            return $this->_result('No events on the database', 404);
         } else {
-            return $this->_result($lists);
+            return $this->_result($events);
         }
     }
 
     /**
-     * List Insert
+     * Event Insert
      *
-     * Inserts a list in the database
+     * Inserts an event in the database
      *
      * @param \Illuminate\Http\Request $request Post data
      *
@@ -56,13 +56,17 @@ class ListsController extends Controller
         $data = $request->all();
 
         $validator = Validator::make($data, [
-            'name' => 'required|max:20',
-            'icon' => 'required',
+            'title' => 'required|max:20',
+            'date' => 'required',
+            'time' => 'required',
+            'location' => 'required',
             'users' => 'required',
         ],
         [
-            'name' => 'The title field is required',
-            'icon' => 'The icon field is required',
+            'title' => 'The title field is required',
+            'date' => 'The date field is required',
+            'time' => 'The time field is required',
+            'location' => 'The location field is required',
             'users' => 'The users field is required',
         ]);
 
@@ -72,29 +76,32 @@ class ListsController extends Controller
             return $this->_result($errors, 400, 'NOK');
         }
 
-        $lists = Lists::create([
-            'name' => $data['name'],
-            'icon' => $data['icon'],
+        $events = Events::create([
+            'title' => $data['title'],
+            'date' => $data['date'],
+            'time' => $data['time'],
+            'location' => $data['location'],
+            'description' => $data['description'],
         ]);
 
-        $listID = Lists::find($lists['id']);
+        $eventID = Events::find($events['id']);
 
         // Split users into an array
         $users = $data['users'];
         $array = explode(',', $users);
 
-        // Attach new users of the list
+        // Attach new users to the event
         foreach ($array as $value) {
-            $listID->users()->attach($value);
+            $eventID->users()->attach($value);
         }
 
-        return $this->_result($lists);
+        return $this->_result($events);
     }
 
     /**
-     * List Detail
+     * Event Detail
      *
-     * Gives the details of a list
+     * Gives the details of a event
      *
      * @param int $id Id of the list
      *
@@ -103,19 +110,19 @@ class ListsController extends Controller
 
     public function show($id)
     {
-        $lists = Lists::whereId($id)->first();
+        $events = Events::whereId($id)->first();
 
-        if (empty($lists)){
-            return $this->_result('List doesn\'t exist', 404, "NOK");
+        if (empty($events)){
+            return $this->_result('Event doesn\'t exist', 404, "NOK");
         } else {
-            return $this->_result($lists);
+            return $this->_result($events);
         }
     }
 
     /**
-     * List Update
+     * Event Update
      *
-     * Update a list in the database
+     * Update an event in the database
      *
      * @param \Illuminate\Http\Request $request Post data
      *
@@ -127,13 +134,17 @@ class ListsController extends Controller
         $data = $request->all();
 
         $validator = Validator::make($data, [
-            'name' => 'required|max:20',
-            'icon' => 'required',
+            'title' => 'required|max:20',
+            'date' => 'required',
+            'time' => 'required',
+            'location' => 'required',
             'users' => 'required',
         ],
         [
-            'name' => 'The title field is required',
-            'icon' => 'The icon field is required',
+            'title' => 'The title field is required',
+            'date' => 'The date field is required',
+            'time' => 'The time field is required',
+            'location' => 'The location field is required',
             'users' => 'The users field is required',
         ]);
 
@@ -143,14 +154,17 @@ class ListsController extends Controller
             return $this->_result($errors, 400, 'NOK');
         }
 
-        $list = Lists::whereId($id)->first();
-        $list->name = $data['name'];
-        $list->icon = $data['icon'];
-        $list->save();
+        $events = Events::whereId($id)->first();
+        $events->title = $data['title'];
+        $events->date = $data['date'];
+        $events->time = $data['time'];
+        $events->location = $data['location'];
+        $events->description = $data['description'];
+        $events->save();
 
         // Detach old users of the list
-        $listID = Lists::find($list['id']);
-        $listID->users()->detach();
+        $eventID = Events::find($events['id']);
+        $eventID->users()->detach();
 
         // Split users into an array
         $users = $data['users'];
@@ -158,16 +172,16 @@ class ListsController extends Controller
 
         // Attach new users of the list
         foreach ($array as $value) {
-            $listID->users()->attach($value);
+            $eventID->users()->attach($value);
         }
 
-        return $this->_result($list);
+        return $this->_result($events);
     }
 
     /**
-     * Delete List
+     * Delete Event
      *
-     * Deletes a list in the database
+     * Deletes an event in the database
      *
      * @param int $id Post data
      *
@@ -176,54 +190,30 @@ class ListsController extends Controller
 
     public function destroy($id)
     {
-        $lists = Lists::whereId($id)->first();
+        $events = Events::whereId($id)->first();
 
         // Check if list exists
-        if (empty($lists)){
-            return $this->_result('List doesn\'t exist', 404, "NOK");
+        if (empty($events)){
+            return $this->_result('Event doesn\'t exist', 404, "NOK");
         }
 
-        // Detach users of the list
-        $listID = Lists::find($lists['id']);
-        $users = $lists['users'];
+        // Detach users of the event
+        $eventID = Events::find($events['id']);
+        $users = $events['users'];
 
         foreach ($users as $value) {
-            $listID->users()->detach($value);
+            $eventID->users()->detach($value);
         }
 
-        // Delete products attached to the list
-        $listID->products()->delete();
+        $events->delete();
 
-        $lists->delete();
-
-        return $this->_result('List '.$id.' successfully removed');
+        return $this->_result('Event '.$id.' successfully removed');
     }
 
     /**
-     * Get List Products
+     * Users of a Event
      *
-     * Shows the users of a list
-     *
-     * @param int $id
-     *
-     * @return array
-     */
-
-    public function getProducts($listId)
-    {
-        $products = Lists::find($listId)->products()->get();
-
-        if ($products->isEmpty()){
-            return $this->_result('List doesn\'t have products', 404, "NOK");
-        } else {
-            return $this->_result($products);
-        }
-    }
-
-    /**
-     * Users of a List
-     *
-     * Returns the users linked to a list
+     * Returns the users linked to an event
      *
      * @param int $id Id of the list
      *
@@ -232,21 +222,14 @@ class ListsController extends Controller
 
     public function getUsers($id)
     {
-        $users = Lists::find($id)->users()->orderBy('name')->get();
+        $users = Events::find($id)->users()->orderBy('name')->get();
 
         if ($users->isEmpty()){
-            return $this->_result('List doesn\'t have users', 404, "NOK");
+            return $this->_result('Event doesn\'t have users', 404, "NOK");
         } else {
             return $this->_result($users);
         }
     }
-
-//    public function addusers(Request $request)
-//    {
-//        $data = $request->all();
-//        $users = Lists::find($data['list_id']);
-//        $users->users()->attach($data['user_id']);
-//    }
 
     /**
      * @hideFromAPIDocumentation

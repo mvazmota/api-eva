@@ -33,6 +33,11 @@ class User extends Authenticatable
         return $this->belongsToMany('App\Lists', 'list_user', 'list_id', 'user_id');
     }
 
+    public function events()
+    {
+        return $this->belongsToMany('App\Events', 'event_user', 'event_id', 'user_id');
+    }
+
     public function family()
     {
         return $this->belongsTo('App\Family', 'family_id');

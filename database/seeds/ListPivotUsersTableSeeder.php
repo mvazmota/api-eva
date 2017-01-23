@@ -35,6 +35,5 @@ class ListPivotUsersTableSeeder extends Seeder
             'list_id' => '2',
             'user_id' => '3',
         ]);
-
     }
 }
