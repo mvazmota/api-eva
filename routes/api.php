@@ -36,6 +36,7 @@ Route::resource('users', 'UsersController');
 Route::get('user', 'UsersController@authUser');
 Route::get('users/{user}/lists', 'UsersController@getLists');
 Route::get('users/{user}/events', 'UsersController@getEvents');
+Route::get('users/{user}/family', 'UsersController@getFamily');
 
 
 //Events

@@ -60,6 +60,16 @@ $.ajax(settings).done(function (response) {
     "msg": "OK",
     "data": [
         {
+            "id": 1,
+            "title": "Festa da Catarina",
+            "date": "09\/01\/2017",
+            "time": "12h30",
+            "location": "Aveiro",
+            "description": "Que festa que vai ser!",
+            "created_at": null,
+            "updated_at": null
+        },
+        {
             "id": 2,
             "title": "Festa da Catarina2",
             "date": "22\/01\/2017",
@@ -156,9 +166,18 @@ $.ajax(settings).done(function (response) {
 
 ```json
 {
-    "status": 404,
-    "msg": "NOK",
-    "data": "Event doesn't exist"
+    "status": 200,
+    "msg": "OK",
+    "data": {
+        "id": 1,
+        "title": "Festa da Catarina",
+        "date": "09\/01\/2017",
+        "time": "12h30",
+        "location": "Aveiro",
+        "description": "Que festa que vai ser!",
+        "created_at": null,
+        "updated_at": null
+    }
 }
 ```
 
@@ -319,6 +338,12 @@ $.ajax(settings).done(function (response) {
     "msg": "OK",
     "data": [
         {
+            "id": 1,
+            "name": "Silva",
+            "created_at": null,
+            "updated_at": null
+        },
+        {
             "id": 2,
             "name": "Mota",
             "created_at": null,
@@ -413,9 +438,14 @@ $.ajax(settings).done(function (response) {
 
 ```json
 {
-    "status": 1,
-    "msg": "NOK",
-    "data": "Family doesn't exist"
+    "status": 0,
+    "msg": "OK",
+    "data": {
+        "id": 1,
+        "name": "Silva",
+        "created_at": null,
+        "updated_at": null
+    }
 }
 ```
 
@@ -576,6 +606,13 @@ $.ajax(settings).done(function (response) {
     "msg": "OK",
     "data": [
         {
+            "id": 1,
+            "name": "Event test2",
+            "icon": "natal",
+            "created_at": null,
+            "updated_at": "2017-01-24 15:44:11"
+        },
+        {
             "id": 2,
             "name": "Festa Joana",
             "icon": "prenda",
@@ -588,6 +625,13 @@ $.ajax(settings).done(function (response) {
             "icon": "trabalho",
             "created_at": null,
             "updated_at": null
+        },
+        {
+            "id": 4,
+            "name": "Event test2",
+            "icon": "natal",
+            "created_at": "2017-01-24 15:41:20",
+            "updated_at": "2017-01-24 15:41:20"
         }
     ]
 }
@@ -666,9 +710,15 @@ $.ajax(settings).done(function (response) {
 
 ```json
 {
-    "status": 404,
-    "msg": "NOK",
-    "data": "List doesn't exist"
+    "status": 200,
+    "msg": "OK",
+    "data": {
+        "id": 1,
+        "name": "Event test2",
+        "icon": "natal",
+        "created_at": null,
+        "updated_at": "2017-01-24 15:44:11"
+    }
 }
 ```
 
@@ -790,6 +840,74 @@ null
 
 
 <!-- END_201a586a6cf4a763fdd4caec7d524eeb -->
+<!-- START_996cd264227f3a33843985d3cb9279a9 -->
+## Add User
+
+Inserts a user to a list in the database
+
+> Example request:
+
+```bash
+curl "http://localhost/api/lists/{list}/users" \
+-H "Accept: application/json"
+```
+
+```javascript
+var settings = {
+    "async": true,
+    "crossDomain": true,
+    "url": "http://localhost/api/lists/{list}/users",
+    "method": "POST",
+    "headers": {
+        "accept": "application/json"
+    }
+}
+
+$.ajax(settings).done(function (response) {
+    console.log(response);
+});
+```
+
+
+### HTTP Request
+`POST api/lists/{list}/users`
+
+
+<!-- END_996cd264227f3a33843985d3cb9279a9 -->
+<!-- START_f03e909c4a9ba65a080628887a9a442b -->
+## Remove User
+
+Deletes a user from a list in the database
+
+> Example request:
+
+```bash
+curl "http://localhost/api/lists/{list}/users" \
+-H "Accept: application/json"
+```
+
+```javascript
+var settings = {
+    "async": true,
+    "crossDomain": true,
+    "url": "http://localhost/api/lists/{list}/users",
+    "method": "DELETE",
+    "headers": {
+        "accept": "application/json"
+    }
+}
+
+$.ajax(settings).done(function (response) {
+    console.log(response);
+});
+```
+
+
+### HTTP Request
+`DELETE api/lists/{list}/users`
+
+
+<!-- END_f03e909c4a9ba65a080628887a9a442b -->
 <!-- START_1ddf7af8bf64c4c731a227b1fb9ebb76 -->
 ## Get List Products
 
@@ -870,14 +988,44 @@ $.ajax(settings).done(function (response) {
     "msg": "OK",
     "data": [
         {
-            "id": 4,
-            "title": "teste3333",
-            "description": "teste2",
-            "quant": "teste2",
+            "id": 1,
+            "title": "Bananas",
+            "description": "Comprar as mais baratas!",
+            "quant": "1 cacho",
             "image": "",
-            "list_id": 2,
+            "list_id": 1,
             "created_at": null,
-            "updated_at": "2017-01-23 16:09:12"
+            "updated_at": null
+        },
+        {
+            "id": 2,
+            "title": "Laranjas",
+            "description": "Comprar as mais baratas!",
+            "quant": "6",
+            "image": "",
+            "list_id": 1,
+            "created_at": null,
+            "updated_at": null
+        },
+        {
+            "id": 3,
+            "title": "Café",
+            "description": "Comprar as mais baratas!",
+            "quant": "2 pacotes",
+            "image": "",
+            "list_id": 1,
+            "created_at": null,
+            "updated_at": null
+        },
+        {
+            "id": 4,
+            "title": "Bananas",
+            "description": "Comprar as mais baratas!",
+            "quant": "1 cacho",
+            "image": "",
+            "list_id": 3,
+            "created_at": null,
+            "updated_at": null
         },
         {
             "id": 5,
@@ -928,16 +1076,6 @@ $.ajax(settings).done(function (response) {
             "list_id": 3,
             "created_at": null,
             "updated_at": null
-        },
-        {
-            "id": 10,
-            "title": "teste3333",
-            "description": "teste2",
-            "quant": "teste2",
-            "image": "e497e8c48c80090800dd7e606cd3f9b8.jpeg",
-            "list_id": 2,
-            "created_at": "2017-01-23 16:12:37",
-            "updated_at": "2017-01-23 16:22:07"
         }
     ]
 }
@@ -1016,9 +1154,18 @@ $.ajax(settings).done(function (response) {
 
 ```json
 {
-    "status": 404,
-    "msg": "NOK",
-    "data": "Product doesn't exist"
+    "status": 0,
+    "msg": "OK",
+    "data": {
+        "id": 1,
+        "title": "Bananas",
+        "description": "Comprar as mais baratas!",
+        "quant": "1 cacho",
+        "image": "",
+        "list_id": 1,
+        "created_at": null,
+        "updated_at": null
+    }
 }
 ```
 
@@ -1136,6 +1283,16 @@ $.ajax(settings).done(function (response) {
     "msg": "OK",
     "data": [
         {
+            "id": 1,
+            "name": "Carlos",
+            "color": "red",
+            "email": "carlos@ua.pt",
+            "birthday": "22\/10\/2000",
+            "family_id": null,
+            "created_at": null,
+            "updated_at": null
+        },
+        {
             "id": 2,
             "name": "Alexandre",
             "color": "blue",
@@ -1174,16 +1331,6 @@ $.ajax(settings).done(function (response) {
             "family_id": 2,
             "created_at": null,
             "updated_at": null
-        },
-        {
-            "id": 6,
-            "name": "Martin",
-            "color": "blue",
-            "email": "m.vaz.mota@gmail.com",
-            "birthday": "12\/11\/1992",
-            "family_id": null,
-            "created_at": "2017-01-23 14:45:34",
-            "updated_at": "2017-01-23 14:48:10"
         }
     ]
 }
@@ -1262,9 +1409,18 @@ $.ajax(settings).done(function (response) {
 
 ```json
 {
-    "status": 404,
-    "msg": "NOK",
-    "data": "User doesn't exist"
+    "status": 200,
+    "msg": "OK",
+    "data": {
+        "id": 1,
+        "name": "Carlos",
+        "color": "red",
+        "email": "carlos@ua.pt",
+        "birthday": "22\/10\/2000",
+        "family_id": null,
+        "created_at": null,
+        "updated_at": null
+    }
 }
 ```
 
@@ -1390,3 +1546,126 @@ $.ajax(settings).done(function (response) {
 
 
 <!-- END_2ea88ff35aa222f5582e50f39a2b35fd -->
+<!-- START_d2a1e462baf2dbbe6836e5367388a5ed -->
+## Lists of a User
+
+Returns the lists of a user
+
+> Example request:
+
+```bash
+curl "http://localhost/api/users/{user}/lists" \
+-H "Accept: application/json"
+```
+
+```javascript
+var settings = {
+    "async": true,
+    "crossDomain": true,
+    "url": "http://localhost/api/users/{user}/lists",
+    "method": "GET",
+    "headers": {
+        "accept": "application/json"
+    }
+}
+
+$.ajax(settings).done(function (response) {
+    console.log(response);
+});
+```
+
+> Example response:
+
+```json
+null
+```
+
+### HTTP Request
+`GET api/users/{user}/lists`
+
+`HEAD api/users/{user}/lists`
+
+
+<!-- END_d2a1e462baf2dbbe6836e5367388a5ed -->
+<!-- START_44a387fde23b81c87db08ac5b063091e -->
+## Events of a User
+
+Returns the lists of a user
+
+> Example request:
+
+```bash
+curl "http://localhost/api/users/{user}/events" \
+-H "Accept: application/json"
+```
+
+```javascript
+var settings = {
+    "async": true,
+    "crossDomain": true,
+    "url": "http://localhost/api/users/{user}/events",
+    "method": "GET",
+    "headers": {
+        "accept": "application/json"
+    }
+}
+
+$.ajax(settings).done(function (response) {
+    console.log(response);
+});
+```
+
+> Example response:
+
+```json
+null
+```
+
+### HTTP Request
+`GET api/users/{user}/events`
+
+`HEAD api/users/{user}/events`
+
+
+<!-- END_44a387fde23b81c87db08ac5b063091e -->
+<!-- START_86b2a4d19352454372202146ec95b92d -->
+## Family of a User
+
+Returns the users that belong to the family of a user
+
+> Example request:
+
+```bash
+curl "http://localhost/api/users/{user}/family" \
+-H "Accept: application/json"
+```
+
+```javascript
+var settings = {
+    "async": true,
+    "crossDomain": true,
+    "url": "http://localhost/api/users/{user}/family",
+    "method": "GET",
+    "headers": {
+        "accept": "application/json"
+    }
+}
+
+$.ajax(settings).done(function (response) {
+    console.log(response);
+});
+```
+
+> Example response:
+
+```json
+null
+```
+
+### HTTP Request
+`GET api/users/{user}/family`
+
+`HEAD api/users/{user}/family`
+
+
+<!-- END_86b2a4d19352454372202146ec95b92d -->

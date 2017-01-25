@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\User;
 use App\Lists;
+use App\Family;
 use App\Http\Requests;
 use Validator;
 use Auth;
@@ -240,6 +241,30 @@ class UsersController extends Controller
             return $this->_result('User doesn\'t have events', 404, "NOK");
         } else {
             return $this->_result($events);
+        }
+    }
+
+    /**
+     * Family of a User
+     *
+     * Returns the users that belong to the family of a user
+     *
+     * @param int $id Id of the list
+     *
+     * @return array
+     */
+
+    public function getFamily($id)
+    {
+        $family = Family::find($id)->users()->orderBy('id')->get();
+
+        // Filter the logged user
+        $filtered = $family->except(['id' => $id]);
+
+        if ($filtered->isEmpty()){
+            return $this->_result('User doesn\'t have family members', 404, "NOK");
+        } else {
+            return $this->_result($filtered);
         }
     }
 
