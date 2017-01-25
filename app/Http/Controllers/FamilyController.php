@@ -165,19 +165,6 @@ class FamilyController extends Controller
      * @hideFromAPIDocumentation
      */
 
-    private function _result($data, $status = 0, $msg = 'OK')
-    {
-        return json_encode(array(
-            'status' => $status,
-            'msg' => $msg,
-            'data' => $data
-        ));
-    }
-
-    /**
-     * @hideFromAPIDocumentation
-     */
-
     public function create()
     {
 //

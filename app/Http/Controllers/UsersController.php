@@ -272,19 +272,6 @@ class UsersController extends Controller
      * @hideFromAPIDocumentation
      */
 
-    private function _result($data, $status = 200, $msg = 'OK')
-    {
-        return json_encode(array(
-            'status' => $status,
-            'msg' => $msg,
-            'data' => $data
-        ));
-    }
-
-    /**
-     * @hideFromAPIDocumentation
-     */
-
     public function create()
     {
 //
