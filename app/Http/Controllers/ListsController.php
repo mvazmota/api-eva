@@ -3,10 +3,18 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests;
+use App\Listeners\NewListNotification;
 use App\Lists;
 use App\Tools;
 use Illuminate\Http\Request;
+use Illuminate\Notifications\Notification;
+use Illuminate\Notifications\Notifiable;
 use Validator;
+use App\Events\Newlist;
+use App\Notifications\ListCreated;
+use App\User;
+use Auth;
+
 
 /**
  * @resource Lists
@@ -86,6 +94,10 @@ class ListsController extends Controller
         // Attach new users of the list
         foreach ($array as $value) {
             $listID->users()->attach($value);
+
+            // Notify users of list creation
+            $user = User::whereId($value)->first();
+            $user->notify(new ListCreated($lists));
         }
 
         return $this->_result($lists);
@@ -129,12 +141,10 @@ class ListsController extends Controller
         $validator = Validator::make($data, [
             'name' => 'required|max:20',
             'icon' => 'required',
-            'users' => 'required',
         ],
         [
             'name' => 'The title field is required',
             'icon' => 'The icon field is required',
-            'users' => 'The users field is required',
         ]);
 
         if($validator->fails())
@@ -147,19 +157,6 @@ class ListsController extends Controller
         $list->name = $data['name'];
         $list->icon = $data['icon'];
         $list->save();
-
-        // Detach old users of the list
-        $listID = Lists::find($list['id']);
-        $listID->users()->detach();
-
-        // Split users into an array
-        $users = $data['users'];
-        $array = explode(',', $users);
-
-        // Attach new users of the list
-        foreach ($array as $value) {
-            $listID->users()->attach($value);
-        }
 
         return $this->_result($list);
     }
@@ -209,9 +206,9 @@ class ListsController extends Controller
      * @return array
      */
 
-    public function getProducts($listId)
+    public function getProducts($id)
     {
-        $products = Lists::find($listId)->products()->get();
+        $products = Lists::find($id)->products()->get();
 
         if ($products->isEmpty()){
             return $this->_result('List doesn\'t have products', 404, "NOK");
@@ -232,7 +229,7 @@ class ListsController extends Controller
 
     public function getUsers($id)
     {
-        $users = Lists::find($id)->users()->orderBy('name')->get();
+        $users = Lists::find($id)->users()->orderBy('id')->get();
 
         if ($users->isEmpty()){
             return $this->_result('List doesn\'t have users', 404, "NOK");
@@ -241,12 +238,112 @@ class ListsController extends Controller
         }
     }
 
-//    public function addusers(Request $request)
-//    {
-//        $data = $request->all();
-//        $users = Lists::find($data['list_id']);
-//        $users->users()->attach($data['user_id']);
-//    }
+    /**
+     * Add User
+     *
+     * Inserts a user to a list in the database
+     *
+     * @param \Illuminate\Http\Request $request Post data
+     *
+     * @return array
+     */
+
+    public function addUser(Request $request, $id)
+    {
+        $data = $request->all();
+
+        $validator = Validator::make($data, [
+            'users' => 'required',
+        ],
+        [
+            'users' => 'The users field is required',
+        ]);
+
+        if($validator->fails())
+        {
+            $errors = $validator->errors()->all();
+            return $this->_result($errors, 400, 'NOK');
+        }
+
+        $listID = Lists::find($id);
+
+        // Check if list exists
+        if (empty($listID)){
+            return $this->_result('List doesn\'t exist', 404, "NOK");
+        }
+
+        $userID = $data['users'];
+        $user = User::find($userID);
+
+        // Check if user exists
+        if (empty($user)){
+            return $this->_result('User doesn\'t exist', 404, "NOK");
+        }
+
+        // Verify if the user is already on the list
+        $hasUser = $listID->users()->where('id', $userID)->exists();
+
+        if($hasUser != 1){
+            // Attach new user to the list
+            $listID->users()->attach($userID);
+
+            // Notify the user
+            //$user = User::whereId($userID)->first();
+            //$user->notify(new AddedToList($listID));
+
+            return $this->_result('User successfuly added');
+        } else {
+            return $this->_result('User is already in this list', 400, "NOK");
+        }
+    }
+
+    /**
+     * Remove User
+     *
+     * Deletes a user from a list in the database
+     *
+     * @param \Illuminate\Http\Request $request Post data
+     *
+     * @return array
+     */
+
+    public function removeUser(Request $request, $id)
+    {
+        $data = $request->all();
+
+        $lists = Lists::whereId($id)->first();
+
+        // Check if list exists
+        if (empty($lists)){
+            return $this->_result('List doesn\'t exist', 404, "NOK");
+        }
+
+        $userID = $data['users'];
+
+        $user = User::find($userID);
+
+        // Check if user exists
+        if (empty($user)){
+            return $this->_result('User doesn\'t exist', 404, "NOK");
+        }
+
+        // Verify if the user is already on the list
+        $hasUser = $lists->users()->where('id', $userID)->exists();
+
+        if($hasUser == 1){
+            // Detach user of the list
+            $lists->users()->detach($user);
+
+            // Notify the user
+            //$user = User::whereId($userID)->first();
+            //$user->notify(new AddedToList($listID));
+
+            return $this->_result('User successfuly removed');
+        } else {
+            return $this->_result('User was not on the list', 400, "NOK");
+        }
+
+    }
 
     /**
      * @hideFromAPIDocumentation

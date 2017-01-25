@@ -11,7 +11,6 @@
         "mpociot/laravel-apidoc-generator": "^1.7",
         "barryvdh/laravel-cors": "^0.8.2",
         "guzzlehttp/guzzle": "^6.2",
-        "spatie/laravel-google-calendar": "^1.0"
     },
     "require-dev": {
         "fzaninotto/faker": "~1.4",

@@ -58,14 +58,12 @@ class EventsController extends Controller
         $validator = Validator::make($data, [
             'title' => 'required|max:20',
             'date' => 'required',
-            'time' => 'required',
             'location' => 'required',
             'users' => 'required',
         ],
         [
             'title' => 'The title field is required',
             'date' => 'The date field is required',
-            'time' => 'The time field is required',
             'location' => 'The location field is required',
             'users' => 'The users field is required',
         ]);
@@ -79,7 +77,8 @@ class EventsController extends Controller
         $events = Events::create([
             'title' => $data['title'],
             'date' => $data['date'],
-            'time' => $data['time'],
+            'start_time' => $data['start_time'],
+            'end_time' => $data['end_time'],
             'location' => $data['location'],
             'description' => $data['description'],
         ]);

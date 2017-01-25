@@ -2,6 +2,9 @@
 
 use Illuminate\Http\Request;
 
+//Auth::loginUsingId(2);
+
+
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -20,7 +23,8 @@ Route::post('products/{product}', 'ProductsController@updateProduct');
 // Lists
 Route::resource('lists', 'ListsController');
 Route::get('lists/{list}/users', 'ListsController@getUsers');
-//Route::post('lists/{list}/users', 'ListsController@addUsers');
+Route::post('lists/{list}/users', 'ListsController@addUser');
+Route::delete('lists/{list}/users', 'ListsController@removeUser');
 Route::get('lists/{list}/products', 'ListsController@getProducts');
 
 //Family
@@ -30,6 +34,9 @@ Route::get('family/{family}/users', 'FamilyController@getusers');
 //Users
 Route::resource('users', 'UsersController');
 Route::get('user', 'UsersController@authUser');
+Route::get('users/{user}/lists', 'UsersController@getLists');
+Route::get('users/{user}/events', 'UsersController@getEvents');
+
 
 //Events
 Route::resource('events', 'EventsController');

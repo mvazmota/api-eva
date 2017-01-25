@@ -4,7 +4,9 @@ namespace App;
 
 use Laravel\Passport\HasApiTokens;
 use Illuminate\Notifications\Notifiable;
+use Illuminate\Notifications\Notification;
 use Illuminate\Foundation\Auth\User as Authenticatable;
+use Auth;
 
 class User extends Authenticatable
 {
@@ -30,12 +32,12 @@ class User extends Authenticatable
 
     public function lists()
     {
-        return $this->belongsToMany('App\Lists', 'list_user', 'list_id', 'user_id');
+        return $this->belongsToMany('App\Lists', 'list_user','user_id', 'list_id');
     }
 
     public function events()
     {
-        return $this->belongsToMany('App\Events', 'event_user', 'event_id', 'user_id');
+        return $this->belongsToMany('App\Events', 'event_user', 'user_id', 'event_id');
     }
 
     public function family()

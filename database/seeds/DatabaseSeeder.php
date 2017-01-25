@@ -18,5 +18,6 @@ class DatabaseSeeder extends Seeder
         $this->call(ListPivotUsersTableSeeder::class);
         $this->call(FamiliesTableSeeder::class);
         $this->call(EventsTableSeeder::class);
+        $this->call(EventsPivotUsersTableSeeder::class);
     }
 }

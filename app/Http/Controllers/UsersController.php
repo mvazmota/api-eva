@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\User;
+use App\Lists;
 use App\Http\Requests;
 use Validator;
 use Auth;
@@ -198,6 +199,48 @@ class UsersController extends Controller
         $users = Auth::user();
 
         return $this->_result($users);
+    }
+
+    /**
+     * Lists of a User
+     *
+     * Returns the lists of a user
+     *
+     * @param int $id Id of the list
+     *
+     * @return array
+     */
+
+    public function getLists($id)
+    {
+        $lists = User::find($id)->lists()->orderBy('id')->get();
+
+        if ($lists->isEmpty()){
+            return $this->_result('User doesn\'t have lists', 404, "NOK");
+        } else {
+            return $this->_result($lists);
+        }
+    }
+
+    /**
+     * Events of a User
+     *
+     * Returns the lists of a user
+     *
+     * @param int $id Id of the list
+     *
+     * @return array
+     */
+
+    public function getEvents($id)
+    {
+        $events = User::find($id)->events()->orderBy('id')->get();
+
+        if ($events->isEmpty()){
+            return $this->_result('User doesn\'t have events', 404, "NOK");
+        } else {
+            return $this->_result($events);
+        }
     }
 
     /**
