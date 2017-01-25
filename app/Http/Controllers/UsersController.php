@@ -258,7 +258,7 @@ class UsersController extends Controller
     {
         $family = Family::find($id)->users()->orderBy('id')->get();
 
-        // Filter the logged user
+        // Filter the user
         $filtered = $family->except(['id' => $id]);
 
         if ($filtered->isEmpty()){
