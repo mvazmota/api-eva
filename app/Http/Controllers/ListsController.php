@@ -239,7 +239,7 @@ class ListsController extends Controller
     }
 
     /**
-     * Add User
+     * Add Users
      *
      * Inserts a user to a list in the database
      *
@@ -248,7 +248,7 @@ class ListsController extends Controller
      * @return array
      */
 
-    public function addUser(Request $request, $id)
+    public function addUsers(Request $request, $id)
     {
         $data = $request->all();
 
@@ -298,7 +298,7 @@ class ListsController extends Controller
     }
 
     /**
-     * Remove User
+     * Remove Users
      *
      * Deletes a user from a list in the database
      *
@@ -307,7 +307,7 @@ class ListsController extends Controller
      * @return array
      */
 
-    public function removeUser(Request $request, $id)
+    public function removeUsers(Request $request, $id)
     {
         $data = $request->all();
 
@@ -342,7 +342,6 @@ class ListsController extends Controller
         } else {
             return $this->_result('User was not on the list', 400, "NOK");
         }
-
     }
 
     /**

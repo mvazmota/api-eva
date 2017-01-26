@@ -11,7 +11,7 @@ class Controller extends BaseController
 {
     use AuthorizesRequests, DispatchesJobs, ValidatesRequests;
 
-    private function _result($data, $status = 200, $msg = 'OK')
+    public function _result($data, $status = 200, $msg = 'OK')
     {
         return json_encode(array(
             'status' => $status,

@@ -23,8 +23,8 @@ Route::post('products/{product}', 'ProductsController@updateProduct');
 // Lists
 Route::resource('lists', 'ListsController');
 Route::get('lists/{list}/users', 'ListsController@getUsers');
-Route::post('lists/{list}/users', 'ListsController@addUser');
-Route::delete('lists/{list}/users', 'ListsController@removeUser');
+Route::post('lists/{list}/users', 'ListsController@addUsers');
+Route::delete('lists/{list}/users', 'ListsController@removeUsers');
 Route::get('lists/{list}/products', 'ListsController@getProducts');
 
 //Family
@@ -42,4 +42,5 @@ Route::get('users/{user}/family', 'UsersController@getFamily');
 //Events
 Route::resource('events', 'EventsController');
 Route::get('events/{event}/users', 'EventsController@getUsers');
-
+Route::post('events/{event}/users', 'EventsController@addUsers');
+Route::delete('events/{event}/users', 'EventsController@removeUsers');

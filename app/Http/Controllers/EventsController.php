@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests;
 use App\Events;
+use App\User;
 use App\Tools;
 use Illuminate\Http\Request;
 use Validator;
@@ -135,14 +136,12 @@ class EventsController extends Controller
         $validator = Validator::make($data, [
             'title' => 'required|max:20',
             'date' => 'required',
-            'time' => 'required',
             'location' => 'required',
             'users' => 'required',
         ],
         [
             'title' => 'The title field is required',
             'date' => 'The date field is required',
-            'time' => 'The time field is required',
             'location' => 'The location field is required',
             'users' => 'The users field is required',
         ]);
@@ -156,23 +155,11 @@ class EventsController extends Controller
         $events = Events::whereId($id)->first();
         $events->title = $data['title'];
         $events->date = $data['date'];
-        $events->time = $data['time'];
+        $events->start_time = $data['start_time'];
+        $events->end_time = $data['end_time'];
         $events->location = $data['location'];
         $events->description = $data['description'];
         $events->save();
-
-        // Detach old users of the event
-        $eventID = Events::find($events['id']);
-        $eventID->users()->detach();
-
-        // Split users into an array
-        $users = $data['users'];
-        $array = explode(',', $users);
-
-        // Attach new users of the event
-        foreach ($array as $value) {
-            $eventID->users()->attach($value);
-        }
 
         return $this->_result($events);
     }
@@ -227,6 +214,111 @@ class EventsController extends Controller
             return $this->_result('Event doesn\'t have users', 404, "NOK");
         } else {
             return $this->_result($users);
+        }
+    }
+    /**
+     * Add User
+     *
+     * Inserts a user to a list in the database
+     *
+     * @param \Illuminate\Http\Request $request Post data
+     *
+     * @return array
+     */
+
+    public function addUsers(Request $request, $id)
+    {
+        $data = $request->all();
+
+        $validator = Validator::make($data, [
+            'users' => 'required',
+        ],
+            [
+                'users' => 'The users field is required',
+            ]);
+
+        if($validator->fails())
+        {
+            $errors = $validator->errors()->all();
+            return $this->_result($errors, 400, 'NOK');
+        }
+
+        $events = Events::find($id);
+
+        // Check if list exists
+        if (empty($events)){
+            return $this->_result('Event doesn\'t exist', 404, "NOK");
+        }
+
+        $userID = $data['users'];
+        $user = User::find($userID);
+
+        // Check if user exists
+        if (empty($user)){
+            return $this->_result('User doesn\'t exist', 404, "NOK");
+        }
+
+        // Verify if the user is already on the list
+        $hasUser = $events->users()->where('id', $userID)->exists();
+
+        if($hasUser != 1){
+            // Attach new user to the list
+            $events->users()->attach($userID);
+
+            // Notify the user
+            //$user = User::whereId($userID)->first();
+            //$user->notify(new AddedToList($listID));
+
+            return $this->_result('User successfuly added');
+        } else {
+            return $this->_result('User is already in this list', 400, "NOK");
+        }
+    }
+
+    /**
+     * Remove User
+     *
+     * Deletes a user from a list in the database
+     *
+     * @param \Illuminate\Http\Request $request Post data
+     *
+     * @return array
+     */
+
+    public function removeUsers(Request $request, $id)
+    {
+        $data = $request->all();
+
+        $events = Events::whereId($id)->first();
+
+        // Check if list exists
+        if (empty($events)){
+            return $this->_result('Event doesn\'t exist', 404, "NOK");
+        }
+
+        $userID = $data['users'];
+
+        $user = User::find($userID);
+
+        // Check if user exists
+        if (empty($user)){
+            return $this->_result('User doesn\'t exist', 404, "NOK");
+        }
+
+        // Verify if the user is already on the list
+        $hasUser = $events->users()->where('id', $userID)->exists();
+
+        if($hasUser == 1){
+            // Detach user of the list
+            $events->users()->detach($user);
+
+            // Notify the user
+            //$user = User::whereId($userID)->first();
+            //$user->notify(new AddedToList($listID));
+
+            return $this->_result('User successfuly removed');
+        } else {
+            return $this->_result('User was not on the list', 400, "NOK");
         }
     }
 
