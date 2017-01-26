@@ -42,6 +42,6 @@ class User extends Authenticatable
 
     public function family()
     {
-        return $this->belongsTo('App\Family', 'family_id');
+        return $this->belongsTo('App\Families', 'family_id');
     }
 }

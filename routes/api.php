@@ -2,7 +2,7 @@
 
 use Illuminate\Http\Request;
 
-Auth::loginUsingId(6);
+//Auth::loginUsingId(1);
 
 
 /*
@@ -28,16 +28,18 @@ Route::delete('lists/{list}/users', 'ListsController@removeUsers');
 Route::get('lists/{list}/products', 'ListsController@getProducts');
 
 //Family
-Route::resource('family', 'FamilyController');
-Route::get('family/{family}/users', 'FamilyController@getusers');
+Route::resource('families', 'FamiliesController');
+Route::get('families/{family}/users', 'FamiliesController@getusers');
+Route::get('families/{family}/owners', 'FamiliesController@getOwners');
+Route::post('families/{family}/owners', 'FamiliesController@addOwners');
+Route::delete('families/{family}/owners', 'FamiliesController@removeOwners');
 
 //Users
 Route::resource('users', 'UsersController');
-Route::get('user', 'UsersController@authUser');
 Route::get('users/{user}/lists', 'UsersController@getLists');
 Route::get('users/{user}/events', 'UsersController@getEvents');
 Route::get('users/{user}/family', 'UsersController@getFamily');
-
+Route::get('user', 'UsersController@authUser');
 
 //Events
 Route::resource('events', 'EventsController');

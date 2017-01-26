@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\User;
 use App\Lists;
-use App\Family;
+use App\Families;
 use App\Http\Requests;
 use Validator;
 use Auth;
@@ -120,7 +120,7 @@ class UsersController extends Controller
     /**
      * User Update
      *
-     * Update a family in the database
+     * Update a user in the database
      *
      * @param \Illuminate\Http\Request $request Post data
      *
@@ -254,7 +254,7 @@ class UsersController extends Controller
 
     public function getFamily($id)
     {
-        $family = Family::find($id)->users()->orderBy('id')->get();
+        $family = Families::find($id)->users()->orderBy('id')->get();
 
         // Filter the user
         $filtered = $family->except(['id' => $id]);

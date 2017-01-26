@@ -63,9 +63,10 @@ $.ajax(settings).done(function (response) {
             "id": 1,
             "title": "Festa da Catarina",
             "date": "09\/01\/2017",
-            "time": "12h30",
+            "start_time": "12h30",
+            "end_time": "16h30",
             "location": "Aveiro",
-            "description": "Que festa que vai ser!",
+            "created_by": 1,
             "created_at": null,
             "updated_at": null
         },
@@ -73,9 +74,10 @@ $.ajax(settings).done(function (response) {
             "id": 2,
             "title": "Festa da Catarina2",
             "date": "22\/01\/2017",
-            "time": "12h30",
+            "start_time": "12h30",
+            "end_time": null,
             "location": "Aveiro",
-            "description": "Que festa que vai ser!",
+            "created_by": 1,
             "created_at": null,
             "updated_at": null
         },
@@ -83,9 +85,10 @@ $.ajax(settings).done(function (response) {
             "id": 3,
             "title": "Festa da Catarina",
             "date": "12\/02\/2017",
-            "time": "12h30",
+            "start_time": "12h30",
+            "end_time": null,
             "location": "Aveiro",
-            "description": "Que festa que vai ser!",
+            "created_by": 2,
             "created_at": null,
             "updated_at": null
         }
@@ -172,9 +175,10 @@ $.ajax(settings).done(function (response) {
         "id": 1,
         "title": "Festa da Catarina",
         "date": "09\/01\/2017",
-        "time": "12h30",
+        "start_time": "12h30",
+        "end_time": "16h30",
         "location": "Aveiro",
-        "description": "Que festa que vai ser!",
+        "created_by": 1,
         "created_at": null,
         "updated_at": null
     }
@@ -299,18 +303,15 @@ null
 
 
 <!-- END_0950a4da92a2c2dfccd656f9df9ea43e -->
-#Family
+<!-- START_6d72cd5c1356ffe56dbf1392b5e71381 -->
+## Add User
 
-Controller for family related operations
-<!-- START_1a24898fc594d249385c079d5cbf7353 -->
-## List all Families
-
-Lists all families in the database
+Inserts a user to a list in the database
 
 > Example request:
 
 ```bash
-curl "http://localhost/api/family" \
+curl "http://localhost/api/events/{event}/users" \
 -H "Accept: application/json"
 ```
 
@@ -318,77 +319,7 @@ curl "http://localhost/api/family" \
 var settings = {
     "async": true,
     "crossDomain": true,
-    "url": "http://localhost/api/family",
-    "method": "GET",
-    "headers": {
-        "accept": "application/json"
-    }
-}
-
-$.ajax(settings).done(function (response) {
-    console.log(response);
-});
-```
-
-> Example response:
-
-```json
-{
-    "status": 0,
-    "msg": "OK",
-    "data": [
-        {
-            "id": 1,
-            "name": "Silva",
-            "created_at": null,
-            "updated_at": null
-        },
-        {
-            "id": 2,
-            "name": "Mota",
-            "created_at": null,
-            "updated_at": null
-        },
-        {
-            "id": 3,
-            "name": "Silva",
-            "created_at": null,
-            "updated_at": null
-        },
-        {
-            "id": 4,
-            "name": "Mota",
-            "created_at": null,
-            "updated_at": null
-        }
-    ]
-}
-```
-
-### HTTP Request
-`GET api/family`
-
-`HEAD api/family`
-
-
-<!-- END_1a24898fc594d249385c079d5cbf7353 -->
-<!-- START_d60496443e529c37287fd3855181d81d -->
-## Family Insert
-
-Inserts a family in the database
-
-> Example request:
-
-```bash
-curl "http://localhost/api/family" \
--H "Accept: application/json"
-```
-
-```javascript
-var settings = {
-    "async": true,
-    "crossDomain": true,
-    "url": "http://localhost/api/family",
+    "url": "http://localhost/api/events/{event}/users",
     "method": "POST",
     "headers": {
         "accept": "application/json"
@@ -402,19 +333,19 @@ $.ajax(settings).done(function (response) {
 
 
 ### HTTP Request
-`POST api/family`
+`POST api/events/{event}/users`
 
 
-<!-- END_d60496443e529c37287fd3855181d81d -->
-<!-- START_290c637213107aab0776fa671513a0a6 -->
-## Family Detail
+<!-- END_6d72cd5c1356ffe56dbf1392b5e71381 -->
+<!-- START_3c8037cb1ca9f386598217fd9c40627e -->
+## Remove User
 
-Gives the details of a family
+Deletes a user from a list in the database
 
 > Example request:
 
 ```bash
-curl "http://localhost/api/family/{family}" \
+curl "http://localhost/api/events/{event}/users" \
 -H "Accept: application/json"
 ```
 
@@ -422,7 +353,44 @@ curl "http://localhost/api/family/{family}" \
 var settings = {
     "async": true,
     "crossDomain": true,
-    "url": "http://localhost/api/family/{family}",
+    "url": "http://localhost/api/events/{event}/users",
+    "method": "DELETE",
+    "headers": {
+        "accept": "application/json"
+    }
+}
+
+$.ajax(settings).done(function (response) {
+    console.log(response);
+});
+```
+
+
+### HTTP Request
+`DELETE api/events/{event}/users`
+
+
+<!-- END_3c8037cb1ca9f386598217fd9c40627e -->
+#Families
+
+Controller for family related operations
+<!-- START_51aa80b48c1499b9df54721d0e820ad5 -->
+## List all Families
+
+Lists all families in the database
+
+> Example request:
+
+```bash
+curl "http://localhost/api/families" \
+-H "Accept: application/json"
+```
+
+```javascript
+var settings = {
+    "async": true,
+    "crossDomain": true,
+    "url": "http://localhost/api/families",
     "method": "GET",
     "headers": {
         "accept": "application/json"
@@ -438,7 +406,99 @@ $.ajax(settings).done(function (response) {
 
 ```json
 {
-    "status": 0,
+    "status": 200,
+    "msg": "OK",
+    "data": [
+        {
+            "id": 1,
+            "name": "Silva",
+            "created_at": null,
+            "updated_at": null
+        },
+        {
+            "id": 2,
+            "name": "Mota",
+            "created_at": null,
+            "updated_at": null
+        }
+    ]
+}
+```
+
+### HTTP Request
+`GET api/families`
+
+`HEAD api/families`
+
+
+<!-- END_51aa80b48c1499b9df54721d0e820ad5 -->
+<!-- START_0a31013373952b88a8f7f64bc56927c2 -->
+## Family Insert
+
+Inserts a family in the database
+
+> Example request:
+
+```bash
+curl "http://localhost/api/families" \
+-H "Accept: application/json"
+```
+
+```javascript
+var settings = {
+    "async": true,
+    "crossDomain": true,
+    "url": "http://localhost/api/families",
+    "method": "POST",
+    "headers": {
+        "accept": "application/json"
+    }
+}
+
+$.ajax(settings).done(function (response) {
+    console.log(response);
+});
+```
+
+
+### HTTP Request
+`POST api/families`
+
+
+<!-- END_0a31013373952b88a8f7f64bc56927c2 -->
+<!-- START_2f896a105a3b82ae9255af3310a6e1e6 -->
+## Family Detail
+
+Gives the details of a family
+
+> Example request:
+
+```bash
+curl "http://localhost/api/families/{family}" \
+-H "Accept: application/json"
+```
+
+```javascript
+var settings = {
+    "async": true,
+    "crossDomain": true,
+    "url": "http://localhost/api/families/{family}",
+    "method": "GET",
+    "headers": {
+        "accept": "application/json"
+    }
+}
+
+$.ajax(settings).done(function (response) {
+    console.log(response);
+});
+```
+
+> Example response:
+
+```json
+{
+    "status": 200,
     "msg": "OK",
     "data": {
         "id": 1,
@@ -450,13 +510,13 @@ $.ajax(settings).done(function (response) {
 ```
 
 ### HTTP Request
-`GET api/family/{family}`
+`GET api/families/{family}`
 
-`HEAD api/family/{family}`
+`HEAD api/families/{family}`
 
 
-<!-- END_290c637213107aab0776fa671513a0a6 -->
-<!-- START_f8b8a12aad7af333bffbc3d4eddb22cd -->
+<!-- END_2f896a105a3b82ae9255af3310a6e1e6 -->
+<!-- START_e3c71128512329ce56ead73a5e468f40 -->
 ## Family Update
 
 Update a family in the database
@@ -464,7 +524,7 @@ Update a family in the database
 > Example request:
 
 ```bash
-curl "http://localhost/api/family/{family}" \
+curl "http://localhost/api/families/{family}" \
 -H "Accept: application/json"
 ```
 
@@ -472,7 +532,7 @@ curl "http://localhost/api/family/{family}" \
 var settings = {
     "async": true,
     "crossDomain": true,
-    "url": "http://localhost/api/family/{family}",
+    "url": "http://localhost/api/families/{family}",
     "method": "PUT",
     "headers": {
         "accept": "application/json"
@@ -486,13 +546,13 @@ $.ajax(settings).done(function (response) {
 
 
 ### HTTP Request
-`PUT api/family/{family}`
+`PUT api/families/{family}`
 
-`PATCH api/family/{family}`
+`PATCH api/families/{family}`
 
 
-<!-- END_f8b8a12aad7af333bffbc3d4eddb22cd -->
-<!-- START_2ba79a5b9929988114a3b1a89261799c -->
+<!-- END_e3c71128512329ce56ead73a5e468f40 -->
+<!-- START_f162693aa72c2b006cbecaa269c1ca1f -->
 ## Delete Family
 
 Deletes a family in the database
@@ -500,7 +560,7 @@ Deletes a family in the database
 > Example request:
 
 ```bash
-curl "http://localhost/api/family/{family}" \
+curl "http://localhost/api/families/{family}" \
 -H "Accept: application/json"
 ```
 
@@ -508,7 +568,7 @@ curl "http://localhost/api/family/{family}" \
 var settings = {
     "async": true,
     "crossDomain": true,
-    "url": "http://localhost/api/family/{family}",
+    "url": "http://localhost/api/families/{family}",
     "method": "DELETE",
     "headers": {
         "accept": "application/json"
@@ -522,11 +582,11 @@ $.ajax(settings).done(function (response) {
 
 
 ### HTTP Request
-`DELETE api/family/{family}`
+`DELETE api/families/{family}`
 
 
-<!-- END_2ba79a5b9929988114a3b1a89261799c -->
-<!-- START_8bb774a868ec24b998841380193620e1 -->
+<!-- END_f162693aa72c2b006cbecaa269c1ca1f -->
+<!-- START_6dca8a0dd2189996e742a3819cdc719a -->
 ## Get Family Users
 
 Lists the users of a Family
@@ -534,7 +594,7 @@ Lists the users of a Family
 > Example request:
 
 ```bash
-curl "http://localhost/api/family/{family}/users" \
+curl "http://localhost/api/families/{family}/users" \
 -H "Accept: application/json"
 ```
 
@@ -542,7 +602,7 @@ curl "http://localhost/api/family/{family}/users" \
 var settings = {
     "async": true,
     "crossDomain": true,
-    "url": "http://localhost/api/family/{family}/users",
+    "url": "http://localhost/api/families/{family}/users",
     "method": "GET",
     "headers": {
         "accept": "application/json"
@@ -561,12 +621,121 @@ null
 ```
 
 ### HTTP Request
-`GET api/family/{family}/users`
+`GET api/families/{family}/users`
 
-`HEAD api/family/{family}/users`
+`HEAD api/families/{family}/users`
 
 
-<!-- END_8bb774a868ec24b998841380193620e1 -->
+<!-- END_6dca8a0dd2189996e742a3819cdc719a -->
+<!-- START_d0f9ee403cea4164874149feeea61dc5 -->
+## Owners of a Family
+
+Returns the users that own a family
+
+> Example request:
+
+```bash
+curl "http://localhost/api/families/{family}/owners" \
+-H "Accept: application/json"
+```
+
+```javascript
+var settings = {
+    "async": true,
+    "crossDomain": true,
+    "url": "http://localhost/api/families/{family}/owners",
+    "method": "GET",
+    "headers": {
+        "accept": "application/json"
+    }
+}
+
+$.ajax(settings).done(function (response) {
+    console.log(response);
+});
+```
+
+> Example response:
+
+```json
+null
+```
+
+### HTTP Request
+`GET api/families/{family}/owners`
+
+`HEAD api/families/{family}/owners`
+
+
+<!-- END_d0f9ee403cea4164874149feeea61dc5 -->
+<!-- START_68f1fd0bf03f784691b85f4e5ccd1cd8 -->
+## Add Owners
+
+Inserts a owner to a family in the database
+
+> Example request:
+
+```bash
+curl "http://localhost/api/families/{family}/owners" \
+-H "Accept: application/json"
+```
+
+```javascript
+var settings = {
+    "async": true,
+    "crossDomain": true,
+    "url": "http://localhost/api/families/{family}/owners",
+    "method": "POST",
+    "headers": {
+        "accept": "application/json"
+    }
+}
+
+$.ajax(settings).done(function (response) {
+    console.log(response);
+});
+```
+
+
+### HTTP Request
+`POST api/families/{family}/owners`
+
+
+<!-- END_68f1fd0bf03f784691b85f4e5ccd1cd8 -->
+<!-- START_27d10428295b736f3157bbe412bc499c -->
+## Remove Owner
+
+Deletes a owner from a family in the database
+
+> Example request:
+
+```bash
+curl "http://localhost/api/families/{family}/owners" \
+-H "Accept: application/json"
+```
+
+```javascript
+var settings = {
+    "async": true,
+    "crossDomain": true,
+    "url": "http://localhost/api/families/{family}/owners",
+    "method": "DELETE",
+    "headers": {
+        "accept": "application/json"
+    }
+}
+
+$.ajax(settings).done(function (response) {
+    console.log(response);
+});
+```
+
+
+### HTTP Request
+`DELETE api/families/{family}/owners`
+
+
+<!-- END_27d10428295b736f3157bbe412bc499c -->
 #Lists
 
 Controller for shopping lists related operations
@@ -607,15 +776,17 @@ $.ajax(settings).done(function (response) {
     "data": [
         {
             "id": 1,
-            "name": "Event test2",
-            "icon": "natal",
+            "name": "Casa",
+            "icon": "casa",
+            "created_by": 1,
             "created_at": null,
-            "updated_at": "2017-01-24 15:44:11"
+            "updated_at": null
         },
         {
             "id": 2,
             "name": "Festa Joana",
             "icon": "prenda",
+            "created_by": 1,
             "created_at": null,
             "updated_at": null
         },
@@ -623,15 +794,17 @@ $.ajax(settings).done(function (response) {
             "id": 3,
             "name": "Passagem de Ano",
             "icon": "trabalho",
+            "created_by": 2,
             "created_at": null,
             "updated_at": null
         },
         {
             "id": 4,
-            "name": "Event test2",
+            "name": "teste2",
             "icon": "natal",
-            "created_at": "2017-01-24 15:41:20",
-            "updated_at": "2017-01-24 15:41:20"
+            "created_by": 1,
+            "created_at": "2017-01-26 16:11:22",
+            "updated_at": "2017-01-26 16:11:22"
         }
     ]
 }
@@ -714,10 +887,11 @@ $.ajax(settings).done(function (response) {
     "msg": "OK",
     "data": {
         "id": 1,
-        "name": "Event test2",
-        "icon": "natal",
+        "name": "Casa",
+        "icon": "casa",
+        "created_by": 1,
         "created_at": null,
-        "updated_at": "2017-01-24 15:44:11"
+        "updated_at": null
     }
 }
 ```
@@ -841,7 +1015,7 @@ null
 
 <!-- END_201a586a6cf4a763fdd4caec7d524eeb -->
 <!-- START_996cd264227f3a33843985d3cb9279a9 -->
-## Add User
+## Add Users
 
 Inserts a user to a list in the database
 
@@ -875,7 +1049,7 @@ $.ajax(settings).done(function (response) {
 
 <!-- END_996cd264227f3a33843985d3cb9279a9 -->
 <!-- START_f03e909c4a9ba65a080628887a9a442b -->
-## Remove User
+## Remove Users
 
 Deletes a user from a list in the database
 
@@ -984,7 +1158,7 @@ $.ajax(settings).done(function (response) {
 
 ```json
 {
-    "status": 0,
+    "status": 200,
     "msg": "OK",
     "data": [
         {
@@ -994,6 +1168,7 @@ $.ajax(settings).done(function (response) {
             "quant": "1 cacho",
             "image": "",
             "list_id": 1,
+            "created_by": 1,
             "created_at": null,
             "updated_at": null
         },
@@ -1004,6 +1179,7 @@ $.ajax(settings).done(function (response) {
             "quant": "6",
             "image": "",
             "list_id": 1,
+            "created_by": 1,
             "created_at": null,
             "updated_at": null
         },
@@ -1014,6 +1190,7 @@ $.ajax(settings).done(function (response) {
             "quant": "2 pacotes",
             "image": "",
             "list_id": 1,
+            "created_by": 2,
             "created_at": null,
             "updated_at": null
         },
@@ -1024,6 +1201,7 @@ $.ajax(settings).done(function (response) {
             "quant": "1 cacho",
             "image": "",
             "list_id": 3,
+            "created_by": 2,
             "created_at": null,
             "updated_at": null
         },
@@ -1034,6 +1212,7 @@ $.ajax(settings).done(function (response) {
             "quant": "6",
             "image": "",
             "list_id": 2,
+            "created_by": 3,
             "created_at": null,
             "updated_at": null
         },
@@ -1044,6 +1223,7 @@ $.ajax(settings).done(function (response) {
             "quant": "2 pacotes",
             "image": "",
             "list_id": 2,
+            "created_by": 1,
             "created_at": null,
             "updated_at": null
         },
@@ -1054,6 +1234,7 @@ $.ajax(settings).done(function (response) {
             "quant": "1 cacho",
             "image": "",
             "list_id": 3,
+            "created_by": 2,
             "created_at": null,
             "updated_at": null
         },
@@ -1064,6 +1245,7 @@ $.ajax(settings).done(function (response) {
             "quant": "6",
             "image": "",
             "list_id": 3,
+            "created_by": 3,
             "created_at": null,
             "updated_at": null
         },
@@ -1074,6 +1256,7 @@ $.ajax(settings).done(function (response) {
             "quant": "2 pacotes",
             "image": "",
             "list_id": 3,
+            "created_by": 4,
             "created_at": null,
             "updated_at": null
         }
@@ -1154,7 +1337,7 @@ $.ajax(settings).done(function (response) {
 
 ```json
 {
-    "status": 0,
+    "status": 200,
     "msg": "OK",
     "data": {
         "id": 1,
@@ -1163,6 +1346,7 @@ $.ajax(settings).done(function (response) {
         "quant": "1 cacho",
         "image": "",
         "list_id": 1,
+        "created_by": 1,
         "created_at": null,
         "updated_at": null
     }
@@ -1279,60 +1463,7 @@ $.ajax(settings).done(function (response) {
 
 ```json
 {
-    "status": 200,
-    "msg": "OK",
-    "data": [
-        {
-            "id": 1,
-            "name": "Carlos",
-            "color": "red",
-            "email": "carlos@ua.pt",
-            "birthday": "22\/10\/2000",
-            "family_id": null,
-            "created_at": null,
-            "updated_at": null
-        },
-        {
-            "id": 2,
-            "name": "Alexandre",
-            "color": "blue",
-            "email": "alex@ua.pt",
-            "birthday": "22\/10\/2000",
-            "family_id": 2,
-            "created_at": null,
-            "updated_at": null
-        },
-        {
-            "id": 3,
-            "name": "Ana",
-            "color": "pink",
-            "email": "ana@ua.pt",
-            "birthday": "22\/10\/2000",
-            "family_id": 2,
-            "created_at": null,
-            "updated_at": null
-        },
-        {
-            "id": 4,
-            "name": "Martinho",
-            "color": "red",
-            "email": "martinho@ua.pt",
-            "birthday": "22\/10\/2000",
-            "family_id": 2,
-            "created_at": null,
-            "updated_at": null
-        },
-        {
-            "id": 5,
-            "name": "Catarina",
-            "color": "yellow",
-            "email": "cat@ua.pt",
-            "birthday": "22\/10\/2000",
-            "family_id": 2,
-            "created_at": null,
-            "updated_at": null
-        }
-    ]
+    "error": "Unauthenticated."
 }
 ```
 
@@ -1409,18 +1540,7 @@ $.ajax(settings).done(function (response) {
 
 ```json
 {
-    "status": 200,
-    "msg": "OK",
-    "data": {
-        "id": 1,
-        "name": "Carlos",
-        "color": "red",
-        "email": "carlos@ua.pt",
-        "birthday": "22\/10\/2000",
-        "family_id": null,
-        "created_at": null,
-        "updated_at": null
-    }
+    "error": "Unauthenticated."
 }
 ```
 
@@ -1434,7 +1554,7 @@ $.ajax(settings).done(function (response) {
 <!-- START_48a3115be98493a3c866eb0e23347262 -->
 ## User Update
 
-Update a family in the database
+Update a user in the database
 
 > Example request:
 
@@ -1501,51 +1621,6 @@ $.ajax(settings).done(function (response) {
 
 
 <!-- END_d2db7a9fe3abd141d5adbc367a88e969 -->
-<!-- START_2ea88ff35aa222f5582e50f39a2b35fd -->
-## Authenticate User
-
-Authenticate a user in the database
-
-> Example request:
-
-```bash
-curl "http://localhost/api/user" \
--H "Accept: application/json"
-```
-
-```javascript
-var settings = {
-    "async": true,
-    "crossDomain": true,
-    "url": "http://localhost/api/user",
-    "method": "GET",
-    "headers": {
-        "accept": "application/json"
-    }
-}
-
-$.ajax(settings).done(function (response) {
-    console.log(response);
-});
-```
-
-> Example response:
-
-```json
-{
-    "status": 200,
-    "msg": "OK",
-    "data": null
-}
-```
-
-### HTTP Request
-`GET api/user`
-
-`HEAD api/user`
-
-
-<!-- END_2ea88ff35aa222f5582e50f39a2b35fd -->
 <!-- START_d2a1e462baf2dbbe6836e5367388a5ed -->
 ## Lists of a User
 
@@ -1577,7 +1652,9 @@ $.ajax(settings).done(function (response) {
 > Example response:
 
 ```json
-null
+{
+    "error": "Unauthenticated."
+}
 ```
 
 ### HTTP Request
@@ -1618,7 +1695,9 @@ $.ajax(settings).done(function (response) {
 > Example response:
 
 ```json
-null
+{
+    "error": "Unauthenticated."
+}
 ```
 
 ### HTTP Request
@@ -1659,7 +1738,9 @@ $.ajax(settings).done(function (response) {
 > Example response:
 
 ```json
-null
+{
+    "error": "Unauthenticated."
+}
 ```
 
 ### HTTP Request
@@ -1669,3 +1750,46 @@ null
 
 
 <!-- END_86b2a4d19352454372202146ec95b92d -->
+<!-- START_2ea88ff35aa222f5582e50f39a2b35fd -->
+## Authenticate User
+
+Authenticate a user in the database
+
+> Example request:
+
+```bash
+curl "http://localhost/api/user" \
+-H "Accept: application/json"
+```
+
+```javascript
+var settings = {
+    "async": true,
+    "crossDomain": true,
+    "url": "http://localhost/api/user",
+    "method": "GET",
+    "headers": {
+        "accept": "application/json"
+    }
+}
+
+$.ajax(settings).done(function (response) {
+    console.log(response);
+});
+```
+
+> Example response:
+
+```json
+{
+    "error": "Unauthenticated."
+}
+```
+
+### HTTP Request
+`GET api/user`
+
+`HEAD api/user`
+
+
+<!-- END_2ea88ff35aa222f5582e50f39a2b35fd -->

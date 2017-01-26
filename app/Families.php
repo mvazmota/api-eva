@@ -4,7 +4,7 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Family extends Model
+class Families extends Model
 {
     protected $fillable = ['name'];
 
@@ -13,8 +13,8 @@ class Family extends Model
         return $this->hasMany('App\User', 'family_id');
     }
 
-//    public function owners()
-//    {
-//        return $this->hasMany('App\User');
-//    }
+    public function owners()
+    {
+        return $this->belongsToMany('App\User', 'family_owners', 'family_id', 'user_id');
+    }
 }

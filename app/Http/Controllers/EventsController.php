@@ -249,7 +249,7 @@ class EventsController extends Controller
 
         $events = Events::find($id);
 
-        // Check if list exists
+        // Check if event exists
         if (empty($events)){
             return $this->_result('Event doesn\'t exist', 404, "NOK");
         }
@@ -262,11 +262,11 @@ class EventsController extends Controller
             return $this->_result('User doesn\'t exist', 404, "NOK");
         }
 
-        // Verify if the user is already on the list
+        // Verify if the user is already on the event
         $hasUser = $events->users()->where('id', $userID)->exists();
 
         if($hasUser != 1){
-            // Attach new user to the list
+            // Attach new user to the event
             $events->users()->attach($userID);
 
             // Notify the user
@@ -295,7 +295,7 @@ class EventsController extends Controller
 
         $events = Events::whereId($id)->first();
 
-        // Check if list exists
+        // Check if event exists
         if (empty($events)){
             return $this->_result('Event doesn\'t exist', 404, "NOK");
         }
@@ -309,7 +309,7 @@ class EventsController extends Controller
             return $this->_result('User doesn\'t exist', 404, "NOK");
         }
 
-        // Verify if the user is already on the list
+        // Verify if the user is already on the event
         $hasUser = $events->users()->where('id', $userID)->exists();
 
         if($hasUser == 1){
@@ -322,7 +322,7 @@ class EventsController extends Controller
 
             return $this->_result('User successfuly removed');
         } else {
-            return $this->_result('User was not on the list', 400, "NOK");
+            return $this->_result('User was not on the event', 400, "NOK");
         }
     }
 
