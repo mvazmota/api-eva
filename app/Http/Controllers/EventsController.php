@@ -61,12 +61,14 @@ class EventsController extends Controller
             'date' => 'required',
             'location' => 'required',
             'users' => 'required',
+            'created_by' => 'required'
         ],
         [
             'title' => 'The title field is required',
             'date' => 'The date field is required',
             'location' => 'The location field is required',
             'users' => 'The users field is required',
+            'created_by' => 'The created_by field is required',
         ]);
 
         if($validator->fails())
@@ -81,7 +83,7 @@ class EventsController extends Controller
             'start_time' => $data['start_time'],
             'end_time' => $data['end_time'],
             'location' => $data['location'],
-            'description' => $data['description'],
+            'created_by' => $data['created_by'],
         ]);
 
         $eventID = Events::find($events['id']);
@@ -138,12 +140,14 @@ class EventsController extends Controller
             'date' => 'required',
             'location' => 'required',
             'users' => 'required',
+            'created_by' => 'required'
         ],
         [
             'title' => 'The title field is required',
             'date' => 'The date field is required',
             'location' => 'The location field is required',
             'users' => 'The users field is required',
+            'created_by' => 'The created_by field is required',
         ]);
 
         if($validator->fails())
@@ -158,7 +162,7 @@ class EventsController extends Controller
         $events->start_time = $data['start_time'];
         $events->end_time = $data['end_time'];
         $events->location = $data['location'];
-        $events->description = $data['description'];
+        $events->created_by = $data['created_by'];
         $events->save();
 
         return $this->_result($events);

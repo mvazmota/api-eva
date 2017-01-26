@@ -21,6 +21,8 @@ class CreateProductsTable extends Migration
             $table->string('image')->nullable();
             $table->integer('list_id')->unsigned()->nullable();
             $table->foreign('list_id')->references('id')->on('lists')->onDelete('set null');
+            $table->integer('created_by')->unsigned()->nullable();
+            $table->foreign('created_by')->references('id')->on('users')->onDelete('set null');
             $table->timestamps();
         });
     }

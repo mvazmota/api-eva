@@ -67,11 +67,13 @@ class ListsController extends Controller
             'name' => 'required|max:20',
             'icon' => 'required',
             'users' => 'required',
+            'created_by' => 'required',
         ],
         [
             'name' => 'The title field is required',
             'icon' => 'The icon field is required',
             'users' => 'The users field is required',
+            'created_by' => 'The created_by field is required',
         ]);
 
         if($validator->fails())
@@ -83,6 +85,7 @@ class ListsController extends Controller
         $lists = Lists::create([
             'name' => $data['name'],
             'icon' => $data['icon'],
+            'created_by' => $data['created_by'],
         ]);
 
         $listID = Lists::find($lists['id']);
@@ -141,10 +144,12 @@ class ListsController extends Controller
         $validator = Validator::make($data, [
             'name' => 'required|max:20',
             'icon' => 'required',
+            'created_by' => 'required',
         ],
         [
             'name' => 'The title field is required',
             'icon' => 'The icon field is required',
+            'created_by' => 'The created_by field is required',
         ]);
 
         if($validator->fails())
@@ -156,6 +161,7 @@ class ListsController extends Controller
         $list = Lists::whereId($id)->first();
         $list->name = $data['name'];
         $list->icon = $data['icon'];
+        $list->created_by = $data['created_by'];
         $list->save();
 
         return $this->_result($list);

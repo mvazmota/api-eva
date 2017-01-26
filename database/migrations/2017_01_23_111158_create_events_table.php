@@ -20,7 +20,8 @@ class CreateEventsTable extends Migration
             $table->string('start_time')->nullable();
             $table->string('end_time')->nullable();
             $table->string('location');
-            $table->string('description')->nullable();
+            $table->integer('created_by')->unsigned()->nullable();
+            $table->foreign('created_by')->references('id')->on('users')->onDelete('set null');
             $table->timestamps();
         });
     }

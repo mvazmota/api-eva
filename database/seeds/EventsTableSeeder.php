@@ -17,7 +17,7 @@ class EventsTableSeeder extends Seeder
             'start_time' => '12h30',
             'end_time' => '16h30',
             'location' => 'Aveiro',
-            'description' => 'Que festa que vai ser!',
+            'created_by' => '1'
         ]);
 
         DB::table('events')->insert([
@@ -25,7 +25,8 @@ class EventsTableSeeder extends Seeder
             'date' => '22/01/2017',
             'start_time' => '12h30',
             'location' => 'Aveiro',
-            'description' => 'Que festa que vai ser!',
+            'created_by' => '1'
+
         ]);
 
         DB::table('events')->insert([
@@ -33,7 +34,7 @@ class EventsTableSeeder extends Seeder
             'date' => '12/02/2017',
             'start_time' => '12h30',
             'location' => 'Aveiro',
-            'description' => 'Que festa que vai ser!',
+            'created_by' => '2'
         ]);
     }
 }

@@ -21,7 +21,7 @@ class UsersController extends Controller
 {
     public function __construct()
     {
-//        $this->middleware('auth:api');
+        $this->middleware('auth:api');
     }
 
     /**
@@ -55,42 +55,45 @@ class UsersController extends Controller
 
     public function store(Request $request)
     {
-        $data = $request->all();
-
-        $validator = Validator::make($data, [
-            'name' => 'required',
-            'email' => 'required',
-            'color' => 'required',
-            'family_id' => 'required',
-            'password' => 'required',
-            'birthday' => 'required'
-        ],
-        [
-            'name' => 'The name field is required',
-            'email' => 'The email field is required',
-            'color' => 'The color field is required',
-            'family_id' => 'The family_id field is required',
-            'password' => 'The password field is required',
-            'birthday' => 'The birthday field is required',
-        ]);
-
-        if($validator->fails())
-        {
-            $errors = $validator->errors()->all();
-
-            return $this->_result($errors, 400, 'NOK');
-        }
-
-        $users = User::create([
-            'name' => $data['name'],
-            'email' => $data['email'],
-            'color' => $data['color'],
-            'password' => $data['password'],
-            'family_id' => $data['family_id'],
-            'birthday' => $data['birthday'],
-        ]);
-
-        return $this->_result($users);
+//        $data = $request->all();
+//
+////        print_r(\GuzzleHttp\json_encode($data));
+//
+//        $validator = Validator::make($data, [
+//            'name' => 'required',
+//            'email' => 'required',
+//            'color' => 'required',
+//            'birthday' => 'required'
+//        ],
+//        [
+//            'name' => 'The name field is required',
+//            'email' => 'The email field is required',
+//            'color' => 'The color field is required',
+//            'birthday' => 'The birthday field is required',
+//        ]);
+//
+//        if($validator->fails())
+//        {
+//            $errors = $validator->errors()->all();
+//
+//            return $this->_result($errors, 400, 'NOK');
+//        }
+//
+//        if ($data['family_id'] === null) {
+//            print_r('is null');
+//        } else {
+//            $data['family_id'] = null;
+//        }
+//
+//        $users = User::create([
+//            'name' => $data['name'],
+//            'color' => $data['color'],
+//            'email' => $data['email'],
+//            'birthday' => $data['birthday'],
+//            'family_id' => $data['family_id'],
+//        ]);
+//
+//        return $this->_result($users);
     }
 
     /**
@@ -132,16 +135,12 @@ class UsersController extends Controller
             'name' => 'required',
             'email' => 'required',
             'color' => 'required',
-            'family_id' => 'required',
-            'password' => 'required',
             'birthday' => 'required'
         ],
         [
             'name' => 'The name field is required',
             'email' => 'The email field is required',
             'color' => 'The color field is required',
-            'family_id' => 'The family_id field is required',
-            'password' => 'The password field is required',
             'birthday' => 'The birthday field is required',
         ]);
 
@@ -157,7 +156,6 @@ class UsersController extends Controller
         $users->email = $data['email'];
         $users->color = $data['color'];
         $users->family_id = $data['family_id'];
-        $users->password = $data['password'];
         $users->birthday = $data['birthday'];
         $users->save();
 

@@ -2,7 +2,7 @@
 
 use Illuminate\Http\Request;
 
-//Auth::loginUsingId(2);
+Auth::loginUsingId(6);
 
 
 /*

@@ -6,15 +6,15 @@ use Illuminate\Database\Eloquent\Model;
 
 class Events extends Model
 {
-    protected $fillable = ['title', 'date', 'time', 'location', 'description'];
+    protected $fillable = ['title', 'date', 'start_time', 'end_time', 'location', 'created_by'];
 
     public function users()
     {
         return $this->belongsToMany('App\User', 'event_user', 'event_id', 'user_id');
     }
 
-    public function family()
+    public function createdBy()
     {
-        return $this->belongsTo('App\Family', 'family_id');
+        return $this->belongsTo('App\User');
     }
 }

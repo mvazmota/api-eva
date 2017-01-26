@@ -16,6 +16,8 @@ class CreateFamiliesTable extends Migration
         Schema::create('families', function (Blueprint $table) {
             $table->increments('id');
             $table->string('name');
+//            $table->integer('created_by')->unsigned()->nullable();
+//            $table->foreign('created_by')->references('id')->on('users')->onDelete('set null');
             $table->timestamps();
         });
     }
@@ -28,6 +30,5 @@ class CreateFamiliesTable extends Migration
     public function down()
     {
         Schema::dropIfExists('families');
-
     }
 }

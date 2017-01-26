@@ -17,6 +17,8 @@ class CreateListsTable extends Migration
             $table->increments('id');
             $table->string('name');
             $table->string('icon');
+            $table->integer('created_by')->unsigned()->nullable();
+            $table->foreign('created_by')->references('id')->on('users')->onDelete('set null');
             $table->timestamps();
         });
     }
