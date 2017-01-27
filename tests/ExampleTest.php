@@ -6,6 +6,9 @@ use Illuminate\Foundation\Testing\DatabaseTransactions;
 
 class ExampleTest extends TestCase
 {
+
+    use WithoutMiddleware;
+
     /**
      * A basic functional test example.
      *
@@ -13,7 +16,13 @@ class ExampleTest extends TestCase
      */
     public function testBasicExample()
     {
-        $this->visit('/')
-             ->see('Laravel');
+        $this->post('/list',
+            ['name' => 'Sally',
+                'icon' => 'natal',
+                'created_by' => '1'])
+//            ->seeJson([
+//                'created' => true,
+//            ])
+;
     }
 }
