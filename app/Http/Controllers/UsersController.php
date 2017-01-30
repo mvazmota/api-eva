@@ -131,25 +131,25 @@ class UsersController extends Controller
     {
         $data = $request->all();
 
-        $validator = Validator::make($data, [
-            'name' => 'required',
-            'email' => 'required',
-            'color' => 'required',
-            'birthday' => 'required'
-        ],
-        [
-            'name' => 'The name field is required',
-            'email' => 'The email field is required',
-            'color' => 'The color field is required',
-            'birthday' => 'The birthday field is required',
-        ]);
-
-        if($validator->fails())
-        {
-            $errors = $validator->errors()->all();
-
-            return $this->_result($errors, 400, 'NOK');
-        }
+//        $validator = Validator::make($data, [
+//            'name' => 'required',
+//            'email' => 'required',
+//            'color' => 'required',
+//            'birthday' => 'required'
+//        ],
+//        [
+//            'name' => 'The name field is required',
+//            'email' => 'The email field is required',
+//            'color' => 'The color field is required',
+//            'birthday' => 'The birthday field is required',
+//        ]);
+//
+//        if($validator->fails())
+//        {
+//            $errors = $validator->errors()->all();
+//
+//            return $this->_result($errors, 400, 'NOK');
+//        }
 
         $users = User::whereId($id)->first();
         $users->name = $data['name'];

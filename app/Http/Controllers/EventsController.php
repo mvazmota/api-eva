@@ -139,16 +139,12 @@ class EventsController extends Controller
             'title' => 'required|max:20',
             'date' => 'required',
             'location' => 'required',
-            'users' => 'required',
-            'created_by' => 'required'
         ],
-        [
-            'title' => 'The title field is required',
-            'date' => 'The date field is required',
-            'location' => 'The location field is required',
-            'users' => 'The users field is required',
-            'created_by' => 'The created_by field is required',
-        ]);
+            [
+                'title' => 'The title field is required',
+                'date' => 'The date field is required',
+                'location' => 'The location field is required',
+            ]);
 
         if($validator->fails())
         {
@@ -162,7 +158,6 @@ class EventsController extends Controller
         $events->start_time = $data['start_time'];
         $events->end_time = $data['end_time'];
         $events->location = $data['location'];
-        $events->created_by = $data['created_by'];
         $events->save();
 
         return $this->_result($events);

@@ -83,6 +83,7 @@ class ProductsController extends Controller
             'quant' => 'max:40',
             'image' => 'image',
             'list_id' => 'required',
+            'created_by' => 'required',
         ],
         [
             'title' => 'The title field is required',
@@ -90,6 +91,7 @@ class ProductsController extends Controller
             'quant' => 'The quant field is required',
             'image' => 'The image field must be an image',
             'list_id' => 'The list_id field is required',
+            'created_by' => 'The created_by field is required',
         ]);
 
         if($validator->fails())
@@ -112,6 +114,7 @@ class ProductsController extends Controller
                 'quant' => $data['quant'],
                 'list_id' => $data['list_id'],
                 'image' => $path,
+                'created_by' => $data['created_by']
             ]);
 
             return $this->_result($products);
@@ -123,6 +126,7 @@ class ProductsController extends Controller
                 'description' => $data['description'],
                 'quant' => $data['quant'],
                 'list_id' => $data['list_id'],
+                'created_by' => $data['created_by']
             ]);
 
             return $this->_result($products);
@@ -176,19 +180,19 @@ class ProductsController extends Controller
     {
         $data = $request->all();
 
+        print_r($data);
+
         $validator = Validator::make($data, [
             'title' => 'required|max:20',
             'description' => 'max:100',
             'quant' => 'max:40',
             'image' => 'image',
-            'list_id' => 'required',
         ],
             [
                 'title' => 'The title field is required',
                 'description' => 'The description field is required',
                 'quant' => 'The quant field is required',
                 'image' => 'The image field is required',
-                'list_id' => 'The list_id field is required',
             ]);
 
         if($validator->fails())
@@ -210,7 +214,6 @@ class ProductsController extends Controller
             $products->description = $data['description'];
             $products->quant = $data['quant'];
             $products->image = $path;
-            $products->list_id = $data['list_id'];
             $products->save();
 
             return $this->_result($products);
@@ -220,7 +223,6 @@ class ProductsController extends Controller
             $products->title = $data['title'];
             $products->description = $data['description'];
             $products->quant = $data['quant'];
-            $products->list_id = $data['list_id'];
             $products->save();
 
             return $this->_result($products);
