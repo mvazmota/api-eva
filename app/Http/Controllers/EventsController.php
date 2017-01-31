@@ -215,6 +215,7 @@ class EventsController extends Controller
             return $this->_result($users);
         }
     }
+
     /**
      * Add User
      *

@@ -11,7 +11,6 @@ use App\Http\Requests;
 use Validator;
 use Auth;
 
-
 /**
  * @resource Users
  *
@@ -56,45 +55,71 @@ class UsersController extends Controller
 
     public function store(Request $request)
     {
-//        $data = $request->all();
-//
-////        print_r(\GuzzleHttp\json_encode($data));
-//
-//        $validator = Validator::make($data, [
-//            'name' => 'required',
-//            'email' => 'required',
-//            'color' => 'required',
-//            'birthday' => 'required'
-//        ],
-//        [
-//            'name' => 'The name field is required',
-//            'email' => 'The email field is required',
-//            'color' => 'The color field is required',
-//            'birthday' => 'The birthday field is required',
-//        ]);
-//
-//        if($validator->fails())
-//        {
-//            $errors = $validator->errors()->all();
-//
-//            return $this->_result($errors, 400, 'NOK');
-//        }
-//
+        $data = $request->all();
+
+//        print_r(\GuzzleHttp\json_encode($data));
+
+        $validator = Validator::make($data, [
+            'name' => 'required|max:255',
+            'email' => 'required|email|max:255|unique:users',
+            'password' => 'required|min:6|confirmed',
+            'color' => 'required',
+            'birthday' => 'required'
+        ],
+        [
+            'name' => 'The name field is required',
+            'email' => 'The email field is required',
+            'color' => 'The color field is required',
+            'password' => 'The password field is required',
+            'birthday' => 'The birthday field is required',
+        ]);
+
+        if($validator->fails())
+        {
+            $errors = $validator->errors()->all();
+
+            return $this->_result($errors, 400, 'NOK');
+        }
+
 //        if ($data['family_id'] === null) {
 //            print_r('is null');
 //        } else {
 //            $data['family_id'] = null;
 //        }
-//
-//        $users = User::create([
-//            'name' => $data['name'],
-//            'color' => $data['color'],
-//            'email' => $data['email'],
-//            'birthday' => $data['birthday'],
-//            'family_id' => $data['family_id'],
-//        ]);
-//
-//        return $this->_result($users);
+
+        if (isEmpty($data['code'])){
+
+            $users = User::create([
+                'name' => $data['name'],
+                'color' => $data['color'],
+                'email' => $data['email'],
+                'password' => bcrypt($data['password']),
+                'birthday' => $data['birthday'],
+            ]);
+
+            return $this->_result($users);
+
+        } else {
+
+            // Check if code and email match an invitation
+            $this->check($data['code'], $data['email']);
+
+            if ($this==True){
+
+                $family_id = DB::table('invitations')->select('family_id')->where('email', '=', $data['email'])->value('family_id');
+
+                $users = User::create([
+                    'name' => $data['name'],
+                    'color' => $data['color'],
+                    'email' => $data['email'],
+                    'password' => bcrypt($data['password']),
+                    'birthday' => $data['birthday'],
+                    'family_id' => $family_id
+                ]);
+
+                return $this->_result($users);
+            }
+        }
     }
 
     /**

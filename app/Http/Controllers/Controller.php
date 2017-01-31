@@ -19,4 +19,19 @@ class Controller extends BaseController
             'data' => $data
         ));
     }
+
+    public function check($code,$email)
+    {
+        $temp = Invitation::where('code', '=', $code)->where('email','=',$email)
+            ->first();
+        if($temp)
+        {
+            if(!$temp->active or $temp->used or strtotime("now") > strtotime($temp->expiration))
+                return False;
+            else
+                return True;
+        }
+        else
+            return False;
+    }
 }
