@@ -39,7 +39,13 @@ Route::resource('users', 'UsersController');
 Route::get('users/{user}/lists', 'UsersController@getLists');
 Route::get('users/{user}/events', 'UsersController@getEvents');
 Route::get('users/{user}/family', 'UsersController@getFamily');
+Route::get('users/{user}/invitations', 'UsersController@getInvitations');
 Route::get('user', 'UsersController@authUser');
+
+//Invitations
+
+Route::post('invites', 'InvitationsController@generate');
+
 
 //Events
 Route::resource('events', 'EventsController');

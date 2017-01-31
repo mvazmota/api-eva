@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\User;
 use App\Lists;
 use App\Families;
+use App\Invitation;
 use App\Http\Requests;
 use Validator;
 use Auth;
@@ -263,6 +264,28 @@ class UsersController extends Controller
             return $this->_result('User doesn\'t have family members', 404, "NOK");
         } else {
             return $this->_result($filtered);
+        }
+    }
+
+
+    /**
+     *  User Invitations
+     *
+     * Shows the invitations of a user
+     *
+     * @param int $id
+     *
+     * @return array
+     */
+
+    public function getInvitations($id)
+    {
+        $invitation = Invitation::whereId($id)->first();
+
+        if (empty($invitation)){
+            return $this->_result('User doesn\'t have invitations', 404, "NOK");
+        } else {
+            return $this->_result($invitation);
         }
     }
 
