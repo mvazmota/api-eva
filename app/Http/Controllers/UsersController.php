@@ -10,6 +10,7 @@ use App\Invitation;
 use App\Http\Requests;
 use Validator;
 use Auth;
+use DB;
 
 /**
  * @resource Users
@@ -57,8 +58,6 @@ class UsersController extends Controller
     {
         $data = $request->all();
 
-        print_r(\GuzzleHttp\json_encode($data));
-
         $validator = Validator::make($data, [
             'name' => 'required|max:255',
             'email' => 'required|email|max:255|unique:users',
@@ -100,7 +99,10 @@ class UsersController extends Controller
 
             if ($this==True){
 
-                $family_id = DB::table('invitations')->select('family_id')->where('email', '=', $data['email'])->value('family_id');
+                $family_id = DB::table('invitations')
+                    ->select('family_id')
+                    ->where('email', '=', $data['email'])
+                    ->value('family_id');
 
                 $users = User::create([
                     'name' => $data['name'],
