@@ -81,12 +81,6 @@ class UsersController extends Controller
             return $this->_result($errors, 400, 'NOK');
         }
 
-//        if ($data['family_id'] === null) {
-//            print_r('is null');
-//        } else {
-//            $data['family_id'] = null;
-//        }
-
         if (empty($data['code'])){
 
             $users = User::create([
