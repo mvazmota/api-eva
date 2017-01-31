@@ -57,7 +57,7 @@ class UsersController extends Controller
     {
         $data = $request->all();
 
-//        print_r(\GuzzleHttp\json_encode($data));
+        print_r(\GuzzleHttp\json_encode($data));
 
         $validator = Validator::make($data, [
             'name' => 'required|max:255',
@@ -87,7 +87,7 @@ class UsersController extends Controller
 //            $data['family_id'] = null;
 //        }
 
-        if (isEmpty($data['code'])){
+        if (empty($data['code'])){
 
             $users = User::create([
                 'name' => $data['name'],
