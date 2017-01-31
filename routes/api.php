@@ -43,7 +43,7 @@ Route::get('users/{user}/invitations', 'UsersController@getInvitations');
 Route::get('user', 'UsersController@authUser');
 
 //Invitations
-Route::post('invites', 'InvitationsController@generate');
+Route::post('invitations', 'InvitationsController@generate');
 
 //Events
 Route::resource('events', 'EventsController');
