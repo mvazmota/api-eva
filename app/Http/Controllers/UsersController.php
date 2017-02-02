@@ -11,6 +11,7 @@ use App\Http\Requests;
 use Validator;
 use Auth;
 use DB;
+use App\Events;
 
 /**
  * @resource Users
@@ -255,13 +256,28 @@ class UsersController extends Controller
 
     public function getEvents($id)
     {
-        $events = User::find($id)->events()->orderBy('id')->get();
+        $events = User::find($id)->events()->get();
 
-        if ($events->isEmpty()){
-            return $this->_result('User doesn\'t have events', 404, "NOK");
-        } else {
-            return $this->_result($events);
+        $result = array();
+
+        foreach ($events as $event){
+
+            $event_id = $event->id;
+
+            $users = Events::find($event_id)->users()->orderBy('name')->get();
+
+            $result[$event_id]['event'] = $event;
+            $result[$event_id]['event']['users'] = $users;
         }
+
+        return $this->_result($result);
+
+
+//        if ($events->isEmpty()){
+//            return $this->_result('User doesn\'t have events', 404, "NOK");
+//        } else {
+//            return $this->_result($events);
+//        }
     }
 
     /**
