@@ -157,9 +157,20 @@ class FamiliesController extends Controller
 
     public function getusers($id)
     {
-        $users = Families::find($id)->users()->get();
 
-        return $this->_result($users);
+        $family = Families::whereId($id)->first();
+
+        if (empty($family)){
+
+            return $this->_result('Family doesn\'t exist');
+
+        } else {
+
+            $users = Families::find($id)->users()->get();
+
+            return $this->_result($users);
+        }
+
     }
 
     /**
