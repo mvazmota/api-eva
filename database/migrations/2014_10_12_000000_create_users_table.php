@@ -17,6 +17,7 @@ class CreateUsersTable extends Migration
             $table->increments('id');
             $table->string('name');
             $table->string('color')->default('blue');
+            $table->string('avatar')->default('1');
             $table->string('email')->unique();
             $table->string('password');
             $table->string('birthday')->default(null);
