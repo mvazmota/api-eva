@@ -23,7 +23,7 @@ class UsersController extends Controller
 {
     public function __construct()
     {
-        $this->middleware('auth:api', ['except' => ['index','show','create']]);
+        $this->middleware('auth:api', ['except' => ['index','show','store']]);
     }
 
     /**
@@ -64,12 +64,14 @@ class UsersController extends Controller
             'email' => 'required|email|max:255|unique:users',
             'password' => 'required|min:6|confirmed',
             'color' => 'required',
+            'avatar' => 'required',
             'birthday' => 'required'
         ],
         [
             'name' => 'The name field is required',
             'email' => 'The email field is required',
             'color' => 'The color field is required',
+            'avatar' => 'The avatar field is required',
             'password' => 'The password field is required',
             'birthday' => 'The birthday field is required',
         ]);
@@ -86,6 +88,7 @@ class UsersController extends Controller
             $users = User::create([
                 'name' => $data['name'],
                 'color' => $data['color'],
+                'avatar' => $data['avatar'],
                 'email' => $data['email'],
                 'password' => bcrypt($data['password']),
                 'birthday' => $data['birthday'],
@@ -108,6 +111,7 @@ class UsersController extends Controller
                 $users = User::create([
                     'name' => $data['name'],
                     'color' => $data['color'],
+                    'avatar' => $data['avatar'],
                     'email' => $data['email'],
                     'password' => bcrypt($data['password']),
                     'birthday' => $data['birthday'],
