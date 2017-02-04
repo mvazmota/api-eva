@@ -187,12 +187,16 @@ class ProductsController extends Controller
             'description' => 'max:100',
             'quant' => 'max:40',
             'image' => 'image',
+            'created_by' => 'required',
+            'list_id' => 'required',
         ],
             [
-                'title' => 'The title field is required',
+                'title' => 'The title field is too long',
                 'description' => 'The description field is required',
                 'quant' => 'The quant field is required',
+                'list_id' => 'The list_id is required',
                 'image' => 'The image field is required',
+                'created_by' => 'The created_by field is required',
             ]);
 
         if($validator->fails())
@@ -223,6 +227,8 @@ class ProductsController extends Controller
             $products->title = $data['title'];
             $products->description = $data['description'];
             $products->quant = $data['quant'];
+            $products->created_by = $data['created_by'];
+            $products->list_id = $data['list_id'];
             $products->save();
 
             return $this->_result($products);
