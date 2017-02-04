@@ -182,6 +182,7 @@ class UsersController extends Controller
         $users->name = $data['name'];
         $users->email = $data['email'];
         $users->color = $data['color'];
+        $users->avatar = $data['avatar'];
         $users->family_id = $data['family_id'];
         $users->birthday = $data['birthday'];
         $users->save();
