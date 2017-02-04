@@ -48,6 +48,8 @@ class ProductsTest extends TestCase
         $this->json('POST', '/products/1',
             ['title' => 'Sally Birthday2',
                 'description' => 'Its gonna be awesome!',
+                'list_id' => '1',
+                'created_by' => '2',
                 'quant' => 'Lodz'])
             ->seeJson([
                 'status' => 200,

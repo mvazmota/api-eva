@@ -317,6 +317,19 @@ class ListsController extends Controller
     {
         $data = $request->all();
 
+        $validator = Validator::make($data, [
+            'users' => 'required',
+        ],
+            [
+                'users' => 'The users field is required',
+            ]);
+
+        if($validator->fails())
+        {
+            $errors = $validator->errors()->all();
+            return $this->_result($errors, 400, 'NOK');
+        }
+
         $lists = Lists::whereId($id)->first();
 
         // Check if list exists

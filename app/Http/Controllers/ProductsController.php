@@ -179,22 +179,18 @@ class ProductsController extends Controller
     public function updateProduct(Request $request, $id)
     {
         $data = $request->all();
-        
+
         $validator = Validator::make($data, [
             'title' => 'max:20',
             'description' => 'max:100',
             'quant' => 'max:40',
             'image' => 'image',
-            'created_by' => 'required',
-            'list_id' => 'required',
         ],
             [
                 'title' => 'The title field is too long',
                 'description' => 'The description field is required',
                 'quant' => 'The quant field is required',
                 'list_id' => 'The list_id is required',
-                'image' => 'The image field is required',
-                'created_by' => 'The created_by field is required',
             ]);
 
         if($validator->fails())
