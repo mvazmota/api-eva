@@ -179,9 +179,7 @@ class ProductsController extends Controller
     public function updateProduct(Request $request, $id)
     {
         $data = $request->all();
-
-        print_r($data);
-
+        
         $validator = Validator::make($data, [
             'title' => 'max:20',
             'description' => 'max:100',
