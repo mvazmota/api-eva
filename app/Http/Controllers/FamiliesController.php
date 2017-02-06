@@ -51,20 +51,26 @@ class FamiliesController extends Controller
         $data = $request->all();
         $validator = Validator::make($data, [
             'name' => 'required|max:20',
+            'user' => 'required'
         ],
         [
-            'name' => 'O campo de nome é obrigatório',
+            'name' => 'The name field is required',
+            'user' => 'The user field is required',
         ]);
 
         if($validator->fails())
         {
             $errors = $validator->errors()->all();
-            return $this->_result($errors, 1, 'NOK');
+            return $this->_result($errors, 400, 'NOK');
         }
 
         $family = Families::create([
             'name' => $data['name'],
         ]);
+
+        $users->family_id = $data['family_id'];
+
+        $family->owners()->attach($data['user']);
 
         return $this->_result($family);
     }
