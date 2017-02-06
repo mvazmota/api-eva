@@ -60,12 +60,14 @@ class EventsController extends Controller
             'title' => 'required|max:20',
             'date' => 'required',
             'location' => 'required',
+            'users' => 'required',
             'created_by' => 'required'
         ],
         [
             'title' => 'The title field is required',
             'date' => 'The date field is required',
             'location' => 'The location field is required',
+            'users' => 'The users field is required',
             'created_by' => 'The created_by field is required',
         ]);
 
@@ -84,20 +86,15 @@ class EventsController extends Controller
             'created_by' => $data['created_by'],
         ]);
 
-        if (isset($data['users']))
-        {
-            $eventID = Events::find($events['id']);
+        $eventID = Events::find($events['id']);
 
-            // Split users into an array
-            $users = $data['users'];
-            $array = explode(',', $users);
+        // Split users into an array
+        $users = $data['users'];
+        $array = explode(',', $users);
 
-            // Attach new users to the event
-            foreach ($array as $value) {
-                $eventID->users()->attach($value);
-            }
-
-            return $this->_result($events);
+        // Attach new users to the event
+        foreach ($array as $value) {
+            $eventID->users()->attach($value);
         }
 
         return $this->_result($events);

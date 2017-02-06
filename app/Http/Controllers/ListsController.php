@@ -88,24 +88,19 @@ class ListsController extends Controller
             'created_by' => $data['created_by'],
         ]);
 
-        if (isset($data['users']))
-        {
-            $listID = Lists::find($lists['id']);
+        $listID = Lists::find($lists['id']);
 
-            // Split users into an array
-            $users = $data['users'];
-            $array = explode(',', $users);
+        // Split users into an array
+        $users = $data['users'];
+        $array = explode(',', $users);
 
-            // Attach new users of the list
-            foreach ($array as $value) {
-                $listID->users()->attach($value);
+        // Attach new users of the list
+        foreach ($array as $value) {
+            $listID->users()->attach($value);
 
-                // Notify users of list creation
-                $user = User::whereId($value)->first();
-                $user->notify(new ListCreated($lists));
-            }
-
-            return $this->_result($lists);
+            // Notify users of list creation
+            $user = User::whereId($value)->first();
+            $user->notify(new ListCreated($lists));
         }
 
         return $this->_result($lists);
