@@ -20,7 +20,7 @@ Documentation for the framework can be found on the [Laravel website](http://lar
 
 2 - Download and install composer to the project folder: https://getcomposer.org/download/
 
-3 - run "composer.phar install"
+3 - run "composer install"
 
 4 - rename the .env.example file to .env
 
