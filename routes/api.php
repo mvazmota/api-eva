@@ -29,6 +29,7 @@ Route::get('lists/{list}/products', 'ListsController@getProducts');
 
 //Family
 Route::resource('families', 'FamiliesController');
+
 Route::get('families/{family}/users', 'FamiliesController@getusers');
 Route::get('families/{family}/owners', 'FamiliesController@getOwners');
 Route::post('families/{family}/owners', 'FamiliesController@addOwners');
