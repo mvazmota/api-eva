@@ -232,7 +232,7 @@ class UsersController extends Controller
     {
         $users = Auth::logout();
 
-        return redirect()->back();
+        return $this->_result($users);
     }
 
     /**
