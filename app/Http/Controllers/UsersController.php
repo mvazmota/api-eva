@@ -23,7 +23,7 @@ class UsersController extends Controller
 {
     public function __construct()
     {
-        $this->middleware('auth:api', ['except' => ['store']]);
+        $this->middleware('auth:api', ['except' => ['store', 'logoutUser']]);
     }
 
     /**
@@ -231,6 +231,8 @@ class UsersController extends Controller
     public function logoutUser()
     {
         Auth::logout();
+
+        return redirect('http://localhost:3000');
     }
 
     /**
