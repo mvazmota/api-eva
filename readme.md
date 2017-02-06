@@ -1,5 +1,3 @@
-# MCMM TDI EXAMPLE API
-
 ## BUILT USING LARAVEL
 
 [![Build Status](https://travis-ci.org/laravel/framework.svg)](https://travis-ci.org/laravel/framework)
@@ -34,9 +32,7 @@ Documentation for the framework can be found on the [Laravel website](http://lar
 
 8 - run "php artisan migrate --seed"
 
-## Notes
-
-This is just an example project for teaching purposes only
+9 - to run unit tests run "./vendor/bin/phpunit"
 
 ## License
 
