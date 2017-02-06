@@ -19,8 +19,5 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index');
 
-//Route::get('/redirect', 'SocialAuthController@redirect');
-//Route::get('/callback', 'SocialAuthController@callback');
-
-Route::get('logout', 'UsersController@logoutUser');
+Route::get('logout', 'LogoutController@logOut');
 
