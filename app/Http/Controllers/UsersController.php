@@ -9,7 +9,7 @@ use App\Families;
 use App\Invitation;
 use App\Http\Requests;
 use Validator;
-use Auth;
+use Illuminate\Support\Facades\Auth;
 use DB;
 use App\Events;
 
