@@ -225,7 +225,7 @@ class UsersController extends Controller
     {
         $users = Auth::user();
 
-        return ('ola');
+        return $this->_result($users);
     }
 
     /**
