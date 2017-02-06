@@ -1,5 +1,6 @@
 <?php
 
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -19,4 +20,4 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index');
 
-Route::get('user/logout', 'Auth\LoginController@getLogout');
+Route::get('logout','Auth\LoginController@getLogout');
