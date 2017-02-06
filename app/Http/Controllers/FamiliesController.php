@@ -19,7 +19,7 @@ class FamiliesController extends Controller
 
     public function __construct()
     {
-        $this->middleware('auth:api', ['except' => ['create']]);
+        $this->middleware('auth:api', ['except' => ['store']]);
     }
 
     /**
@@ -49,6 +49,7 @@ class FamiliesController extends Controller
     public function store(Request $request)
     {
         $data = $request->all();
+
         $validator = Validator::make($data, [
             'name' => 'required|max:20',
             'user' => 'required'
