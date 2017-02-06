@@ -68,8 +68,11 @@ class FamiliesController extends Controller
             'name' => $data['name'],
         ]);
 
-        $users->family_id = $data['family_id'];
+        // Insert user into the created family
+        $users = User::whereId($data['user'])->first();
+        $users->family_id = $family['id'];
 
+        // Set user as owner of the family
         $family->owners()->attach($data['user']);
 
         return $this->_result($family);
