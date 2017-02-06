@@ -27,7 +27,7 @@ Route::post('lists/{list}/users', 'ListsController@addUsers');
 Route::delete('lists/{list}/users', 'ListsController@removeUsers');
 Route::get('lists/{list}/products', 'ListsController@getProducts');
 
-//Family
+// Family
 Route::resource('families', 'FamiliesController');
 
 Route::get('families/{family}/users', 'FamiliesController@getusers');
@@ -35,18 +35,19 @@ Route::get('families/{family}/owners', 'FamiliesController@getOwners');
 Route::post('families/{family}/owners', 'FamiliesController@addOwners');
 Route::delete('families/{family}/owners', 'FamiliesController@removeOwners');
 
-//Users
+// Users
 Route::resource('users', 'UsersController');
 Route::get('users/{user}/lists', 'UsersController@getLists');
 Route::get('users/{user}/events', 'UsersController@getEvents');
 Route::get('users/{user}/family', 'UsersController@getFamily');
 Route::get('users/{user}/invitations', 'UsersController@getInvitations');
+
 Route::get('user', 'UsersController@authUser');
 
-//Invitations
+// Invitations
 Route::post('invitations', 'InvitationsController@generate');
 
-//Events
+// Events
 Route::resource('events', 'EventsController');
 Route::get('events/{event}/users', 'EventsController@getUsers');
 Route::post('events/{event}/users', 'EventsController@addUsers');
