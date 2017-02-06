@@ -230,9 +230,7 @@ class UsersController extends Controller
 
     public function logoutUser()
     {
-        $users = Auth::logout();
-
-        return $this->_result($users);
+        Auth::logout();
     }
 
     /**
