@@ -43,6 +43,8 @@ Route::get('users/{user}/family', 'UsersController@getFamily');
 Route::get('users/{user}/invitations', 'UsersController@getInvitations');
 
 Route::get('user', 'UsersController@authUser');
+Route::get('user/logout', 'UsersController@logoutUser');
+
 
 // Invitations
 Route::post('invitations', 'InvitationsController@generate');

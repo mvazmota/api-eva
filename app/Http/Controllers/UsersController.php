@@ -228,6 +228,13 @@ class UsersController extends Controller
         return $this->_result($users);
     }
 
+    public function logoutUser()
+    {
+        $users = Auth::logout();
+
+        return redirect()->back();
+    }
+
     /**
      * Lists of a User
      *
