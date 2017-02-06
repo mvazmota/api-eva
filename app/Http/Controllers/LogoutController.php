@@ -9,10 +9,10 @@ class LogoutController extends Controller
 {
     public function __construct()
     {
-        $this->middleware('guest', [ 'except' => 'logout' ]);
+        $this->middleware('guest', [ 'except' => 'getLogout' ]);
     }
 
-    public function logOut()
+    public function getLogout()
     {
         Auth::logout();
 
