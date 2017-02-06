@@ -7,6 +7,11 @@ use App\Families;
 use Validator;
 use App\User;
 use App\Http\Requests;
+use App\Lists;
+use App\Invitation;
+use Illuminate\Support\Facades\Auth;
+use DB;
+use App\Events;
 
 /**
  * @resource Families
@@ -19,7 +24,7 @@ class FamiliesController extends Controller
 
     public function __construct()
     {
-        $this->middleware('auth:api', ['except' => ['store']]);
+//        $this->middleware('auth:api', ['except' => ['store']]);
     }
 
     /**
@@ -69,9 +74,12 @@ class FamiliesController extends Controller
             'name' => $data['name'],
         ]);
 
+        $user_id = $data['user'];
+
         // Insert user into the created family
-        $users = User::whereId($data['user'])->first();
+        $users = User::whereId($user_id)->first();
         $users->family_id = $family['id'];
+        $users->save();
 
         // Set user as owner of the family
         $family->owners()->attach($data['user']);
