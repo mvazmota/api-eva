@@ -94,7 +94,7 @@ class UsersController extends Controller
                 'birthday' => $data['birthday'],
             ]);
 
-            return $this->_result($users, 'Create a family', 'OK');
+            return $this->_result($users, 200, 'Create a family');
 
         } else {
 
