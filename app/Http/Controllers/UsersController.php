@@ -231,6 +231,8 @@ class UsersController extends Controller
     public function logoutUser()
     {
         Auth::logout();
+
+        return redirect('http://localhost:3000');
     }
 
     /**
